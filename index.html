@@ -132,10 +132,13 @@
 
   /* How We Work */
   .how-we-work { background: var(--bg-light); }
-  .how-cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .how-cat-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
   .how-category {
     background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 28px 26px;
+    grid-column: span 2;
   }
+  .how-category:nth-child(4) { grid-column: 2 / 4; }
+  .how-category:nth-child(5) { grid-column: 4 / 6; }
   .how-category h3 { font-size: 18px; margin-bottom: 8px; }
   .how-cat-intro { color: var(--text-muted); font-size: 14px; margin-bottom: 16px; }
   .how-sublist { list-style: none; }
@@ -205,7 +208,7 @@
   .contact-methods {
     display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-bottom: 40px;
   }
-  .contact-method { text-align: left; }
+  .contact-method { text-align: center; }
   .contact-method .label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 4px; }
   .contact-method a, .contact-method div.value { font-size: 18px; font-weight: 600; }
 
@@ -220,6 +223,7 @@
     .hero h1 { font-size: 32px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .services-grid, .industries-grid, .track-grid, .how-cat-grid, .engagement-grid { grid-template-columns: 1fr; }
+    .how-category, .how-category:nth-child(4), .how-category:nth-child(5) { grid-column: auto; }
     .about-wrap { grid-template-columns: 1fr; }
     .about-photo { max-width: 180px; margin: 0 auto; }
     .about-text h2, .about-text p { text-align: center; }
@@ -236,7 +240,7 @@
     <nav><ul>
       <li><a href="#services" data-i18n="nav_services">Services</a></li>
       <li><a href="#how-we-work" data-i18n="nav_how">How We Work</a></li>
-      <li><a href="#industries" data-i18n="nav_industries">Industries</a></li>
+      <li><a href="#industries" data-i18n="nav_industries">Expertise</a></li>
       <li><a href="#track-record" data-i18n="nav_track">Track Record</a></li>
       <li><a href="#about" data-i18n="nav_about">About</a></li>
     </ul></nav>
@@ -275,8 +279,8 @@
 <section id="services">
   <div class="container">
     <div class="section-label" data-i18n="services_label">What We Do</div>
-    <h2 class="section-title" data-i18n="services_title">Finance and accounting, fully outsourced</h2>
-    <p class="section-intro" data-i18n="services_intro">From day-to-day bookkeeping to strategic CFO-level guidance, F&amp;M Management scales with your business &mdash; engage for exactly the level of support you need.</p>
+    <h2 class="section-title" data-i18n="services_title">Finance and accounting, safely outsourced</h2>
+    <p class="section-intro" data-i18n="services_intro">From day-to-day bookkeeping to strategic CFO-level guidance, F&amp;M Management scales with your business.</p>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">CF</div>
@@ -390,7 +394,7 @@
     <h2 class="section-title" data-i18n="industries_title">Deep experience in three core industries</h2>
     <div class="industries-grid">
       <div class="industry-card">
-        <h3 data-i18n="ind1_title">Real Estate &amp; Multifamily Development</h3>
+        <h3 data-i18n="ind1_title">Real Estate Management &amp; Development</h3>
         <p data-i18n="ind1_desc">Acquisition underwriting, pro forma modeling with defendable assumptions, and lender/investor financial reporting for development and value-add projects.</p>
       </div>
       <div class="industry-card">
@@ -416,8 +420,8 @@
         <p data-i18n="track1_desc">Led full-cycle accounting, monthly close, and budgeting for a five-hotel, ~250-room portfolio with F&amp;B operations, including ongoing variance analysis and underwriting on two property acquisitions.</p>
       </div>
       <div class="track-card">
-        <h4 data-i18n="track2_title">Multinational Retailer &mdash; 12 Stores + E-Commerce</h4>
-        <p data-i18n="track2_desc">Ran the entire U.S. financial department for an international retailer &mdash; owning the monthly close, financial reporting, and store-level profitability and variance analysis that informed key decisions.</p>
+        <h4 data-i18n="track2_title">Multinational Retailer &mdash; 12 Stores + Wholesale + E-Commerce</h4>
+        <p data-i18n="track2_desc">Ran the entire U.S. financial department for an international retailer with wholesale and e-commerce operations &mdash; owning the monthly close, financial reporting, and store-level profitability and variance analysis that informed key decisions.</p>
       </div>
       <div class="track-card">
         <h4 data-i18n="track3_title">Real Estate Development &mdash; $190MM+ Underwritten</h4>
@@ -454,24 +458,16 @@
   <div class="container">
     <div class="section-label" data-i18n="contact_label">Get Started</div>
     <h2 class="section-title" data-i18n="contact_title">Let's talk about your finance function</h2>
-    <p class="contact-intro" data-i18n="contact_intro">Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need.</p>
+    <p class="contact-intro" data-i18n="contact_intro">Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly&nbsp;what&nbsp;you&nbsp;need.</p>
     <div class="contact-methods">
       <div class="contact-method">
         <div class="label" data-i18n="contact_email_label">Email</div>
         <a href="mailto:fabiorabinovich@gmail.com">fabiorabinovich@gmail.com</a>
       </div>
-      <div class="contact-method">
-        <div class="label" data-i18n="contact_phone_label">Phone</div>
-        <div class="value">786.282.9787</div>
-      </div>
-      <div class="contact-method">
-        <div class="label" data-i18n="contact_location_label">Location</div>
-        <div class="value">Miami Beach, FL</div>
-      </div>
     </div>
     <div class="hero-ctas">
       <a class="btn-primary" href="https://calendar.app.google/EP9sCpVZaTptuP5J6" target="_blank" rel="noopener" data-i18n="contact_cta">Book a Free 30-Minute Call</a>
-      <a class="btn-secondary" href="mailto:fabiorabinovich@gmail.com?subject=Inquiry%20about%20F%26M%20Management%20services" data-i18n="contact_cta_email">Email Instead</a>
+      <a class="btn-secondary" href="mailto:fabiorabinovich@gmail.com?subject=Inquiry%20about%20F%26M%20Management%20services" data-i18n="contact_cta_email">Email</a>
     </div>
     <p class="hero-note" data-i18n="contact_note">Free 30 minutes. No sales pitch, no obligation.</p>
   </div>
@@ -486,15 +482,15 @@
 var translations = {
   en: {
     pageTitle: "F&amp;M Management | Fractional CFO, Controller &amp; Accounting Services",
-    nav_services: "Services", nav_how: "How We Work", nav_industries: "Industries", nav_track: "Track Record", nav_about: "About", nav_cta: "Get In Touch",
+    nav_services: "Services", nav_how: "How We Work", nav_industries: "Expertise", nav_track: "Track Record", nav_about: "About", nav_cta: "Get In Touch",
     hero_eyebrow: "Fractional CFO &middot; Controller &middot; Bookkeeping",
     hero_h1: "Finance leadership built for real estate, hospitality, and consumer businesses.",
     hero_sub: "F&amp;M Management provides outsourced CFO, controller, and accounting support for growing companies in real estate, hospitality &amp; F&amp;B, and retail &amp; consumer goods &mdash; without the cost of a full-time hire.",
     hero_cta1: "Book a Free 30-Minute Call", hero_cta2: "Explore Services",
     hero_note: "No sales pitch &mdash; just a conversation about your finance function.",
     stat1_label: "Years in Finance Leadership", stat2_label: "Real Estate Transactions Underwritten", stat3_label: "Continents of Finance Ops Built", stat4_label: "Industries Served Concurrently",
-    services_label: "What We Do", services_title: "Finance and accounting, fully outsourced",
-    services_intro: "From day-to-day bookkeeping to strategic CFO-level guidance, F&amp;M Management scales with your business &mdash; engage for exactly the level of support you need.",
+    services_label: "What We Do", services_title: "Finance and accounting, safely outsourced",
+    services_intro: "From day-to-day bookkeeping to strategic CFO-level guidance, F&amp;M Management scales with your business.",
     service1_title: "Fractional CFO", service1_desc: "Strategic financial leadership, board and investor reporting, capital planning, and direct partnership with ownership on pricing, growth, and long-range strategy.",
     service2_title: "Outsourced Controller", service2_desc: "Full-cycle accounting oversight &mdash; monthly close, reconciliations, internal controls, and audit-ready financial reporting, managed hands-on.",
     service3_title: "Bookkeeping &amp; Systems", service3_desc: "Clean, reliable books and modern accounting infrastructure, including AP/AR process design.",
@@ -518,13 +514,13 @@ var translations = {
     eng2_title: "Hourly Rate", eng2_desc: "Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.",
     eng3_title: "Fixed Monthly Rate", eng3_desc: "A predictable monthly retainer for ongoing bookkeeping, controller, or CFO-level support, scaled to your business.",
     industries_label: "Who We Serve", industries_title: "Deep experience in three core industries",
-    ind1_title: "Real Estate &amp; Multifamily Development", ind1_desc: "Acquisition underwriting, pro forma modeling with defendable assumptions, and lender/investor financial reporting for development and value-add projects.",
+    ind1_title: "Real Estate Management &amp; Development", ind1_desc: "Acquisition underwriting, pro forma modeling with defendable assumptions, and lender/investor financial reporting for development and value-add projects.",
     ind2_title: "Hospitality &amp; Food &amp; Beverage", ind2_desc: "Multi-property portfolio reporting, hotel USALI-compliant financial reporting, budgeting, and feasibility analysis for hotels, restaurants, and hospitality operators.",
     ind3_title: "Retail &amp; Consumer Goods", ind3_desc: "Store-level profitability analysis, inventory-aware reporting, and finance operations across retail, wholesale, and e-commerce channels.",
     track_label: "Representative Engagements", track_title: "A track record across industries",
     track_intro: "A sample of recent engagement types &mdash; details&nbsp;anonymized&nbsp;to&nbsp;protect&nbsp;client&nbsp;confidentiality.",
     track1_title: "Hospitality Portfolio &mdash; 5 Hotels, ~$18MM Revenue", track1_desc: "Led full-cycle accounting, monthly close, and budgeting for a five-hotel, ~250-room portfolio with F&amp;B operations, including ongoing variance analysis and underwriting on two property acquisitions.",
-    track2_title: "Multinational Retailer &mdash; 12 Stores + E-Commerce", track2_desc: "Ran the entire U.S. financial department for an international retailer &mdash; owning the monthly close, financial reporting, and store-level profitability and variance analysis that informed key decisions.",
+    track2_title: "Multinational Retailer &mdash; 12 Stores + Wholesale + E-Commerce", track2_desc: "Ran the entire U.S. financial department for an international retailer with wholesale and e-commerce operations &mdash; owning the monthly close, financial reporting, and store-level profitability and variance analysis that informed key decisions.",
     track3_title: "Real Estate Development &mdash; $190MM+ Underwritten", track3_desc: "Underwrote and closed a 284-unit multifamily development and two mixed-use acquisitions, then stayed on collaborating with property management for ongoing monthly financial reporting, budgeting, and lender-compliance oversight.",
     track4_title: "Finance Function Build &mdash; 3 Continents", track4_desc: "Built a finance function from inception for a global hospitality company &mdash; standing up monthly close, variance analysis, and reporting processes, growing a 10-person team, and implementing its first ERP system.",
     about_role: "Founder, F&amp;M Management",
@@ -532,21 +528,21 @@ var translations = {
     about_p2: "Most recently, he served as an outsourced financial consultant and fractional CFO, running finance and accounting functions concurrently for clients across hospitality, retail, architecture, and manufacturing. He founded F&amp;M Management to bring that same hands-on, strategic finance partnership to growing businesses in real estate, hospitality, and consumer goods.",
     about_tag1: "Native Spanish Speaker", about_tag2: "Babson College, BS Finance", about_tag5: "Fluent Italian Speaker",
     contact_label: "Get Started", contact_title: "Let's talk about your finance function",
-    contact_intro: "Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need.",
-    contact_email_label: "Email", contact_phone_label: "Phone", contact_location_label: "Location", contact_cta: "Book a Free 30-Minute Call", contact_cta_email: "Email Instead", contact_note: "Free 30 minutes. No sales pitch, no obligation.",
+    contact_intro: "Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly&nbsp;what&nbsp;you&nbsp;need.",
+    contact_email_label: "Email", contact_phone_label: "Phone", contact_location_label: "Location", contact_cta: "Book a Free 30-Minute Call", contact_cta_email: "Email", contact_note: "Free 30 minutes. No sales pitch, no obligation.",
     footer_text: "&copy; 2026 F&amp;M Management LLC. All rights reserved."
   },
   es: {
     pageTitle: "F&amp;M Management | CFO Fraccional, Controller y Servicios Contables",
-    nav_services: "Servicios", nav_how: "C&oacute;mo Trabajamos", nav_industries: "Industrias", nav_track: "Trayectoria", nav_about: "Nosotros", nav_cta: "Cont&aacute;ctenos",
+    nav_services: "Servicios", nav_how: "C&oacute;mo Trabajamos", nav_industries: "Experiencia", nav_track: "Trayectoria", nav_about: "Nosotros", nav_cta: "Cont&aacute;ctenos",
     hero_eyebrow: "CFO Fraccional &middot; Controller &middot; Contabilidad",
     hero_h1: "Liderazgo financiero dise&ntilde;ado para empresas de bienes ra&iacute;ces, hospitalidad y consumo.",
     hero_sub: "F&amp;M Management ofrece servicios externalizados de CFO, controller y contabilidad para empresas en crecimiento en los sectores de bienes ra&iacute;ces, hospitalidad y alimentos y bebidas, y retail y bienes de consumo &mdash; sin el costo de una contrataci&oacute;n a tiempo completo.",
     hero_cta1: "Reserve una Llamada Gratuita de 30 Minutos", hero_cta2: "Explorar Servicios",
     hero_note: "Sin discurso de ventas &mdash; solo una conversaci&oacute;n sobre su funci&oacute;n financiera.",
     stat1_label: "A&ntilde;os en Liderazgo Financiero", stat2_label: "En Transacciones Inmobiliarias Suscritas", stat3_label: "Continentes con Operaciones Financieras Construidas", stat4_label: "Industrias Atendidas Simult&aacute;neamente",
-    services_label: "Qu&eacute; Hacemos", services_title: "Finanzas y contabilidad, totalmente externalizadas",
-    services_intro: "Desde la contabilidad diaria hasta la orientaci&oacute;n estrat&eacute;gica a nivel de CFO, F&amp;M Management se adapta al crecimiento de su negocio &mdash; contr&aacute;tenos exactamente por el nivel de apoyo que necesita.",
+    services_label: "Qu&eacute; Hacemos", services_title: "Finanzas y contabilidad, externalizadas con seguridad",
+    services_intro: "Desde la contabilidad diaria hasta la orientaci&oacute;n estrat&eacute;gica a nivel de CFO, F&amp;M Management se adapta al crecimiento de su negocio.",
     service1_title: "CFO Fraccional", service1_desc: "Liderazgo financiero estrat&eacute;gico, informes para la junta directiva e inversionistas, planificaci&oacute;n de capital, y colaboraci&oacute;n directa con la propiedad en fijaci&oacute;n de precios, crecimiento y estrategia a largo plazo.",
     service2_title: "Controller Externalizado", service2_desc: "Supervisi&oacute;n contable de ciclo completo &mdash; cierre mensual, conciliaciones, controles internos e informes financieros listos para auditor&iacute;a, gestionados de forma directa.",
     service3_title: "Contabilidad y Sistemas", service3_desc: "Libros contables limpios y confiables, e infraestructura contable moderna, incluyendo el dise&ntilde;o de procesos de cuentas por pagar/cobrar.",
@@ -570,13 +566,13 @@ var translations = {
     eng2_title: "Tarifa por Hora", eng2_desc: "Pague solo por el tiempo que necesite &mdash; ideal para apoyo puntual, consultas espec&iacute;ficas o cargas de trabajo m&aacute;s ligeras.",
     eng3_title: "Tarifa Mensual Fija", eng3_desc: "Una tarifa mensual predecible para apoyo continuo en contabilidad, controller o a nivel de CFO, ajustada a su negocio.",
     industries_label: "A Qui&eacute;n Servimos", industries_title: "Amplia experiencia en tres industrias clave",
-    ind1_title: "Bienes Ra&iacute;ces y Desarrollo Multifamiliar", ind1_desc: "Suscripci&oacute;n de adquisiciones, modelado pro forma con supuestos defendibles, e informes financieros para prestamistas e inversionistas en proyectos de desarrollo y valor agregado.",
+    ind1_title: "Gesti&oacute;n y Desarrollo Inmobiliario", ind1_desc: "Suscripci&oacute;n de adquisiciones, modelado pro forma con supuestos defendibles, e informes financieros para prestamistas e inversionistas en proyectos de desarrollo y valor agregado.",
     ind2_title: "Hospitalidad y Alimentos y Bebidas", ind2_desc: "Informes de cartera multipropiedad, informes financieros hoteleros conforme al USALI, presupuestaci&oacute;n y an&aacute;lisis de viabilidad para hoteles, restaurantes y operadores de hospitalidad.",
     ind3_title: "Retail y Bienes de Consumo", ind3_desc: "An&aacute;lisis de rentabilidad por tienda, informes con enfoque en inventario, y operaciones financieras en canales de retail, mayoreo y comercio electr&oacute;nico.",
     track_label: "Proyectos Representativos", track_title: "Una trayectoria comprobada en distintas industrias",
     track_intro: "Una muestra de tipos de proyectos recientes &mdash; los detalles han sido anonimizados para proteger la confidencialidad del&nbsp;cliente.",
     track1_title: "Cartera Hotelera &mdash; 5 Hoteles, ~$18MM en Ingresos", track1_desc: "Lider&eacute; la contabilidad de ciclo completo, el cierre mensual y la presupuestaci&oacute;n de una cartera de cinco hoteles y ~250 habitaciones con operaciones de alimentos y bebidas, incluyendo an&aacute;lisis de variaciones continuo y la suscripci&oacute;n de dos adquisiciones de propiedades.",
-    track2_title: "Minorista Multinacional &mdash; 12 Tiendas + Comercio Electr&oacute;nico", track2_desc: "Dirig&iacute; todo el departamento financiero en EE. UU. de un minorista internacional &mdash; a cargo del cierre mensual, los informes financieros, y el an&aacute;lisis de rentabilidad y variaciones a nivel de tienda que orientaron decisiones clave.",
+    track2_title: "Minorista Multinacional &mdash; 12 Tiendas + Mayorista + Comercio Electr&oacute;nico", track2_desc: "Dirig&iacute; todo el departamento financiero en EE. UU. de un minorista internacional con operaciones mayoristas y de comercio electr&oacute;nico &mdash; a cargo del cierre mensual, los informes financieros, y el an&aacute;lisis de rentabilidad y variaciones a nivel de tienda que orientaron decisiones clave.",
     track3_title: "Desarrollo Inmobiliario &mdash; M&aacute;s de $190MM Suscritos", track3_desc: "Suscrib&iacute; y cerr&eacute; el desarrollo de un proyecto multifamiliar de 284 unidades y dos adquisiciones de uso mixto, y continu&eacute; colaborando con la administraci&oacute;n de la propiedad en los informes financieros mensuales, la presupuestaci&oacute;n y la supervisi&oacute;n del cumplimiento con prestamistas.",
     track4_title: "Construcci&oacute;n de Funci&oacute;n Financiera &mdash; 3 Continentes", track4_desc: "Constru&iacute; la funci&oacute;n financiera desde cero para una empresa hotelera global &mdash; estableciendo procesos de cierre mensual, an&aacute;lisis de variaciones e informes, haciendo crecer un equipo de 10 personas, e implementando su primer sistema ERP.",
     about_role: "Fundador, F&amp;M Management",
@@ -584,21 +580,21 @@ var translations = {
     about_p2: "M&aacute;s recientemente, se desempe&ntilde;&oacute; como consultor financiero externalizado y CFO fraccional, dirigiendo simult&aacute;neamente funciones de finanzas y contabilidad para clientes en hospitalidad, retail, arquitectura y manufactura. Fund&oacute; F&amp;M Management para llevar esa misma colaboraci&oacute;n financiera estrat&eacute;gica y pr&aacute;ctica a empresas en crecimiento en bienes ra&iacute;ces, hospitalidad y bienes de consumo.",
     about_tag1: "Hablante Nativo de Espa&ntilde;ol", about_tag2: "Babson College, Lic. en Finanzas", about_tag5: "Hablante Fluido de Italiano",
     contact_label: "Comencemos", contact_title: "Hablemos sobre su funci&oacute;n financiera",
-    contact_intro: "Ya sea que necesite un CFO fraccional, un controller que se encargue del cierre, o una depuraci&oacute;n contable, F&amp;M Management puede comenzar exactamente con lo que usted necesita.",
-    contact_email_label: "Correo Electr&oacute;nico", contact_phone_label: "Tel&eacute;fono", contact_location_label: "Ubicaci&oacute;n", contact_cta: "Reserve una Llamada Gratuita de 30 Minutos", contact_cta_email: "Escribir por Correo", contact_note: "30 minutos gratis. Sin discurso de ventas, sin compromiso.",
+    contact_intro: "Ya sea que necesite un CFO fraccional, un controller que se encargue del cierre, o una depuraci&oacute;n contable, F&amp;M Management puede comenzar exactamente&nbsp;con&nbsp;lo&nbsp;que&nbsp;usted&nbsp;necesita.",
+    contact_email_label: "Correo Electr&oacute;nico", contact_phone_label: "Tel&eacute;fono", contact_location_label: "Ubicaci&oacute;n", contact_cta: "Reserve una Llamada Gratuita de 30 Minutos", contact_cta_email: "Correo", contact_note: "30 minutos gratis. Sin discurso de ventas, sin compromiso.",
     footer_text: "&copy; 2026 F&amp;M Management LLC. Todos los derechos reservados."
   },
   it: {
     pageTitle: "F&amp;M Management | CFO Frazionale, Controller e Servizi Contabili",
-    nav_services: "Servizi", nav_how: "Come Lavoriamo", nav_industries: "Settori", nav_track: "Track Record", nav_about: "Chi Siamo", nav_cta: "Contattaci",
+    nav_services: "Servizi", nav_how: "Come Lavoriamo", nav_industries: "Competenze", nav_track: "Track Record", nav_about: "Chi Siamo", nav_cta: "Contattaci",
     hero_eyebrow: "CFO Frazionale &middot; Controller &middot; Contabilit&agrave;",
     hero_h1: "Leadership finanziaria pensata per aziende immobiliari, dell'ospitalit&agrave; e dei beni di consumo.",
     hero_sub: "F&amp;M Management offre servizi in outsourcing di CFO, controller e contabilit&agrave; per aziende in crescita nei settori immobiliare, ospitalit&agrave; e F&amp;B, e retail e beni di consumo &mdash; senza il costo di un'assunzione a tempo pieno.",
     hero_cta1: "Prenota una Chiamata Gratuita di 30 Minuti", hero_cta2: "Scopri i Servizi",
     hero_note: "Nessun discorso commerciale &mdash; solo una conversazione sulla tua funzione finanziaria.",
     stat1_label: "Anni di Leadership Finanziaria", stat2_label: "In Transazioni Immobiliari Sottoscritte", stat3_label: "Continenti con Operazioni Finanziarie Costruite", stat4_label: "Settori Serviti Contemporaneamente",
-    services_label: "Cosa Facciamo", services_title: "Finanza e contabilit&agrave;, completamente esternalizzate",
-    services_intro: "Dalla contabilit&agrave; quotidiana alla consulenza strategica a livello di CFO, F&amp;M Management cresce insieme alla tua azienda &mdash; scegli esattamente il livello di supporto di cui hai bisogno.",
+    services_label: "Cosa Facciamo", services_title: "Finanza e contabilit&agrave;, esternalizzate in sicurezza",
+    services_intro: "Dalla contabilit&agrave; quotidiana alla consulenza strategica a livello di CFO, F&amp;M Management cresce insieme alla tua azienda.",
     service1_title: "CFO Frazionale", service1_desc: "Leadership finanziaria strategica, reportistica per il consiglio e gli investitori, pianificazione del capitale e collaborazione diretta con la propriet&agrave; su pricing, crescita e strategia a lungo termine.",
     service2_title: "Controller in Outsourcing", service2_desc: "Supervisione contabile a ciclo completo &mdash; chiusura mensile, riconciliazioni, controlli interni e reportistica finanziaria pronta per l'audit, gestita in modo diretto.",
     service3_title: "Contabilit&agrave; e Sistemi", service3_desc: "Contabilit&agrave; pulita e affidabile e infrastruttura contabile moderna, inclusa la progettazione dei processi di AP/AR.",
@@ -622,13 +618,13 @@ var translations = {
     eng2_title: "Tariffa Oraria", eng2_desc: "Paghi solo per il tempo di cui hai bisogno &mdash; ideale per supporto occasionale, consulenze specifiche o carichi di lavoro pi&ugrave; leggeri.",
     eng3_title: "Tariffa Mensile Fissa", eng3_desc: "Un canone mensile prevedibile per supporto continuativo in contabilit&agrave;, controller o a livello di CFO, calibrato sulla tua azienda.",
     industries_label: "Chi Serviamo", industries_title: "Profonda esperienza in tre settori chiave",
-    ind1_title: "Immobiliare e Sviluppo Multifamiliare", ind1_desc: "Underwriting delle acquisizioni, modellazione pro forma con ipotesi difendibili, e reportistica finanziaria per finanziatori e investitori in progetti di sviluppo e a valore aggiunto.",
+    ind1_title: "Gestione e Sviluppo Immobiliare", ind1_desc: "Underwriting delle acquisizioni, modellazione pro forma con ipotesi difendibili, e reportistica finanziaria per finanziatori e investitori in progetti di sviluppo e a valore aggiunto.",
     ind2_title: "Ospitalit&agrave; e Food &amp; Beverage", ind2_desc: "Reportistica di portafoglio multi-propriet&agrave;, reportistica finanziaria alberghiera conforme allo USALI, budgeting e analisi di fattibilit&agrave; per hotel, ristoranti e operatori dell'ospitalit&agrave;.",
     ind3_title: "Retail e Beni di Consumo", ind3_desc: "Analisi di redditivit&agrave; a livello di punto vendita, reportistica attenta all'inventario e operazioni finanziarie nei canali retail, wholesale ed e-commerce.",
     track_label: "Incarichi Rappresentativi", track_title: "Un track record consolidato in diversi settori",
     track_intro: "Una selezione di recenti tipologie di incarichi &mdash; i dettagli sono stati resi anonimi per tutelare la riservatezza del&nbsp;cliente.",
     track1_title: "Portafoglio Alberghiero &mdash; 5 Hotel, ~$18MM di Ricavi", track1_desc: "Ho guidato la contabilit&agrave; a ciclo completo, la chiusura mensile e il budgeting di un portafoglio di cinque hotel e circa 250 camere con operazioni F&amp;B, incluse analisi degli scostamenti continue e l'underwriting di due acquisizioni immobiliari.",
-    track2_title: "Retailer Multinazionale &mdash; 12 Negozi + E-Commerce", track2_desc: "Ho gestito l'intero dipartimento finanziario negli Stati Uniti per un retailer internazionale &mdash; occupandomi della chiusura mensile, della reportistica finanziaria e dell'analisi di redditivit&agrave; e degli scostamenti a livello di punto vendita che hanno orientato decisioni chiave.",
+    track2_title: "Retailer Multinazionale &mdash; 12 Negozi + Wholesale + E-Commerce", track2_desc: "Ho gestito l'intero dipartimento finanziario negli Stati Uniti per un retailer internazionale con operazioni wholesale ed e-commerce &mdash; occupandomi della chiusura mensile, della reportistica finanziaria e dell'analisi di redditivit&agrave; e degli scostamenti a livello di punto vendita che hanno orientato decisioni chiave.",
     track3_title: "Sviluppo Immobiliare &mdash; Oltre $190MM in Underwriting", track3_desc: "Ho seguito l'underwriting e la chiusura di uno sviluppo multifamiliare da 284 unit&agrave; e di due acquisizioni a uso misto, per poi continuare a collaborare con il property management nella reportistica finanziaria mensile, nel budgeting e nella supervisione della conformit&agrave; verso i finanziatori.",
     track4_title: "Costruzione della Funzione Finanziaria &mdash; 3 Continenti", track4_desc: "Ho costruito la funzione finanziaria da zero per un'azienda alberghiera globale &mdash; impostando i processi di chiusura mensile, analisi degli scostamenti e reportistica, facendo crescere un team di 10 persone e implementando il suo primo sistema ERP.",
     about_role: "Fondatore, F&amp;M Management",
@@ -636,8 +632,8 @@ var translations = {
     about_p2: "Pi&ugrave; recentemente, ha lavorato come consulente finanziario esterno e CFO frazionale, gestendo contemporaneamente funzioni di finanza e contabilit&agrave; per clienti nei settori ospitalit&agrave;, retail, architettura e manifatturiero. Ha fondato F&amp;M Management per offrire la stessa partnership finanziaria strategica e concreta ad aziende in crescita nei settori immobiliare, ospitalit&agrave; e beni di consumo.",
     about_tag1: "Madrelingua Spagnolo", about_tag2: "Babson College, Laurea in Finanza", about_tag5: "Italiano Fluente",
     contact_label: "Iniziamo", contact_title: "Parliamo della tua funzione finanziaria",
-    contact_intro: "Che tu abbia bisogno di un CFO frazionale, di un controller che gestisca la chiusura, o di un riordino contabile, F&amp;M Management pu&ograve; iniziare esattamente da ci&ograve; di cui hai bisogno.",
-    contact_email_label: "Email", contact_phone_label: "Telefono", contact_location_label: "Sede", contact_cta: "Prenota una Chiamata Gratuita di 30 Minuti", contact_cta_email: "Scrivi un'Email", contact_note: "30 minuti gratuiti. Nessun discorso commerciale, nessun impegno.",
+    contact_intro: "Che tu abbia bisogno di un CFO frazionale, di un controller che gestisca la chiusura, o di un riordino contabile, F&amp;M Management pu&ograve; iniziare esattamente&nbsp;da&nbsp;ci&ograve;&nbsp;di&nbsp;cui&nbsp;hai&nbsp;bisogno.",
+    contact_email_label: "Email", contact_phone_label: "Telefono", contact_location_label: "Sede", contact_cta: "Prenota una Chiamata Gratuita di 30 Minuti", contact_cta_email: "Email", contact_note: "30 minuti gratuiti. Nessun discorso commerciale, nessun impegno.",
     footer_text: "&copy; 2026 F&amp;M Management LLC. Tutti i diritti riservati."
   }
 };
