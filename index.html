@@ -33,6 +33,27 @@
     position: sticky; top: 0; z-index: 100;
     background: #fff; border-bottom: 1px solid var(--border);
   }
+
+  .scroll-progress-track { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 300; background: transparent; }
+  .scroll-progress-bar { height: 100%; width: 0%; background: var(--gold); }
+
+  .back-to-top {
+    position: fixed; bottom: 28px; right: 28px; width: 46px; height: 46px; border-radius: 50%;
+    background: var(--navy); color: #fff; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 18px rgba(31,56,100,0.25);
+    opacity: 0; transform: translateY(12px); pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+    z-index: 250;
+  }
+  .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .back-to-top:hover { background: var(--accent); }
+  @media (max-width: 640px) {
+    .back-to-top { bottom: 18px; right: 18px; width: 42px; height: 42px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .back-to-top { transition: opacity 0.15s ease; }
+  }
   .nav-wrap {
     display: flex; align-items: center; justify-content: space-between;
     padding: 18px 24px; max-width: 1140px; margin: 0 auto; gap: 16px;
@@ -79,6 +100,33 @@
   }
   .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
   .hero-note { margin-top: 18px; font-size: 14px; color: #A9BAD4; }
+
+  @keyframes heroFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-logo, .hero-eyebrow, .hero h1, .hero p.sub, .hero-ctas { animation: heroFadeUp 0.7s ease both; }
+  .hero-logo { animation-delay: 0s; }
+  .hero-eyebrow { animation-delay: 0.08s; }
+  .hero h1 { animation-delay: 0.16s; }
+  .hero p.sub { animation-delay: 0.24s; }
+  .hero-ctas { animation-delay: 0.32s; }
+
+  /* Scroll-reveal animation */
+  .reveal, .section-label, .section-title, .section-intro {
+    opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.in-view, .section-label.in-view, .section-title.in-view, .section-intro.in-view {
+    opacity: 1; transform: translateY(0);
+  }
+  .reveal-group .reveal:nth-child(1) { transition-delay: 0.05s; }
+  .reveal-group .reveal:nth-child(2) { transition-delay: 0.12s; }
+  .reveal-group .reveal:nth-child(3) { transition-delay: 0.19s; }
+  .reveal-group .reveal:nth-child(4) { transition-delay: 0.26s; }
+  .reveal-group .reveal:nth-child(5) { transition-delay: 0.33s; }
+  .reveal-group .reveal:nth-child(6) { transition-delay: 0.40s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-logo, .hero-eyebrow, .hero h1, .hero p.sub, .hero-ctas { animation: none; }
+    .reveal, .section-label, .section-title, .section-intro { opacity: 1; transform: none; transition: none; }
+  }
   .btn-primary {
     background: var(--gold); color: #1B1E24; padding: 14px 32px;
     border-radius: 4px; font-weight: 700; font-size: 15px; display: inline-block;
@@ -125,38 +173,84 @@
   .service-icon {
     width: 44px; height: 44px; border-radius: 8px; background: var(--bg-light);
     display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
-    color: var(--navy); font-size: 20px; font-weight: 700;
+    color: var(--navy);
   }
+  .service-icon svg { width: 24px; height: 24px; }
+  .industry-icon {
+    width: 44px; height: 44px; border-radius: 50%; background: var(--bg-light);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+    color: var(--navy);
+  }
+  .industry-icon svg { width: 24px; height: 24px; }
   .service-card h3 { font-size: 19px; margin-bottom: 10px; }
   .service-card p { color: var(--text-muted); font-size: 15px; }
 
+  /* Services: list + detail panel */
+  .services-panel { display: grid; grid-template-columns: 0.9fr 1.1fr; border: 1px solid var(--border); }
+  .services-list { }
+  .service-item {
+    padding: 20px 26px; border-bottom: 1px solid var(--border); cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    transition: background 0.2s ease;
+  }
+  .service-item:last-child { border-bottom: none; }
+  .service-item:hover { background: var(--bg-light); }
+  .service-item.active { background: var(--bg-light); }
+  .service-item-left { display: flex; align-items: center; gap: 14px; font-size: 15.5px; color: var(--text-dark); }
+  .service-item.active .service-item-left { font-weight: 700; color: var(--navy); }
+  .service-icon-sm { width: 22px; height: 22px; color: var(--navy); flex: none; display: flex; }
+  .service-icon-sm svg { width: 22px; height: 22px; }
+  .service-arrow { font-size: 17px; color: var(--gold); opacity: 0; transition: opacity 0.2s ease; }
+  .service-item.active .service-arrow { opacity: 1; }
+  .services-detail { background: var(--navy); color: #E7ECF5; padding: 44px; display: flex; flex-direction: column; justify-content: center; min-height: 300px; }
+  .services-detail-panel { display: none; }
+  .services-detail-panel.active { display: block; animation: fadeInPanel 0.3s ease; }
+  .services-detail-icon { width: 30px; height: 30px; color: var(--gold); margin-bottom: 16px; }
+  .services-detail-icon svg { width: 30px; height: 30px; }
+  .services-detail-panel h3 { font-size: 25px; margin-bottom: 14px; color: #fff; }
+  .services-detail-panel p { font-size: 15.5px; color: #C7D2E3; max-width: 440px; margin: 0; }
+  @keyframes fadeInPanel { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 860px) { .services-panel { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .services-detail-panel.active { animation: none; } }
+
   /* How We Work */
   .how-we-work { background: var(--bg-light); }
-  .how-cat-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
-  .how-category {
-    background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 28px 26px;
-    grid-column: span 2;
+  .how-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 0; }
+  .how-tab {
+    font-family: inherit; font-size: 14.5px; padding: 12px 20px; border-radius: 24px;
+    border: 1px solid var(--border); background: #fff; color: var(--text-dark); cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
-  .how-category:nth-child(4) { grid-column: 2 / 4; }
-  .how-category:nth-child(5) { grid-column: 4 / 6; }
-  .how-category h3 { font-size: 18px; margin-bottom: 8px; }
-  .how-cat-intro { color: var(--text-muted); font-size: 14px; margin-bottom: 16px; }
-  .how-sublist { list-style: none; }
-  .how-sublist li {
-    display: flex; gap: 9px; align-items: flex-start; font-size: 14px;
-    color: var(--text-dark); margin-bottom: 9px;
+  .how-tab:hover { border-color: var(--gold); }
+  .how-tab.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .how-panel-box {
+    border: 1px solid var(--border); background: #fff; border-radius: 8px;
+    padding: 34px 36px; margin-top: 20px;
   }
-  .how-sublist li:last-child { margin-bottom: 0; }
-  .how-sublist li::before {
+  .how-panel { display: none; }
+  .how-panel.active { display: block; animation: fadeInPanel 0.3s ease; }
+  .how-panel-intro { color: var(--navy); font-size: 16px; font-weight: 700; margin-bottom: 18px; }
+  .how-panel-bullets {
+    list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; margin: 0; padding: 0;
+  }
+  .how-panel-bullets li {
+    display: flex; gap: 9px; align-items: flex-start; font-size: 14.5px;
+    color: var(--text-dark);
+  }
+  .how-panel-bullets li::before {
     content: ""; width: 5px; height: 5px; border-radius: 50%;
     background: var(--gold); margin-top: 7px; flex: 0 0 auto;
   }
+  @media (max-width: 700px) { .how-panel-bullets { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .how-panel.active { animation: none; } }
   .engagement-title { text-align: center; font-size: 22px; margin: 64px 0 28px; }
   .engagement-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .engagement-card {
     background: #fff; border-radius: 8px; padding: 28px 24px; text-align: center;
     border: 1px solid var(--border);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
+  .engagement-card:hover { box-shadow: 0 12px 28px rgba(31,56,100,0.08); transform: translateY(-3px); }
   .engagement-card h3 { font-size: 18px; margin-bottom: 10px; }
   .engagement-card p { color: var(--text-muted); font-size: 14.5px; }
 
@@ -165,19 +259,38 @@
   .industry-card {
     background: #fff; border-radius: 8px; padding: 30px 24px; text-align: center;
     border: 1px solid var(--border);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
+  .industry-card:hover { box-shadow: 0 12px 28px rgba(31,56,100,0.08); transform: translateY(-3px); }
   .industry-card h3 { font-size: 18px; margin-bottom: 10px; }
   .industry-card p { color: var(--text-muted); font-size: 14px; }
 
   /* Track record */
-  .track-record { background: var(--bg-light); }
-  .track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .track-card {
-    border-left: 3px solid var(--gold); background: #fff;
-    padding: 26px 28px; border-radius: 0 8px 8px 0;
+  .track-record { background: var(--navy); }
+  .track-record .section-title, .track-record .section-label { color: #fff; }
+  .track-record .section-intro { color: #C7D2E3; text-align: left; margin: 0 0 40px; max-width: none; }
+  .track-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 10px; }
+  .track-arrows { display: flex; gap: 10px; flex: none; }
+  .track-arrow {
+    width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3);
+    background: transparent; color: #fff; cursor: pointer; font-size: 17px;
+    display: flex; align-items: center; justify-content: center; font-family: inherit;
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
-  .track-card h4 { font-size: 16px; margin-bottom: 8px; color: var(--navy); }
-  .track-card p { font-size: 14.5px; color: var(--text-muted); }
+  .track-arrow:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.6); }
+  .track-slide-box { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 36px; min-height: 170px; }
+  .track-slide { display: none; grid-template-columns: 0.6fr 1.4fr; gap: 32px; }
+  .track-slide.active { display: grid; animation: fadeInPanel 0.3s ease; }
+  .track-slide h4 { font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 400; color: #fff; line-height: 1.35; margin: 0; }
+  .track-slide p { color: #C7D2E3; font-size: 15.5px; margin: 0; }
+  .track-dots { display: flex; gap: 10px; margin-top: 32px; }
+  .track-dot { width: 26px; height: 4px; border-radius: 2px; border: none; background: rgba(255,255,255,0.25); cursor: pointer; padding: 0; transition: background 0.2s ease; }
+  .track-dot.active { background: var(--gold); }
+  @media (max-width: 700px) {
+    .track-slide { grid-template-columns: 1fr; }
+    .track-header { flex-direction: column; }
+  }
+  @media (prefers-reduced-motion: reduce) { .track-slide.active { animation: none; } }
 
   /* About */
   .about-wrap {
@@ -234,6 +347,11 @@
 </head>
 <body>
 
+<div class="scroll-progress-track"><div class="scroll-progress-bar" id="scrollProgressBar"></div></div>
+<button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
 <header class="site-header">
   <div class="nav-wrap">
     <div class="logo">F | M <span>MANAGEMENT</span></div>
@@ -258,7 +376,7 @@
 <section class="hero">
   <img src="data:image/png;base64,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" alt="F&amp;M Management" class="hero-logo">
   <div class="hero-eyebrow" data-i18n="hero_eyebrow">Fractional CFO &middot; Controller &middot; Bookkeeping</div>
-  <h1 data-i18n="hero_h1">Finance leadership built for real estate, hospitality, and consumer businesses.</h1>
+  <h1 data-i18n="hero_h1">Finance leadership, without the full-time hire.</h1>
   <p class="sub" data-i18n="hero_sub">F&amp;M Management provides hands-on CFO, controller, and accounting support for growing companies in real estate, hospitality &amp; F&amp;B, and retail &amp; consumer goods &mdash; without the cost of a full-time hire.</p>
   <div class="hero-ctas">
     <a class="btn-primary" href="https://calendar.app.google/EP9sCpVZaTptuP5J6" target="_blank" rel="noopener" data-i18n="hero_cta1">Book a Free 30-Minute Call</a>
@@ -268,10 +386,10 @@
 
 <div class="stats">
   <div class="stats-grid">
-    <div><div class="stat-num">12+</div><div class="stat-label" data-i18n="stat1_label">Years in Finance Leadership</div></div>
-    <div><div class="stat-num">$250MM+</div><div class="stat-label" data-i18n="stat2_label">Real Estate Transactions Underwritten</div></div>
-    <div><div class="stat-num">3</div><div class="stat-label" data-i18n="stat3_label">Continents of Finance Ops Built</div></div>
-    <div><div class="stat-num">4+</div><div class="stat-label" data-i18n="stat4_label">Industries Served Concurrently</div></div>
+    <div><div class="stat-num" data-count-target="12" data-count-prefix="" data-count-suffix="+">0</div><div class="stat-label" data-i18n="stat1_label">Years in Finance Leadership</div></div>
+    <div><div class="stat-num" data-count-target="250" data-count-prefix="$" data-count-suffix="MM+">$0</div><div class="stat-label" data-i18n="stat2_label">Real Estate Transactions Underwritten</div></div>
+    <div><div class="stat-num" data-count-target="3" data-count-prefix="" data-count-suffix="">0</div><div class="stat-label" data-i18n="stat3_label">Continents of Finance Ops Built</div></div>
+    <div><div class="stat-num" data-count-target="4" data-count-prefix="" data-count-suffix="+">0</div><div class="stat-label" data-i18n="stat4_label">Industries Served Concurrently</div></div>
   </div>
 </div>
 
@@ -279,37 +397,65 @@
   <div class="container">
     <div class="section-label" data-i18n="services_label">What We Do</div>
     <h2 class="section-title" data-i18n="services_title">Finance and accounting, safely outsourced</h2>
-    <p class="section-intro" data-i18n="services_intro">From day-to-day bookkeeping to strategic CFO-level guidance, F&amp;M Management scales with your business.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">CF</div>
-        <h3 data-i18n="service1_title">Fractional CFO</h3>
-        <p data-i18n="service1_desc">Strategic financial leadership, board and investor reporting, capital planning, and direct partnership with ownership on pricing, growth, and long-range strategy.</p>
+    <p class="section-intro" data-i18n="services_intro">From fully outsourced finance to added support for your in-house team, F&amp;M Management scales with your business &mdash; bookkeeping through CFO-level guidance.</p>
+    <div class="services-panel reveal">
+      <div class="services-list" role="tablist" aria-label="Services">
+        <div class="service-item active" data-target="1" tabindex="0" role="tab" aria-selected="true">
+          <span class="service-item-left"><span class="service-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"></polyline><polyline points="15 6 21 6 21 12"></polyline></svg></span><span data-i18n="service1_title">SVC1</span></span>
+          <span class="service-arrow">&rarr;</span>
+        </div>
+        <div class="service-item" data-target="2" tabindex="0" role="tab" aria-selected="false">
+          <span class="service-item-left"><span class="service-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"></path><polyline points="8.5 13 11 15.5 15.5 10"></polyline></svg></span><span data-i18n="service2_title">SVC2</span></span>
+          <span class="service-arrow">&rarr;</span>
+        </div>
+        <div class="service-item" data-target="3" tabindex="0" role="tab" aria-selected="false">
+          <span class="service-item-left"><span class="service-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"></path><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"></path></svg></span><span data-i18n="service3_title">SVC3</span></span>
+          <span class="service-arrow">&rarr;</span>
+        </div>
+        <div class="service-item" data-target="4" tabindex="0" role="tab" aria-selected="false">
+          <span class="service-item-left"><span class="service-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="12"></line><line x1="12" y1="20" x2="12" y2="6"></line><line x1="18" y1="20" x2="18" y2="14"></line></svg></span><span data-i18n="service4_title">SVC4</span></span>
+          <span class="service-arrow">&rarr;</span>
+        </div>
+        <div class="service-item" data-target="5" tabindex="0" role="tab" aria-selected="false">
+          <span class="service-item-left"><span class="service-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"></rect><line x1="8" y1="8" x2="8.01" y2="8"></line><line x1="12" y1="8" x2="12.01" y2="8"></line><line x1="16" y1="8" x2="16.01" y2="8"></line><line x1="8" y1="13" x2="8.01" y2="13"></line><line x1="12" y1="13" x2="12.01" y2="13"></line><line x1="16" y1="13" x2="16.01" y2="13"></line><line x1="10" y1="21" x2="10" y2="17"></line><line x1="14" y1="21" x2="14" y2="17"></line></svg></span><span data-i18n="service5_title">SVC5</span></span>
+          <span class="service-arrow">&rarr;</span>
+        </div>
+        <div class="service-item" data-target="6" tabindex="0" role="tab" aria-selected="false">
+          <span class="service-item-left"><span class="service-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path><circle cx="12" cy="12" r="3"></circle></svg></span><span data-i18n="service6_title">SVC6</span></span>
+          <span class="service-arrow">&rarr;</span>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">OC</div>
-        <h3 data-i18n="service2_title">Outsourced Controller</h3>
-        <p data-i18n="service2_desc">Full-cycle accounting oversight &mdash; monthly close, reconciliations, internal controls, and audit-ready financial reporting, managed hands-on.</p>
+      <div class="services-detail">
+      <div class="services-detail-panel active" data-panel="1">
+        <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"></polyline><polyline points="15 6 21 6 21 12"></polyline></svg></div>
+        <h3 data-i18n="service1_title">SVC1</h3>
+        <p data-i18n="service1_desc">DESC1</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">BK</div>
-        <h3 data-i18n="service3_title">Bookkeeping &amp; Systems</h3>
-        <p data-i18n="service3_desc">Clean, reliable books and modern accounting infrastructure, including AP/AR process design.</p>
+      <div class="services-detail-panel" data-panel="2">
+        <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"></path><polyline points="8.5 13 11 15.5 15.5 10"></polyline></svg></div>
+        <h3 data-i18n="service2_title">SVC2</h3>
+        <p data-i18n="service2_desc">DESC2</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">FP</div>
-        <h3 data-i18n="service4_title">FP&amp;A &amp; Financial Modeling</h3>
-        <p data-i18n="service4_desc">Budgeting, variance analysis, three-statement modeling, and KPI dashboards that turn financial data into decisions.</p>
+      <div class="services-detail-panel" data-panel="3">
+        <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"></path><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"></path></svg></div>
+        <h3 data-i18n="service3_title">SVC3</h3>
+        <p data-i18n="service3_desc">DESC3</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">IU</div>
-        <h3 data-i18n="service5_title">Investment Underwriting</h3>
-        <p data-i18n="service5_desc">Acquisition and development underwriting, pro forma modeling, sensitivity analysis, and due diligence support for real estate and operating deals.</p>
+      <div class="services-detail-panel" data-panel="4">
+        <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="12"></line><line x1="12" y1="20" x2="12" y2="6"></line><line x1="18" y1="20" x2="18" y2="14"></line></svg></div>
+        <h3 data-i18n="service4_title">SVC4</h3>
+        <p data-i18n="service4_desc">DESC4</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">AI</div>
-        <h3 data-i18n="service6_title">AI-Enabled Finance</h3>
-        <p data-i18n="service6_desc">Practical use of AI tools to modernize reporting, automate forecasting, and reduce the manual work behind month-end close.</p>
+      <div class="services-detail-panel" data-panel="5">
+        <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"></rect><line x1="8" y1="8" x2="8.01" y2="8"></line><line x1="12" y1="8" x2="12.01" y2="8"></line><line x1="16" y1="8" x2="16.01" y2="8"></line><line x1="8" y1="13" x2="8.01" y2="13"></line><line x1="12" y1="13" x2="12.01" y2="13"></line><line x1="16" y1="13" x2="16.01" y2="13"></line><line x1="10" y1="21" x2="10" y2="17"></line><line x1="14" y1="21" x2="14" y2="17"></line></svg></div>
+        <h3 data-i18n="service5_title">SVC5</h3>
+        <p data-i18n="service5_desc">DESC5</p>
+      </div>
+      <div class="services-detail-panel" data-panel="6">
+        <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
+        <h3 data-i18n="service6_title">SVC6</h3>
+        <p data-i18n="service6_desc">DESC6</p>
+      </div>
       </div>
     </div>
   </div>
@@ -320,66 +466,70 @@
     <div class="section-label" data-i18n="how_label">Flexible By Design</div>
     <h2 class="section-title" data-i18n="how_title">Work with us however fits your business</h2>
     <p class="section-intro" data-i18n="how_intro">Every engagement is built around where you are today, not&nbsp;a&nbsp;one‑size‑fits‑all&nbsp;package.</p>
-    <div class="how-cat-grid">
-      <div class="how-category">
-        <h3 data-i18n="howcat1_title">Accounting Systems</h3>
-        <p class="how-cat-intro" data-i18n="howcat1_intro">We work within your existing setup, or help you build a better one.</p>
-        <ul class="how-sublist">
-          <li data-i18n="howcat1_b1">Work with your current accounting or ERP platform</li>
-          <li data-i18n="howcat1_b2">Assess, select, and implement new systems</li>
-          <li data-i18n="howcat1_b3">POS integration and daily reconciliation</li>
-          <li data-i18n="howcat1_b4">Develop a methodical chart of accounts</li>
+    <div class="how-panel-wrap reveal">
+      <div class="how-tabs" role="tablist">
+      <button type="button" class="how-tab active" data-target="1" role="tab" aria-selected="true"><span data-i18n="howcat1_title">CAT1</span></button>
+      <button type="button" class="how-tab" data-target="2" role="tab" aria-selected="false"><span data-i18n="howcat2_title">CAT2</span></button>
+      <button type="button" class="how-tab" data-target="3" role="tab" aria-selected="false"><span data-i18n="howcat3_title">CAT3</span></button>
+      <button type="button" class="how-tab" data-target="4" role="tab" aria-selected="false"><span data-i18n="howcat4_title">CAT4</span></button>
+      <button type="button" class="how-tab" data-target="5" role="tab" aria-selected="false"><span data-i18n="howcat5_title">CAT5</span></button>
+      </div>
+      <div class="how-panel-box">
+      <div class="how-panel active" data-panel="1">
+        <p class="how-panel-intro" data-i18n="howcat1_intro">INTRO1</p>
+        <ul class="how-panel-bullets">
+          <li data-i18n="howcat1_b1">Bb1</li>
+          <li data-i18n="howcat1_b2">Bb2</li>
+          <li data-i18n="howcat1_b3">Bb3</li>
+          <li data-i18n="howcat1_b4">Bb4</li>
         </ul>
       </div>
-      <div class="how-category">
-        <h3 data-i18n="howcat2_title">Bookkeeping &amp; Reporting</h3>
-        <p class="how-cat-intro" data-i18n="howcat2_intro">Accurate books and reporting you can rely on, at any level of complexity.</p>
-        <ul class="how-sublist">
-          <li data-i18n="howcat2_b1">Ongoing bookkeeping and account reconciliations</li>
-          <li data-i18n="howcat2_b2">Accounts payable (AP) and accounts receivable (AR) management</li>
-          <li data-i18n="howcat2_b3">Inventory reconciliation</li>
-          <li data-i18n="howcat2_b4">Fixed asset and depreciation schedules</li>
-          <li data-i18n="howcat2_b5">Multi-entity consolidation reporting</li>
+      <div class="how-panel" data-panel="2">
+        <p class="how-panel-intro" data-i18n="howcat2_intro">INTRO2</p>
+        <ul class="how-panel-bullets">
+          <li data-i18n="howcat2_b1">Bb1</li>
+          <li data-i18n="howcat2_b2">Bb2</li>
+          <li data-i18n="howcat2_b3">Bb3</li>
+          <li data-i18n="howcat2_b4">Bb4</li>
+          <li data-i18n="howcat2_b5">Bb5</li>
         </ul>
       </div>
-      <div class="how-category">
-        <h3 data-i18n="howcat3_title">Tax &amp; Audit</h3>
-        <p class="how-cat-intro" data-i18n="howcat3_intro">We coordinate the compliance work that keeps your business protected.</p>
-        <ul class="how-sublist">
-          <li data-i18n="howcat3_b1">Work with your current CPA, or introduce one from our network</li>
-          <li data-i18n="howcat3_b2">Sales and occupancy tax reporting</li>
-          <li data-i18n="howcat3_b3">External audit preparation and support</li>
+      <div class="how-panel" data-panel="3">
+        <p class="how-panel-intro" data-i18n="howcat3_intro">INTRO3</p>
+        <ul class="how-panel-bullets">
+          <li data-i18n="howcat3_b1">Bb1</li>
+          <li data-i18n="howcat3_b2">Bb2</li>
+          <li data-i18n="howcat3_b3">Bb3</li>
         </ul>
       </div>
-      <div class="how-category">
-        <h3 data-i18n="howcat4_title">Cash Flow &amp; Capital</h3>
-        <p class="how-cat-intro" data-i18n="howcat4_intro">Visibility into your cash position and your obligations to lenders.</p>
-        <ul class="how-sublist">
-          <li data-i18n="howcat4_b1">Rolling cash flow forecasting and liquidity planning</li>
-          <li data-i18n="howcat4_b2">Lender and loan covenant compliance monitoring</li>
+      <div class="how-panel" data-panel="4">
+        <p class="how-panel-intro" data-i18n="howcat4_intro">INTRO4</p>
+        <ul class="how-panel-bullets">
+          <li data-i18n="howcat4_b1">Bb1</li>
+          <li data-i18n="howcat4_b2">Bb2</li>
         </ul>
       </div>
-      <div class="how-category">
-        <h3 data-i18n="howcat5_title">Flexible Engagement</h3>
-        <p class="how-cat-intro" data-i18n="howcat5_intro">Start where you are, and scale the relationship as you need.</p>
-        <ul class="how-sublist">
-          <li data-i18n="howcat5_b1">Cleanup of past financial statements</li>
-          <li data-i18n="howcat5_b2">Augment your in-house team, or fully externalize</li>
+      <div class="how-panel" data-panel="5">
+        <p class="how-panel-intro" data-i18n="howcat5_intro">INTRO5</p>
+        <ul class="how-panel-bullets">
+          <li data-i18n="howcat5_b1">Bb1</li>
+          <li data-i18n="howcat5_b2">Bb2</li>
         </ul>
+      </div>
       </div>
     </div>
 
     <h3 class="engagement-title" data-i18n="engagement_title">Engagement Options</h3>
-    <div class="engagement-grid">
-      <div class="engagement-card">
+    <div class="engagement-grid reveal-group">
+      <div class="engagement-card reveal">
         <h3 data-i18n="eng1_title">Project-Based</h3>
         <p data-i18n="eng1_desc">A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.</p>
       </div>
-      <div class="engagement-card">
+      <div class="engagement-card reveal">
         <h3 data-i18n="eng2_title">Hourly Rate</h3>
         <p data-i18n="eng2_desc">Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.</p>
       </div>
-      <div class="engagement-card">
+      <div class="engagement-card reveal">
         <h3 data-i18n="eng3_title">Fixed Monthly Rate</h3>
         <p data-i18n="eng3_desc">A predictable monthly retainer for ongoing bookkeeping, controller, or CFO-level support, scaled to your business.</p>
       </div>
@@ -391,16 +541,19 @@
   <div class="container">
     <div class="section-label" data-i18n="industries_label">Who We Serve</div>
     <h2 class="section-title" data-i18n="industries_title">Deep experience in three core industries</h2>
-    <div class="industries-grid">
-      <div class="industry-card">
+    <div class="industries-grid reveal-group">
+      <div class="industry-card reveal">
+        <div class="industry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"></path></svg></div>
         <h3 data-i18n="ind1_title">Real Estate Management &amp; Development</h3>
         <p data-i18n="ind1_desc">Acquisition underwriting, pro forma modeling with defendable assumptions, and lender/investor financial reporting for development and value-add projects.</p>
       </div>
-      <div class="industry-card">
+      <div class="industry-card reveal">
+        <div class="industry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7a2 2 0 0 0 4 0V3"></path><path d="M8 10v11"></path><path d="M17 3c-1.5 0-3 1.5-3 4s1.5 4 3 4v10"></path></svg></div>
         <h3 data-i18n="ind2_title">Hospitality &amp; Food &amp; Beverage</h3>
         <p data-i18n="ind2_desc">Multi-property portfolio reporting, hotel USALI-compliant financial reporting, budgeting, and feasibility analysis for hotels, restaurants, and hospitality operators.</p>
       </div>
-      <div class="industry-card">
+      <div class="industry-card reveal">
+        <div class="industry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg></div>
         <h3 data-i18n="ind3_title">Retail &amp; Consumer Goods</h3>
         <p data-i18n="ind3_desc">Store-level profitability analysis, inventory-aware reporting, and finance operations across retail, wholesale, and e-commerce channels.</p>
       </div>
@@ -410,26 +563,40 @@
 
 <section id="track-record" class="track-record">
   <div class="container">
-    <div class="section-label" data-i18n="track_label">Representative Engagements</div>
-    <h2 class="section-title" data-i18n="track_title">A track record across industries</h2>
+    <div class="track-header">
+      <div>
+        <div class="section-label" data-i18n="track_label">Representative Engagements</div>
+        <h2 class="section-title" data-i18n="track_title">A track record across industries</h2>
+      </div>
+      <div class="track-arrows">
+        <button type="button" class="track-arrow" id="trackPrev" aria-label="Previous engagement">&larr;</button>
+        <button type="button" class="track-arrow" id="trackNext" aria-label="Next engagement">&rarr;</button>
+      </div>
+    </div>
     <p class="section-intro" data-i18n="track_intro">A sample of recent engagement types &mdash; details&nbsp;anonymized&nbsp;to&nbsp;protect&nbsp;client&nbsp;confidentiality.</p>
-    <div class="track-grid">
-      <div class="track-card">
+    <div class="track-slide-box">
+      <div class="track-slide active" data-slide="1">
         <h4 data-i18n="track1_title">Hospitality Portfolio &mdash; 5 Hotels, ~$18MM Revenue</h4>
         <p data-i18n="track1_desc">Led full-cycle accounting, monthly close, and budgeting for a five-hotel, ~250-room portfolio with F&amp;B operations, including ongoing variance analysis and underwriting on two property acquisitions.</p>
       </div>
-      <div class="track-card">
+      <div class="track-slide" data-slide="2">
         <h4 data-i18n="track2_title">Multinational Retailer &mdash; 12 Stores + Wholesale + E-Commerce</h4>
         <p data-i18n="track2_desc">Ran the entire U.S. financial department for an international retailer with wholesale and e-commerce operations &mdash; owning the monthly close, financial reporting, and store-level profitability and variance analysis that informed key decisions.</p>
       </div>
-      <div class="track-card">
+      <div class="track-slide" data-slide="3">
         <h4 data-i18n="track3_title">Real Estate Multifamily Office</h4>
         <p data-i18n="track3_desc">Underwrote and closed a 284-unit multifamily development and two mixed-use acquisitions, then stayed on collaborating with property management for ongoing monthly financial reporting, budgeting, and lender-compliance oversight.</p>
       </div>
-      <div class="track-card">
+      <div class="track-slide" data-slide="4">
         <h4 data-i18n="track4_title">Finance Function Build &mdash; 3 Continents</h4>
         <p data-i18n="track4_desc">Built a finance function from inception for a global hospitality company &mdash; standing up monthly close, variance analysis, and reporting processes, growing a 10-person team, and implementing its first ERP system.</p>
       </div>
+    </div>
+    <div class="track-dots">
+      <button type="button" class="track-dot active" data-target="1" aria-label="Case study 1"></button>
+      <button type="button" class="track-dot" data-target="2" aria-label="Case study 2"></button>
+      <button type="button" class="track-dot" data-target="3" aria-label="Case study 3"></button>
+      <button type="button" class="track-dot" data-target="4" aria-label="Case study 4"></button>
     </div>
   </div>
 </section>
@@ -441,9 +608,9 @@
       <div class="about-text">
         <h2>Fabio Rabinovich</h2>
         <div class="about-role" data-i18n="about_role">Founder, F&amp;M Management</div>
-        <p data-i18n="about_p1">Fabio has spent 12+ years in finance leadership roles spanning investment banking, credit ratings, real estate, and hospitality &mdash; including building a finance function from scratch across three continents and underwriting over $250MM in real estate transactions.</p>
-        <p data-i18n="about_p2">Most recently, he served as an outsourced financial consultant and fractional CFO, running finance and accounting functions concurrently for clients across hospitality, retail, professional service firms, and manufacturing. He founded F&amp;M Management to bring that same hands-on, strategic finance partnership to growing businesses in real estate, hospitality, and consumer goods.</p>
-        <p data-i18n="about_p3">A growing part of his work is helping clients integrate AI thoughtfully into their finance function &mdash; automating repetitive work so every strategic decision still runs through direct, hands-on human collaboration.</p>
+        <p data-i18n="about_p1">I've spent 12+ years in finance leadership roles spanning investment banking, credit ratings, real estate, and hospitality &mdash; including building a finance function from scratch across three continents and underwriting over $250MM in real estate transactions.</p>
+        <p data-i18n="about_p2">Most recently, I served as an outsourced financial consultant and fractional CFO, running finance and accounting functions concurrently for clients across hospitality, retail, professional service firms, and manufacturing. I founded F&amp;M Management to bring that same hands-on, strategic finance partnership to growing businesses in real estate, hospitality, and consumer goods.</p>
+        <p data-i18n="about_p3">A growing part of my work is helping clients integrate AI thoughtfully into their finance function &mdash; automating repetitive work so every strategic decision still runs through direct, hands-on human collaboration.</p>
         <div class="about-tags">
           <span data-i18n="about_tag1">Native Spanish Speaker</span>
           <span data-i18n="about_tag5">Fluent Italian Speaker</span>
@@ -484,12 +651,12 @@ var translations = {
     pageTitle: "F&amp;M Management | Fractional CFO, Controller &amp; Accounting Services",
     nav_services: "Services", nav_how: "How We Work", nav_industries: "Expertise", nav_track: "Track Record", nav_about: "About", nav_cta: "Get In Touch",
     hero_eyebrow: "Fractional CFO &middot; Controller &middot; Bookkeeping",
-    hero_h1: "Finance leadership built for real estate, hospitality, and consumer businesses.",
+    hero_h1: "Finance leadership, without the full-time hire.",
     hero_sub: "F&amp;M Management provides hands-on CFO, controller, and accounting support for growing companies in real estate, hospitality &amp; F&amp;B, and retail &amp; consumer goods &mdash; without the cost of a full-time hire.",
     hero_cta1: "Book a Free 30-Minute Call", hero_cta2: "Explore Services",
     stat1_label: "Years in Finance Leadership", stat2_label: "Real Estate Transactions Underwritten", stat3_label: "Continents of Finance Ops Built", stat4_label: "Industries Served Concurrently",
     services_label: "What We Do", services_title: "Finance and accounting, safely outsourced",
-    services_intro: "From day-to-day bookkeeping to strategic CFO-level guidance, F&amp;M Management scales with your business.",
+    services_intro: "From fully outsourced finance to added support for your in-house team, F&amp;M Management scales with your business &mdash; bookkeeping through CFO-level guidance.",
     service1_title: "Fractional CFO", service1_desc: "Strategic financial leadership, board and investor reporting, capital planning, and direct partnership with ownership on pricing, growth, and long-range strategy.",
     service2_title: "Outsourced Controller", service2_desc: "Full-cycle accounting oversight &mdash; monthly close, reconciliations, internal controls, and audit-ready financial reporting, managed hands-on.",
     service3_title: "Bookkeeping &amp; Systems", service3_desc: "Clean, reliable books and modern accounting infrastructure, including AP/AR process design.",
@@ -523,9 +690,9 @@ var translations = {
     track3_title: "Real Estate Multifamily Office", track3_desc: "Underwrote and closed a 284-unit multifamily development and two mixed-use acquisitions, then stayed on collaborating with property management for ongoing monthly financial reporting, budgeting, and lender-compliance oversight.",
     track4_title: "Finance Function Build &mdash; 3 Continents", track4_desc: "Built a finance function from inception for a global hospitality company &mdash; standing up monthly close, variance analysis, and reporting processes, growing a 10-person team, and implementing its first ERP system.",
     about_role: "Founder, F&amp;M Management",
-    about_p1: "Fabio has spent 12+ years in finance leadership roles spanning investment banking, credit ratings, real estate, and hospitality &mdash; including building a finance function from scratch across three continents and underwriting over $250MM in real estate transactions.",
-    about_p2: "Most recently, he served as an outsourced financial consultant and fractional CFO, running finance and accounting functions concurrently for clients across hospitality, retail, professional service firms, and manufacturing. He founded F&amp;M Management to bring that same hands-on, strategic finance partnership to growing businesses in real estate, hospitality, and consumer goods.",
-    about_p3: "A growing part of his work is helping clients integrate AI thoughtfully into their finance function &mdash; automating repetitive work so every strategic decision still runs through direct, hands-on human collaboration.",
+    about_p1: "I've spent 12+ years in finance leadership roles spanning investment banking, credit ratings, real estate, and hospitality &mdash; including building a finance function from scratch across three continents and underwriting over $250MM in real estate transactions.",
+    about_p2: "Most recently, I served as an outsourced financial consultant and fractional CFO, running finance and accounting functions concurrently for clients across hospitality, retail, professional service firms, and manufacturing. I founded F&amp;M Management to bring that same hands-on, strategic finance partnership to growing businesses in real estate, hospitality, and consumer goods.",
+    about_p3: "A growing part of my work is helping clients integrate AI thoughtfully into their finance function &mdash; automating repetitive work so every strategic decision still runs through direct, hands-on human collaboration.",
     about_tag1: "Native Spanish Speaker", about_tag2: "Babson College, BS Finance", about_tag5: "Fluent Italian Speaker",
     contact_label: "Get Started", contact_title: "Let's talk about your finance function",
     contact_intro: "Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly&nbsp;what&nbsp;you&nbsp;need.",
@@ -536,12 +703,12 @@ var translations = {
     pageTitle: "F&amp;M Management | CFO Fraccional, Controller y Servicios Contables",
     nav_services: "Servicios", nav_how: "C&oacute;mo Trabajamos", nav_industries: "Experiencia", nav_track: "Trayectoria", nav_about: "Nosotros", nav_cta: "Cont&aacute;ctenos",
     hero_eyebrow: "CFO Fraccional &middot; Controller &middot; Contabilidad",
-    hero_h1: "Liderazgo financiero dise&ntilde;ado para empresas de bienes ra&iacute;ces, hospitalidad y consumo.",
+    hero_h1: "Liderazgo financiero, sin la contrataci&oacute;n a tiempo completo.",
     hero_sub: "F&amp;M Management ofrece servicios pr&aacute;cticos de CFO, controller y contabilidad para empresas en crecimiento en los sectores de bienes ra&iacute;ces, hospitalidad y alimentos y bebidas, y retail y bienes de consumo &mdash; sin el costo de una contrataci&oacute;n a tiempo completo.",
     hero_cta1: "Reserve una Llamada Gratuita de 30 Minutos", hero_cta2: "Explorar Servicios",
     stat1_label: "A&ntilde;os en Liderazgo Financiero", stat2_label: "En Transacciones Inmobiliarias Suscritas", stat3_label: "Continentes con Operaciones Financieras Construidas", stat4_label: "Industrias Atendidas Simult&aacute;neamente",
     services_label: "Qu&eacute; Hacemos", services_title: "Finanzas y contabilidad, externalizadas con seguridad",
-    services_intro: "Desde la contabilidad diaria hasta la orientaci&oacute;n estrat&eacute;gica a nivel de CFO, F&amp;M Management se adapta al crecimiento de su negocio.",
+    services_intro: "Desde finanzas totalmente externalizadas hasta apoyo adicional para su equipo interno, F&amp;M Management se adapta al crecimiento de su negocio &mdash; desde la contabilidad hasta la orientaci&oacute;n a nivel de CFO.",
     service1_title: "CFO Fraccional", service1_desc: "Liderazgo financiero estrat&eacute;gico, informes para la junta directiva e inversionistas, planificaci&oacute;n de capital, y colaboraci&oacute;n directa con la propiedad en fijaci&oacute;n de precios, crecimiento y estrategia a largo plazo.",
     service2_title: "Controller Externalizado", service2_desc: "Supervisi&oacute;n contable de ciclo completo &mdash; cierre mensual, conciliaciones, controles internos e informes financieros listos para auditor&iacute;a, gestionados de forma directa.",
     service3_title: "Contabilidad y Sistemas", service3_desc: "Libros contables limpios y confiables, e infraestructura contable moderna, incluyendo el dise&ntilde;o de procesos de cuentas por pagar/cobrar.",
@@ -575,9 +742,9 @@ var translations = {
     track3_title: "Oficina Inmobiliaria Multifamiliar", track3_desc: "Suscrib&iacute; y cerr&eacute; el desarrollo de un proyecto multifamiliar de 284 unidades y dos adquisiciones de uso mixto, y continu&eacute; colaborando con la administraci&oacute;n de la propiedad en los informes financieros mensuales, la presupuestaci&oacute;n y la supervisi&oacute;n del cumplimiento con prestamistas.",
     track4_title: "Construcci&oacute;n de Funci&oacute;n Financiera &mdash; 3 Continentes", track4_desc: "Constru&iacute; la funci&oacute;n financiera desde cero para una empresa hotelera global &mdash; estableciendo procesos de cierre mensual, an&aacute;lisis de variaciones e informes, haciendo crecer un equipo de 10 personas, e implementando su primer sistema ERP.",
     about_role: "Fundador, F&amp;M Management",
-    about_p1: "Fabio ha dedicado m&aacute;s de 12 a&ntilde;os a roles de liderazgo financiero en banca de inversi&oacute;n, calificaci&oacute;n crediticia, bienes ra&iacute;ces y hospitalidad &mdash; incluyendo la construcci&oacute;n de una funci&oacute;n financiera desde cero en tres continentes y la suscripci&oacute;n de m&aacute;s de $250MM en transacciones inmobiliarias.",
-    about_p2: "M&aacute;s recientemente, se desempe&ntilde;&oacute; como consultor financiero externalizado y CFO fraccional, dirigiendo simult&aacute;neamente funciones de finanzas y contabilidad para clientes en hospitalidad, retail, firmas de servicios profesionales y manufactura. Fund&oacute; F&amp;M Management para llevar esa misma colaboraci&oacute;n financiera estrat&eacute;gica y pr&aacute;ctica a empresas en crecimiento en bienes ra&iacute;ces, hospitalidad y bienes de consumo.",
-    about_p3: "Una parte creciente de su trabajo consiste en ayudar a los clientes a integrar la IA de forma responsable en su funci&oacute;n financiera &mdash; automatizando el trabajo repetitivo para que cada decisi&oacute;n estrat&eacute;gica siga pasando por una colaboraci&oacute;n humana, directa y pr&aacute;ctica.",
+    about_p1: "He dedicado m&aacute;s de 12 a&ntilde;os a roles de liderazgo financiero en banca de inversi&oacute;n, calificaci&oacute;n crediticia, bienes ra&iacute;ces y hospitalidad &mdash; incluyendo la construcci&oacute;n de una funci&oacute;n financiera desde cero en tres continentes y la suscripci&oacute;n de m&aacute;s de $250MM en transacciones inmobiliarias.",
+    about_p2: "M&aacute;s recientemente, me desempe&ntilde;&eacute; como consultor financiero externalizado y CFO fraccional, dirigiendo simult&aacute;neamente funciones de finanzas y contabilidad para clientes en hospitalidad, retail, firmas de servicios profesionales y manufactura. Fund&eacute; F&amp;M Management para llevar esa misma colaboraci&oacute;n financiera estrat&eacute;gica y pr&aacute;ctica a empresas en crecimiento en bienes ra&iacute;ces, hospitalidad y bienes de consumo.",
+    about_p3: "Una parte creciente de mi trabajo consiste en ayudar a los clientes a integrar la IA de forma responsable en su funci&oacute;n financiera &mdash; automatizando el trabajo repetitivo para que cada decisi&oacute;n estrat&eacute;gica siga pasando por una colaboraci&oacute;n humana, directa y pr&aacute;ctica.",
     about_tag1: "Habla Ingl&eacute;s Fluido", about_tag2: "Babson College, Lic. en Finanzas", about_tag5: "Hablante Fluido de Italiano",
     contact_label: "Comencemos", contact_title: "Hablemos sobre su funci&oacute;n financiera",
     contact_intro: "Ya sea que necesite un CFO fraccional, un controller que se encargue del cierre, o una depuraci&oacute;n contable, F&amp;M Management puede comenzar exactamente&nbsp;con&nbsp;lo&nbsp;que&nbsp;usted&nbsp;necesita.",
@@ -588,12 +755,12 @@ var translations = {
     pageTitle: "F&amp;M Management | CFO Frazionale, Controller e Servizi Contabili",
     nav_services: "Servizi", nav_how: "Come Lavoriamo", nav_industries: "Competenze", nav_track: "Track Record", nav_about: "Chi Siamo", nav_cta: "Contattaci",
     hero_eyebrow: "CFO Frazionale &middot; Controller &middot; Contabilit&agrave;",
-    hero_h1: "Leadership finanziaria pensata per aziende immobiliari, dell'ospitalit&agrave; e dei beni di consumo.",
+    hero_h1: "Leadership finanziaria, senza l'assunzione a tempo pieno.",
     hero_sub: "F&amp;M Management offre servizi pratici di CFO, controller e contabilit&agrave; per aziende in crescita nei settori immobiliare, ospitalit&agrave; e F&amp;B, e retail e beni di consumo &mdash; senza il costo di un'assunzione a tempo pieno.",
     hero_cta1: "Prenota una Chiamata Gratuita di 30 Minuti", hero_cta2: "Scopri i Servizi",
     stat1_label: "Anni di Leadership Finanziaria", stat2_label: "In Transazioni Immobiliari Sottoscritte", stat3_label: "Continenti con Operazioni Finanziarie Costruite", stat4_label: "Settori Serviti Contemporaneamente",
     services_label: "Cosa Facciamo", services_title: "Finanza e contabilit&agrave;, esternalizzate in sicurezza",
-    services_intro: "Dalla contabilit&agrave; quotidiana alla consulenza strategica a livello di CFO, F&amp;M Management cresce insieme alla tua azienda.",
+    services_intro: "Dalla finanza completamente esternalizzata al supporto aggiuntivo per il tuo team interno, F&amp;M Management cresce insieme alla tua azienda &mdash; dalla contabilit&agrave; alla consulenza a livello di CFO.",
     service1_title: "CFO Frazionale", service1_desc: "Leadership finanziaria strategica, reportistica per il consiglio e gli investitori, pianificazione del capitale e collaborazione diretta con la propriet&agrave; su pricing, crescita e strategia a lungo termine.",
     service2_title: "Controller in Outsourcing", service2_desc: "Supervisione contabile a ciclo completo &mdash; chiusura mensile, riconciliazioni, controlli interni e reportistica finanziaria pronta per l'audit, gestita in modo diretto.",
     service3_title: "Contabilit&agrave; e Sistemi", service3_desc: "Contabilit&agrave; pulita e affidabile e infrastruttura contabile moderna, inclusa la progettazione dei processi di AP/AR.",
@@ -627,9 +794,9 @@ var translations = {
     track3_title: "Ufficio Immobiliare Multifamiliare", track3_desc: "Ho seguito l'underwriting e la chiusura di uno sviluppo multifamiliare da 284 unit&agrave; e di due acquisizioni a uso misto, per poi continuare a collaborare con il property management nella reportistica finanziaria mensile, nel budgeting e nella supervisione della conformit&agrave; verso i finanziatori.",
     track4_title: "Costruzione della Funzione Finanziaria &mdash; 3 Continenti", track4_desc: "Ho costruito la funzione finanziaria da zero per un'azienda alberghiera globale &mdash; impostando i processi di chiusura mensile, analisi degli scostamenti e reportistica, facendo crescere un team di 10 persone e implementando il suo primo sistema ERP.",
     about_role: "Fondatore, F&amp;M Management",
-    about_p1: "Fabio ha trascorso oltre 12 anni in ruoli di leadership finanziaria tra investment banking, rating creditizio, immobiliare e ospitalit&agrave; &mdash; inclusa la costruzione di una funzione finanziaria da zero su tre continenti e l'underwriting di oltre $250MM in transazioni immobiliari.",
-    about_p2: "Pi&ugrave; recentemente, ha lavorato come consulente finanziario esterno e CFO frazionale, gestendo contemporaneamente funzioni di finanza e contabilit&agrave; per clienti nei settori ospitalit&agrave;, retail, societ&agrave; di servizi professionali e manifatturiero. Ha fondato F&amp;M Management per offrire la stessa partnership finanziaria strategica e concreta ad aziende in crescita nei settori immobiliare, ospitalit&agrave; e beni di consumo.",
-    about_p3: "Una parte crescente del suo lavoro consiste nell'aiutare i clienti a integrare l'IA in modo responsabile nella loro funzione finanziaria &mdash; automatizzando il lavoro ripetitivo affinch&eacute; ogni decisione strategica continui a passare attraverso una collaborazione umana, diretta e concreta.",
+    about_p1: "Ho trascorso oltre 12 anni in ruoli di leadership finanziaria tra investment banking, rating creditizio, immobiliare e ospitalit&agrave; &mdash; inclusa la costruzione di una funzione finanziaria da zero su tre continenti e l'underwriting di oltre $250MM in transazioni immobiliari.",
+    about_p2: "Pi&ugrave; recentemente, ho lavorato come consulente finanziario esterno e CFO frazionale, gestendo contemporaneamente funzioni di finanza e contabilit&agrave; per clienti nei settori ospitalit&agrave;, retail, societ&agrave; di servizi professionali e manifatturiero. Ho fondato F&amp;M Management per offrire la stessa partnership finanziaria strategica e concreta ad aziende in crescita nei settori immobiliare, ospitalit&agrave; e beni di consumo.",
+    about_p3: "Una parte crescente del mio lavoro consiste nell'aiutare i clienti a integrare l'IA in modo responsabile nella loro funzione finanziaria &mdash; automatizzando il lavoro ripetitivo affinch&eacute; ogni decisione strategica continui a passare attraverso una collaborazione umana, diretta e concreta.",
     about_tag1: "Madrelingua Spagnolo", about_tag2: "Babson College, Laurea in Finanza", about_tag5: "Inglese Fluente",
     contact_label: "Iniziamo", contact_title: "Parliamo della tua funzione finanziaria",
     contact_intro: "Che tu abbia bisogno di un CFO frazionale, di un controller che gestisca la chiusura, o di un riordino contabile, F&amp;M Management pu&ograve; iniziare esattamente&nbsp;da&nbsp;ci&ograve;&nbsp;di&nbsp;cui&nbsp;hai&nbsp;bisogno.",
@@ -659,6 +826,158 @@ document.querySelectorAll('.lang-btn').forEach(function(btn) {
 var savedLang = 'en';
 try { savedLang = localStorage.getItem('fm_lang') || 'en'; } catch (e) {}
 applyLang(savedLang);
+
+(function() {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll-reveal for section headers and cards
+  var revealEls = document.querySelectorAll('.reveal, .section-label, .section-title, .section-intro');
+  if (!reduceMotion && 'IntersectionObserver' in window && revealEls.length) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function(el) { el.classList.add('in-view'); });
+  }
+
+  // Count-up animation for hero stats
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute('data-count-target'));
+    var prefix = el.getAttribute('data-count-prefix') || '';
+    var suffix = el.getAttribute('data-count-suffix') || '';
+    var duration = 1200, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = prefix + Math.round(target * eased) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = prefix + target + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  var countEls = document.querySelectorAll('[data-count-target]');
+  if (reduceMotion) {
+    countEls.forEach(function(el) {
+      var t = el.getAttribute('data-count-target');
+      el.textContent = (el.getAttribute('data-count-prefix') || '') + t + (el.getAttribute('data-count-suffix') || '');
+    });
+  } else if ('IntersectionObserver' in window && countEls.length) {
+    var countIO = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          countIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    countEls.forEach(function(el) { countIO.observe(el); });
+  }
+
+  // How We Work: click/tap + keyboard toggle (hover handled by CSS)
+  document.querySelectorAll('.how-category').forEach(function(card) {
+    function toggle() {
+      var open = card.classList.toggle('is-open');
+      card.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+})();
+
+(function() {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bar = document.getElementById('scrollProgressBar');
+  var backBtn = document.getElementById('backToTop');
+
+  function onScroll() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (bar) bar.style.width = pct + '%';
+    if (backBtn) backBtn.classList.toggle('visible', scrollTop > 480);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (backBtn) {
+    backBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+})();
+
+(function() {
+  // Services: list + detail panel
+  var serviceItems = document.querySelectorAll('.service-item');
+  var servicePanels = document.querySelectorAll('.services-detail-panel');
+  function activateService(target) {
+    serviceItems.forEach(function(item) {
+      var isActive = item.getAttribute('data-target') === target;
+      item.classList.toggle('active', isActive);
+      item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    servicePanels.forEach(function(panel) {
+      panel.classList.toggle('active', panel.getAttribute('data-panel') === target);
+    });
+  }
+  serviceItems.forEach(function(item) {
+    item.addEventListener('click', function() { activateService(item.getAttribute('data-target')); });
+    item.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateService(item.getAttribute('data-target')); }
+    });
+  });
+})();
+
+(function() {
+  // How We Work: tabs + shared panel
+  var howTabs = document.querySelectorAll('.how-tab');
+  var howPanels = document.querySelectorAll('.how-panel');
+  function activateHowTab(target) {
+    howTabs.forEach(function(tab) {
+      var isActive = tab.getAttribute('data-target') === target;
+      tab.classList.toggle('active', isActive);
+      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    howPanels.forEach(function(panel) {
+      panel.classList.toggle('active', panel.getAttribute('data-panel') === target);
+    });
+  }
+  howTabs.forEach(function(tab) {
+    tab.addEventListener('click', function() { activateHowTab(tab.getAttribute('data-target')); });
+  });
+})();
+
+(function() {
+  // Track record: carousel
+  var slides = document.querySelectorAll('.track-slide');
+  var dots = document.querySelectorAll('.track-dot');
+  var prevBtn = document.getElementById('trackPrev');
+  var nextBtn = document.getElementById('trackNext');
+  var total = slides.length;
+  if (!total) return;
+  var current = 0;
+  slides.forEach(function(slide, i) { if (slide.classList.contains('active')) current = i; });
+
+  function activateSlide(idx) {
+    current = ((idx % total) + total) % total;
+    slides.forEach(function(slide, i) { slide.classList.toggle('active', i === current); });
+    dots.forEach(function(dot, i) { dot.classList.toggle('active', i === current); });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function() { activateSlide(current - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function() { activateSlide(current + 1); });
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() { activateSlide(i); });
+  });
+})();
 </script>
 
 </body>
