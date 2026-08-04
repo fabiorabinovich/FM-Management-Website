@@ -256,7 +256,7 @@
   .engagement-card p { color: var(--text-muted); font-size: 14.5px; }
 
   /* Industries */
-  .industries-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .industry-card {
     background: #fff; border-radius: 8px; padding: 30px 24px; text-align: center;
     border: 1px solid var(--border);
@@ -570,6 +570,11 @@
         <h3 data-i18n="ind3_title">Retail &amp; Consumer Goods</h3>
         <p data-i18n="ind3_desc">Store-level profitability analysis, inventory-aware reporting, and finance operations across retail, wholesale, and e-commerce channels.</p>
       </div>
+      <div class="industry-card reveal">
+        <div class="industry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7z"></path><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 12h18"></path></svg></div>
+        <h3 data-i18n="ind4_title">Professional Services</h3>
+        <p data-i18n="ind4_desc">Project-based revenue recognition, partner and practice-level profitability, and billable-hour and realization reporting for law firms, agencies, and consulting practices.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -692,10 +697,11 @@ var translations = {
     eng1_title: "Project-Based", eng1_desc: "A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.",
     eng2_title: "Hourly Rate", eng2_desc: "Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.",
     eng3_title: "Fixed Monthly Rate", eng3_desc: "A predictable monthly retainer for ongoing bookkeeping, controller, or CFO-level support, scaled to your business.",
-    industries_label: "Who We Serve", industries_title: "Deep experience in three core industries",
+    industries_label: "Who We Serve", industries_title: "Deep experience across four core industries",
     ind1_title: "Real Estate Management &amp; Development", ind1_desc: "Acquisition underwriting, pro forma modeling with defendable assumptions, and lender/investor financial reporting for development and value-add projects.",
     ind2_title: "Hospitality &amp; Food &amp; Beverage", ind2_desc: "Multi-property portfolio reporting, hotel USALI-compliant financial reporting, budgeting, and feasibility analysis for hotels, restaurants, and hospitality operators.",
     ind3_title: "Retail &amp; Consumer Goods", ind3_desc: "Store-level profitability analysis, inventory-aware reporting, and finance operations across retail, wholesale, and e-commerce channels.",
+    ind4_title: "Professional Services", ind4_desc: "Project-based revenue recognition, partner and practice-level profitability, and billable-hour and realization reporting for law firms, agencies, and consulting practices.",
     track_label: "Representative Engagements", track_title: "A track record across industries",
     track_intro: "A sample of recent engagement types &mdash; details anonymized to protect client confidentiality.",
     track1_title: "Hospitality Portfolio &mdash; 5 Hotels, ~$18MM Revenue", track1_desc: "Led full-cycle accounting, monthly close, and budgeting for a five-hotel, ~250-room portfolio with F&amp;B operations, including ongoing variance analysis and underwriting on two property acquisitions.",
@@ -745,10 +751,11 @@ var translations = {
     eng1_title: "Por Proyecto", eng1_desc: "Un alcance y precio definidos para trabajos puntuales &mdash; una depuraci&oacute;n financiera, una implementaci&oacute;n de sistemas o un paquete de suscripci&oacute;n de inversiones.",
     eng2_title: "Tarifa por Hora", eng2_desc: "Pague solo por el tiempo que necesite &mdash; ideal para apoyo puntual, consultas espec&iacute;ficas o cargas de trabajo m&aacute;s ligeras.",
     eng3_title: "Tarifa Mensual Fija", eng3_desc: "Una tarifa mensual predecible para apoyo continuo en contabilidad, controller o a nivel de CFO, ajustada a su negocio.",
-    industries_label: "A Qui&eacute;n Servimos", industries_title: "Amplia experiencia en tres industrias clave",
+    industries_label: "A Qui&eacute;n Servimos", industries_title: "Amplia experiencia en cuatro industrias clave",
     ind1_title: "Gesti&oacute;n y Desarrollo Inmobiliario", ind1_desc: "Suscripci&oacute;n de adquisiciones, modelado pro forma con supuestos defendibles, e informes financieros para prestamistas e inversionistas en proyectos de desarrollo y valor agregado.",
     ind2_title: "Hospitalidad y Alimentos y Bebidas", ind2_desc: "Informes de cartera multipropiedad, informes financieros hoteleros conforme al USALI, presupuestaci&oacute;n y an&aacute;lisis de viabilidad para hoteles, restaurantes y operadores de hospitalidad.",
     ind3_title: "Retail y Bienes de Consumo", ind3_desc: "An&aacute;lisis de rentabilidad por tienda, informes con enfoque en inventario, y operaciones financieras en canales de retail, mayoreo y comercio electr&oacute;nico.",
+    ind4_title: "Servicios Profesionales", ind4_desc: "Reconocimiento de ingresos por proyecto, rentabilidad a nivel de socio y de pr&aacute;ctica, e informes de horas facturables y de realizaci&oacute;n para bufetes de abogados, agencias y firmas de consultor&iacute;a.",
     track_label: "Proyectos Representativos", track_title: "Una trayectoria comprobada en distintas industrias",
     track_intro: "Una muestra de tipos de proyectos recientes &mdash; los detalles han sido anonimizados para proteger la confidencialidad del cliente.",
     track1_title: "Cartera Hotelera &mdash; 5 Hoteles, ~$18MM en Ingresos", track1_desc: "Lider&eacute; la contabilidad de ciclo completo, el cierre mensual y la presupuestaci&oacute;n de una cartera de cinco hoteles y ~250 habitaciones con operaciones de alimentos y bebidas, incluyendo an&aacute;lisis de variaciones continuo y la suscripci&oacute;n de dos adquisiciones de propiedades.",
@@ -798,10 +805,11 @@ var translations = {
     eng1_title: "Basato su Progetto", eng1_desc: "Un ambito e un prezzo definiti per lavori una tantum &mdash; un riordino finanziario, un'implementazione di sistemi o un pacchetto di underwriting.",
     eng2_title: "Tariffa Oraria", eng2_desc: "Paghi solo per il tempo di cui hai bisogno &mdash; ideale per supporto occasionale, consulenze specifiche o carichi di lavoro pi&ugrave; leggeri.",
     eng3_title: "Tariffa Mensile Fissa", eng3_desc: "Un canone mensile prevedibile per supporto continuativo in contabilit&agrave;, controller o a livello di CFO, calibrato sulla tua azienda.",
-    industries_label: "Chi Serviamo", industries_title: "Profonda esperienza in tre settori chiave",
+    industries_label: "Chi Serviamo", industries_title: "Profonda esperienza in quattro settori chiave",
     ind1_title: "Gestione e Sviluppo Immobiliare", ind1_desc: "Underwriting delle acquisizioni, modellazione pro forma con ipotesi difendibili, e reportistica finanziaria per finanziatori e investitori in progetti di sviluppo e a valore aggiunto.",
     ind2_title: "Ospitalit&agrave; e Food &amp; Beverage", ind2_desc: "Reportistica di portafoglio multi-propriet&agrave;, reportistica finanziaria alberghiera conforme allo USALI, budgeting e analisi di fattibilit&agrave; per hotel, ristoranti e operatori dell'ospitalit&agrave;.",
     ind3_title: "Retail e Beni di Consumo", ind3_desc: "Analisi di redditivit&agrave; a livello di punto vendita, reportistica attenta all'inventario e operazioni finanziarie nei canali retail, wholesale ed e-commerce.",
+    ind4_title: "Servizi Professionali", ind4_desc: "Riconoscimento dei ricavi per progetto, redditivit&agrave; a livello di partner e di studio, e reportistica su ore fatturabili e tasso di realizzo per studi legali, agenzie e societ&agrave; di consulenza.",
     track_label: "Incarichi Rappresentativi", track_title: "Un track record consolidato in diversi settori",
     track_intro: "Una selezione di recenti tipologie di incarichi &mdash; i dettagli sono stati resi anonimi per tutelare la riservatezza del cliente.",
     track1_title: "Portafoglio Alberghiero &mdash; 5 Hotel, ~$18MM di Ricavi", track1_desc: "Ho guidato la contabilit&agrave; a ciclo completo, la chiusura mensile e il budgeting di un portafoglio di cinque hotel e circa 250 camere con operazioni F&amp;B, incluse analisi degli scostamenti continue e l'underwriting di due acquisizioni immobiliari.",
