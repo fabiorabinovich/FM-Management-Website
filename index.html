@@ -56,6 +56,12 @@
     --text-muted: #5A6272;
     --border: #E3E7EF;
   }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav a { font-size: 15px; font-weight: 500; color: var(--text-dark); }
+  nav a:hover { color: var(--navy); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .nav-cta { background: var(--navy); color: #fff !important; padding: 10px 20px; border-radius: 4px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+  .nav-cta:hover { background: var(--navy-dark); }
   .services-item { position: relative; }
   .services-dropdown { display: none; position: absolute; top: 100%; left: -14px; margin-top: 0; background: #fff; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 12px 28px rgba(31,56,100,0.14); min-width: 260px; padding: 14px 8px 8px; z-index: 1100; }
   .services-item:hover .services-dropdown { display: block; }
