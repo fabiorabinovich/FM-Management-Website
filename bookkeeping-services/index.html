@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bookkeeping Services | F&amp;M Management</title>
+<title id="pageTitle">Bookkeeping Services | F&amp;M Management</title>
 <meta name="description" content="F&amp;M Management provides accurate, timely bookkeeping and financial reporting for growing businesses across the United States.">
 <link rel="canonical" href="https://www.fandm-mgmt.com/bookkeeping-services/">
 <meta property="og:type" content="website">
@@ -35,6 +35,10 @@
   .services-dropdown a:hover { background: var(--bg-light); color: var(--navy); }
   .services-dropdown a.current { color: var(--gold); font-weight: 700; }
   .mobile-toggle { display: none; font-size: 24px; line-height: 1; background: none; border: none; cursor: pointer; color: var(--navy); padding: 4px 8px; }
+  .lang-toggle { display: flex; gap: 4px; border: 1px solid var(--border); border-radius: 4px; padding: 3px; }
+  .lang-btn { font-size: 12px; font-weight: 700; padding: 5px 9px; border: none; border-radius: 3px; background: transparent; color: var(--text-muted); cursor: pointer; letter-spacing: 0.5px; }
+  .lang-btn.active { background: var(--navy); color: #fff; }
+  .lang-btn:hover:not(.active) { color: var(--navy); }
 
   @media (max-width: 860px) {
     .nav-wrap { flex-wrap: wrap; row-gap: 0; padding: 14px 16px; position: relative; }
@@ -180,41 +184,46 @@
     <div class="logo">F | M <span>MANAGEMENT</span></div>
     <button type="button" class="mobile-toggle" id="mobileNavToggle" aria-label="Menu">&#9776;</button>
     <nav><ul>
-      <li><a href="/">Home</a></li>
+      <li><a href="/" data-i18n="nav_home">Home</a></li>
       <li class="services-item">
-        <a href="/#services">Services</a>
+        <a href="/#services" data-i18n="nav_services">Services</a>
         <div class="services-dropdown">
-      <a href="/fractional-cfo/">Fractional CFO Services</a>
-      <a href="/startup-cfo-services/">Startup CFO Services</a>
-      <a href="/outsourced-controller-services/">Outsourced Controller Services</a>
-      <a href="/bookkeeping-services/" class="current">Bookkeeping Services</a>
-      <a href="/fpa-financial-modeling/">FP&A & Financial Modeling</a>
-      <a href="/real-estate-underwriting/">Real Estate Underwriting</a>
-      <a href="/real-estate-financial-consulting/">Real Estate Financial Consulting</a>
-      <a href="/hospitality-financial-consulting/">Hospitality Financial Consulting</a>
+      <a href="/fractional-cfo/" data-i18n="svc_fractional_cfo">Fractional CFO Services</a>
+      <a href="/startup-cfo-services/" data-i18n="svc_startup_cfo">Startup CFO Services</a>
+      <a href="/outsourced-controller-services/" data-i18n="svc_outsourced_controller">Outsourced Controller Services</a>
+      <a href="/bookkeeping-services/" class="current" data-i18n="svc_bookkeeping">Bookkeeping Services</a>
+      <a href="/fpa-financial-modeling/" data-i18n="svc_fpa">FP&A & Financial Modeling</a>
+      <a href="/real-estate-underwriting/" data-i18n="svc_re_underwriting">Real Estate Underwriting</a>
+      <a href="/real-estate-financial-consulting/" data-i18n="svc_re_consulting">Real Estate Financial Consulting</a>
+      <a href="/hospitality-financial-consulting/" data-i18n="svc_hospitality">Hospitality Financial Consulting</a>
         </div>
       </li>
-      <li><a href="/#how-we-work">How We Work</a></li>
-      <li><a href="/#industries">Expertise</a></li>
-      <li><a href="/#track-record">Track Record</a></li>
-      <li><a href="/#about">About</a></li>
+      <li><a href="/#how-we-work" data-i18n="nav_how">How We Work</a></li>
+      <li><a href="/#industries" data-i18n="nav_industries">Expertise</a></li>
+      <li><a href="/#track-record" data-i18n="nav_track">Track Record</a></li>
+      <li><a href="/#about" data-i18n="nav_about">About</a></li>
     </ul></nav>
     <div class="nav-right">
-      <a class="nav-cta" href="/#contact">Get In Touch</a>
+      <div class="lang-toggle" role="group" aria-label="Language selector">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+        <button type="button" class="lang-btn" data-lang="it">IT</button>
+      </div>
+      <a class="nav-cta" href="/#contact" data-i18n="nav_cta">Get In Touch</a>
     </div>
   </div>
 </header>
 
-<div class="breadcrumb"><a href="/">Home</a> &rsaquo; Bookkeeping Services</div>
+<div class="breadcrumb"><a href="/" data-i18n="nav_home">Home</a> &rsaquo; <span data-i18n="breadcrumb_current">Bookkeeping Services</span></div>
 
 <section class="hero-section">
   <div>
-    <div class="eyebrow">Bookkeeping &middot; Serving Businesses Nationwide</div>
-    <h1>Bookkeeping Services</h1>
-    <p class="lede">F&amp;M Management keeps your books accurate, current, and ready for tax time, financing, or a management decision &mdash; for businesses across the country.</p>
+    <div class="eyebrow" data-i18n="hero_eyebrow">Bookkeeping &middot; Serving Businesses Nationwide</div>
+    <h1 data-i18n="hero_h1">Bookkeeping Services</h1>
+    <p class="lede" data-i18n="hero_lede">F&amp;M Management keeps your books accurate, current, and ready for tax time, financing, or a management decision &mdash; for businesses across the country.</p>
     <div class="hero-ctas">
-      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8">Book a Free 30-Minute Call</a>
-      <a class="btn-secondary" href="#included">See What's Included</a>
+      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8" data-i18n="hero_cta1">Book a Free 30-Minute Call</a>
+      <a class="btn-secondary" href="#included" data-i18n="hero_cta2">See What's Included</a>
     </div>
   </div>
   <div class="hero-image">
@@ -224,76 +233,76 @@
 
 <section class="alt">
   <div class="container-narrow">
-    <div class="eyebrow">Signs It's Time</div>
-    <h2 class="section-title">Is It Time to Outsource Your Bookkeeping?</h2>
-    <p class="section-intro">If any of these sound familiar, a dedicated bookkeeping partner will save you time and reduce risk.</p>
+    <div class="eyebrow" data-i18n="signs_eyebrow">Signs It's Time</div>
+    <h2 class="section-title" data-i18n="signs_title">Is It Time to Outsource Your Bookkeeping?</h2>
+    <p class="section-intro" data-i18n="signs_intro">If any of these sound familiar, a dedicated bookkeeping partner will save you time and reduce risk.</p>
     <ul class="check-list">
-      <li><span class="check-badge">&#10003;</span> Your books are weeks or months behind, and you don’t trust the numbers you do have.</li>
-      <li><span class="check-badge">&#10003;</span> You’re still doing bookkeeping yourself late at night instead of running the business.</li>
-      <li><span class="check-badge">&#10003;</span> Bank and credit card accounts haven’t been reconciled in a while.</li>
-      <li><span class="check-badge">&#10003;</span> Tax season turns into a scramble to reconstruct a year of transactions.</li>
-      <li><span class="check-badge">&#10003;</span> You need clean, current financials to apply for a loan or line of credit.</li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item1">Your books are weeks or months behind, and you don’t trust the numbers you do have.</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item2">You’re still doing bookkeeping yourself late at night instead of running the business.</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item3">Bank and credit card accounts haven’t been reconciled in a while.</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item4">Tax season turns into a scramble to reconstruct a year of transactions.</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item5">You need clean, current financials to apply for a loan or line of credit.</span></li>
     </ul>
   </div>
 </section>
 
 <section id="included">
   <div class="container-narrow">
-    <div class="eyebrow">Scope</div>
-    <h2 class="section-title">What's Included</h2>
-    <p class="section-intro">A full-service bookkeeping engagement, scoped to the complexity of your business.</p>
+    <div class="eyebrow" data-i18n="included_eyebrow">Scope</div>
+    <h2 class="section-title" data-i18n="included_title">What's Included</h2>
+    <p class="section-intro" data-i18n="included_intro">A full-service bookkeeping engagement, scoped to the complexity of your business.</p>
     <ul class="check-list">
-      <li><span class="check-badge">&#10003;</span> Monthly transaction categorization and bank &amp; credit card reconciliations</li>
-      <li><span class="check-badge">&#10003;</span> Accounts payable and accounts receivable tracking</li>
-      <li><span class="check-badge">&#10003;</span> Monthly financial statements (P&amp;L, balance sheet, cash flow)</li>
-      <li><span class="check-badge">&#10003;</span> Payroll journal entries and coordination with your payroll provider</li>
-      <li><span class="check-badge">&#10003;</span> Clean, tax-ready books handed off to your CPA each year</li>
-      <li><span class="check-badge">&#10003;</span> QuickBooks Online or Xero setup, cleanup, and ongoing management</li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item1">Monthly transaction categorization and bank &amp; credit card reconciliations</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item2">Accounts payable and accounts receivable tracking</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item3">Monthly financial statements (P&amp;L, balance sheet, cash flow)</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item4">Payroll journal entries and coordination with your payroll provider</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item5">Clean, tax-ready books handed off to your CPA each year</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item6">QuickBooks Online or Xero setup, cleanup, and ongoing management</span></li>
     </ul>
   </div>
 </section>
 
 <section class="alt">
   <div class="container-narrow">
-    <div class="eyebrow">The Math</div>
-    <h2 class="section-title">A Fraction of the Cost of a Full-Time Hire</h2>
-    <p class="section-intro">A full-time Bookkeeper carries real cost beyond salary alone &mdash; benefits, payroll taxes, and overhead. Drag the slider to see fractional cost at different monthly hours.</p>
+    <div class="eyebrow" data-i18n="math_eyebrow">The Math</div>
+    <h2 class="section-title" data-i18n="math_title">A Fraction of the Cost of a Full-Time Hire</h2>
+    <p class="section-intro" data-i18n="math_intro">A full-time Bookkeeper carries real cost beyond salary alone &mdash; benefits, payroll taxes, and overhead. Drag the slider to see fractional cost at different monthly hours.</p>
     <div class="cost-chart">
       <div class="cost-row">
-        <div class="cost-row-label"><span>Full-Time Bookkeeper (avg. total annual cost)</span><span class="amt">$75K+</span></div>
+        <div class="cost-row-label"><span data-i18n="cost_fulltime_label">Full-Time Bookkeeper (avg. total annual cost)</span><span class="amt">$75K+</span></div>
         <div class="cost-bar-track"><div class="cost-bar-fill full"></div></div>
       </div>
       <div class="cost-row">
-        <div class="cost-row-label"><span>F&amp;M Management at <span class="hoursLabel">30</span> hrs/month</span><span class="amt costLabel">$0</span>/yr</div>
+        <div class="cost-row-label"><span><span data-i18n="cost_fractional_prefix">F&amp;M Management at</span> <span class="hoursLabel">30</span> <span data-i18n="cost_hrsmonth">hrs/month</span></span><span class="amt costLabel">$0</span>/yr</div>
         <div class="cost-bar-track"><div class="cost-bar-fill fractional costBar" style="width: 0%;"></div></div>
       </div>
       <input type="range" class="cost-slider" data-full-cost="75000" data-hourly-rate="75" min="10" max="60" step="5" value="30">
-      <div class="slider-labels"><span>10 hrs/mo</span><span>60 hrs/mo</span></div>
-      <p class="cost-note">Figures reflect general market data, not a quote. Full-time cost reflects average bookkeeper salary plus employer payroll taxes and benefits (typically 25&ndash;30% on top of base pay). Every F&amp;M Management engagement is scoped and priced to your business &mdash; <a href="https://calendar.app.google/KzfoRGyoooD6pQbv8" style="color: var(--accent); font-weight: 600;">book a call</a> for a proposal.</p>
+      <div class="slider-labels"><span data-i18n="slider_min">10 hrs/mo</span><span data-i18n="slider_max">60 hrs/mo</span></div>
+      <p class="cost-note" data-i18n="cost_note">Figures reflect general market data, not a quote. Full-time cost reflects average bookkeeper salary plus employer payroll taxes and benefits (typically 25&ndash;30% on top of base pay). Every F&amp;M Management engagement is scoped and priced to your business &mdash; <a href="https://calendar.app.google/KzfoRGyoooD6pQbv8" style="color: var(--accent); font-weight: 600;">book a call</a> for a proposal.</p>
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="container-narrow">
-    <div class="eyebrow">Flexible By Design</div>
-    <h2 class="section-title">Engagement Options</h2>
-    <p class="section-intro">Every engagement is built around where you are today, not a one-size-fits-all package.</p>
+    <div class="eyebrow" data-i18n="engagement_eyebrow">Flexible By Design</div>
+    <h2 class="section-title" data-i18n="engagement_title">Engagement Options</h2>
+    <p class="section-intro" data-i18n="engagement_intro">Every engagement is built around where you are today, not a one-size-fits-all package.</p>
     <div class="engagement-grid">
       <div class="engagement-card">
         <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg></div>
-        <h3>Project-Based</h3>
-        <p>A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.</p>
+        <h3 data-i18n="eng1_title">Project-Based</h3>
+        <p data-i18n="eng1_desc">A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.</p>
       </div>
       <div class="engagement-card">
         <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg></div>
-        <h3>Hourly Rate</h3>
-        <p>Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.</p>
+        <h3 data-i18n="eng2_title">Hourly Rate</h3>
+        <p data-i18n="eng2_desc">Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.</p>
       </div>
       <div class="engagement-card">
         <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"></path><path d="M3 12.6v-1a4 4 0 0 1 4-4h14"></path><path d="M7 21.9l-4-4 4-4"></path><path d="M21 11.4v1a4 4 0 0 1-4 4H3"></path></svg></div>
-        <h3>Fixed Monthly Rate</h3>
-        <p>A predictable monthly retainer for ongoing support, scaled to your business.</p>
+        <h3 data-i18n="eng3_title">Fixed Monthly Rate</h3>
+        <p data-i18n="eng3_desc">A predictable monthly retainer for ongoing support, scaled to your business.</p>
       </div>
     </div>
   </div>
@@ -301,28 +310,28 @@
 
 <section>
   <div class="container-narrow">
-    <div class="eyebrow">Common Questions</div>
-    <h2 class="section-title">Bookkeeping Services &mdash; Frequently Asked Questions</h2>
+    <div class="eyebrow" data-i18n="faq_eyebrow">Common Questions</div>
+    <h2 class="section-title" data-i18n="faq_title">Bookkeeping Services &mdash; Frequently Asked Questions</h2>
     <div class="faq-list">
       <div class="faq-item open">
-        <div class="faq-question"><div class="faq-q">What accounting software do you work with?</div><span class="faq-sign">&minus;</span></div>
-        <div class="faq-answer"><div class="faq-a">We primarily work in QuickBooks Online and Xero. If you’re on a different platform, we can typically work within it or recommend a migration if it will save you time and money long-term.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q1">What accounting software do you work with?</div><span class="faq-sign">&minus;</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a1">We primarily work in QuickBooks Online and Xero. If you’re on a different platform, we can typically work within it or recommend a migration if it will save you time and money long-term.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">How far behind can my books be before it’s too late to fix?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">It’s rarely too late &mdash; we regularly take on cleanup projects for businesses that are 6, 12, or even 24+ months behind. We’ll assess the backlog and give you a clear plan and timeline to get current.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q2">How far behind can my books be before it’s too late to fix?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a2">It’s rarely too late &mdash; we regularly take on cleanup projects for businesses that are 6, 12, or even 24+ months behind. We’ll assess the backlog and give you a clear plan and timeline to get current.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">Do you also handle payroll and tax filing?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">We coordinate closely with your payroll provider and CPA, and can manage those relationships on your behalf, but payroll processing and tax filing are typically handled by dedicated specialists we work alongside.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q3">Do you also handle payroll and tax filing?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a3">We coordinate closely with your payroll provider and CPA, and can manage those relationships on your behalf, but payroll processing and tax filing are typically handled by dedicated specialists we work alongside.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">How much does bookkeeping cost?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">Cost depends on transaction volume and complexity. Most engagements are priced as a fixed monthly rate once we understand your scope &mdash; book a call for a proposal specific to your business.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q4">How much does bookkeeping cost?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a4">Cost depends on transaction volume and complexity. Most engagements are priced as a fixed monthly rate once we understand your scope &mdash; book a call for a proposal specific to your business.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">Do you work with businesses outside of Florida?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">Yes. We work with clients across the United States. Bookkeeping is a largely remote-friendly service, and most of our client relationships are managed virtually.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q5">Do you work with businesses outside of Florida?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a5">Yes. We work with clients across the United States. Bookkeeping is a largely remote-friendly service, and most of our client relationships are managed virtually.</div></div>
       </div>
     </div>
   </div>
@@ -330,18 +339,18 @@
 
 <section class="contact">
   <div class="container-narrow">
-    <div class="eyebrow" style="color: var(--gold);">Get Started</div>
-    <h2 class="section-title">Let's Talk About Your Finance Function</h2>
-    <p class="contact-intro">Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need.</p>
+    <div class="eyebrow" style="color: var(--gold);" data-i18n="contact_eyebrow">Get Started</div>
+    <h2 class="section-title" data-i18n="contact_title">Let's Talk About Your Finance Function</h2>
+    <p class="contact-intro" data-i18n="contact_intro">Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need.</p>
     <div class="hero-ctas" style="justify-content: center;">
-      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8">Book a Free 30-Minute Call</a>
-      <a class="btn-secondary" style="color:#fff; border-color: rgba(255,255,255,0.5);" href="mailto:fabio@fandm-mgmt.com?subject=Inquiry">Email</a>
+      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8" data-i18n="hero_cta1">Book a Free 30-Minute Call</a>
+      <a class="btn-secondary" style="color:#fff; border-color: rgba(255,255,255,0.5);" href="mailto:fabio@fandm-mgmt.com?subject=Inquiry" data-i18n="btn_email">Email</a>
     </div>
   </div>
 </section>
 
 <footer>
-  &copy; 2026 F&amp;M Management LLC. All rights reserved.
+  <span data-i18n="footer_copy">&copy; 2026 F&amp;M Management LLC. All rights reserved.</span>
 </footer>
 
 <script type="application/ld+json">
@@ -417,6 +426,258 @@
   });
 </script>
 
+
+<script>
+var translations = {
+en: {
+  nav_home: "Home",
+  nav_services: "Services",
+  nav_how: "How We Work",
+  nav_industries: "Expertise",
+  nav_track: "Track Record",
+  nav_about: "About",
+  nav_cta: "Get In Touch",
+  svc_fractional_cfo: "Fractional CFO Services",
+  svc_startup_cfo: "Startup CFO Services",
+  svc_outsourced_controller: "Outsourced Controller Services",
+  svc_bookkeeping: "Bookkeeping Services",
+  svc_fpa: "FP&amp;A &amp; Financial Modeling",
+  svc_re_underwriting: "Real Estate Underwriting",
+  svc_re_consulting: "Real Estate Financial Consulting",
+  svc_hospitality: "Hospitality Financial Consulting",
+  btn_email: "Email",
+  footer_copy: "&copy; 2026 F&amp;M Management LLC. All rights reserved.",
+  pageTitle: "Bookkeeping Services | F&amp;M Management",
+  breadcrumb_current: "Bookkeeping Services",
+  hero_eyebrow: "Bookkeeping &middot; Serving Businesses Nationwide",
+  hero_h1: "Bookkeeping Services",
+  hero_lede: "F&amp;M Management keeps your books accurate, current, and ready for tax time, financing, or a management decision &mdash; for businesses across the country.",
+  hero_cta1: "Book a Free 30-Minute Call",
+  hero_cta2: "See What's Included",
+  signs_eyebrow: "Signs It's Time",
+  signs_title: "Is It Time to Outsource Your Bookkeeping?",
+  signs_intro: "If any of these sound familiar, a dedicated bookkeeping partner will save you time and reduce risk.",
+  signs_item1: "Your books are weeks or months behind, and you don\u2019t trust the numbers you do have.",
+  signs_item2: "You\u2019re still doing bookkeeping yourself late at night instead of running the business.",
+  signs_item3: "Bank and credit card accounts haven\u2019t been reconciled in a while.",
+  signs_item4: "Tax season turns into a scramble to reconstruct a year of transactions.",
+  signs_item5: "You need clean, current financials to apply for a loan or line of credit.",
+  included_eyebrow: "Scope",
+  included_title: "What's Included",
+  included_intro: "A full-service bookkeeping engagement, scoped to the complexity of your business.",
+  included_item1: "Monthly transaction categorization and bank &amp; credit card reconciliations",
+  included_item2: "Accounts payable and accounts receivable tracking",
+  included_item3: "Monthly financial statements (P&amp;L, balance sheet, cash flow)",
+  included_item4: "Payroll journal entries and coordination with your payroll provider",
+  included_item5: "Clean, tax-ready books handed off to your CPA each year",
+  included_item6: "QuickBooks Online or Xero setup, cleanup, and ongoing management",
+  math_eyebrow: "The Math",
+  math_title: "A Fraction of the Cost of a Full-Time Hire",
+  math_intro: "A full-time Bookkeeper carries real cost beyond salary alone &mdash; benefits, payroll taxes, and overhead. Drag the slider to see fractional cost at different monthly hours.",
+  cost_fulltime_label: "Full-Time Bookkeeper (avg. total annual cost)",
+  cost_fractional_prefix: "F&amp;M Management at",
+  cost_hrsmonth: "hrs/month",
+  slider_min: "10 hrs/mo",
+  slider_max: "60 hrs/mo",
+  cost_note: "Figures reflect general market data, not a quote. Full-time cost reflects average bookkeeper salary plus employer payroll taxes and benefits (typically 25&ndash;30% on top of base pay). Every F&amp;M Management engagement is scoped and priced to your business &mdash; <a href=\"https://calendar.app.google/KzfoRGyoooD6pQbv8\" style=\"color: var(--accent); font-weight: 600;\">book a call</a> for a proposal.",
+  engagement_eyebrow: "Flexible By Design",
+  engagement_title: "Engagement Options",
+  engagement_intro: "Every engagement is built around where you are today, not a one-size-fits-all package.",
+  eng1_title: "Project-Based",
+  eng1_desc: "A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.",
+  eng2_title: "Hourly Rate",
+  eng2_desc: "Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.",
+  eng3_title: "Fixed Monthly Rate",
+  eng3_desc: "A predictable monthly retainer for ongoing support, scaled to your business.",
+  faq_eyebrow: "Common Questions",
+  faq_title: "Bookkeeping Services &mdash; Frequently Asked Questions",
+  faq_q1: "What accounting software do you work with?",
+  faq_a1: "We primarily work in QuickBooks Online and Xero. If you\u2019re on a different platform, we can typically work within it or recommend a migration if it will save you time and money long-term.",
+  faq_q2: "How far behind can my books be before it\u2019s too late to fix?",
+  faq_a2: "It\u2019s rarely too late &mdash; we regularly take on cleanup projects for businesses that are 6, 12, or even 24+ months behind. We\u2019ll assess the backlog and give you a clear plan and timeline to get current.",
+  faq_q3: "Do you also handle payroll and tax filing?",
+  faq_a3: "We coordinate closely with your payroll provider and CPA, and can manage those relationships on your behalf, but payroll processing and tax filing are typically handled by dedicated specialists we work alongside.",
+  faq_q4: "How much does bookkeeping cost?",
+  faq_a4: "Cost depends on transaction volume and complexity. Most engagements are priced as a fixed monthly rate once we understand your scope &mdash; book a call for a proposal specific to your business.",
+  faq_q5: "Do you work with businesses outside of Florida?",
+  faq_a5: "Yes. We work with clients across the United States. Bookkeeping is a largely remote-friendly service, and most of our client relationships are managed virtually.",
+  contact_eyebrow: "Get Started",
+  contact_title: "Let's Talk About Your Finance Function",
+  contact_intro: "Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need."
+},
+es: {
+  nav_home: "Inicio",
+  nav_services: "Servicios",
+  nav_how: "C&oacute;mo Trabajamos",
+  nav_industries: "Experiencia",
+  nav_track: "Trayectoria",
+  nav_about: "Nosotros",
+  nav_cta: "Cont&aacute;ctenos",
+  svc_fractional_cfo: "Servicios de CFO Fraccional",
+  svc_startup_cfo: "Servicios de CFO para Startups",
+  svc_outsourced_controller: "Servicios de Controller Externalizado",
+  svc_bookkeeping: "Servicios de Contabilidad",
+  svc_fpa: "FP&amp;A y Modelado Financiero",
+  svc_re_underwriting: "Suscripci&oacute;n Inmobiliaria",
+  svc_re_consulting: "Consultor&iacute;a Financiera Inmobiliaria",
+  svc_hospitality: "Consultor&iacute;a Financiera de Hoteler&iacute;a",
+  btn_email: "Correo",
+  footer_copy: "&copy; 2026 F&amp;M Management LLC. Todos los derechos reservados.",
+  pageTitle: "Servicios de Contabilidad | F&amp;M Management",
+  breadcrumb_current: "Servicios de Contabilidad",
+  hero_eyebrow: "Contabilidad &middot; Al Servicio de Empresas en Todo el Pa&iacute;s",
+  hero_h1: "Servicios de Contabilidad",
+  hero_lede: "F&amp;M Management mantiene sus libros contables precisos, al d&iacute;a y listos para la temporada de impuestos, financiamiento o una decisi&oacute;n gerencial &mdash; para empresas en todo el pa&iacute;s.",
+  hero_cta1: "Reserve una Llamada Gratuita de 30 Minutos",
+  hero_cta2: "Ver Qu&eacute; Incluye",
+  signs_eyebrow: "Se&ntilde;ales de que es el Momento",
+  signs_title: "&iquest;Es el Momento de Externalizar su Contabilidad?",
+  signs_intro: "Si algo de esto le suena familiar, un socio de contabilidad dedicado le ahorrar&aacute; tiempo y reducir&aacute; el riesgo.",
+  signs_item1: "Sus libros contables llevan semanas o meses de retraso, y no conf&iacute;a en las cifras que tiene.",
+  signs_item2: "Todav&iacute;a hace la contabilidad usted mismo por las noches en lugar de dirigir el negocio.",
+  signs_item3: "Las cuentas bancarias y de tarjetas de cr&eacute;dito no se han conciliado en un tiempo.",
+  signs_item4: "La temporada de impuestos se convierte en una carrera para reconstruir un a&ntilde;o de transacciones.",
+  signs_item5: "Necesita estados financieros limpios y al d&iacute;a para solicitar un pr&eacute;stamo o l&iacute;nea de cr&eacute;dito.",
+  included_eyebrow: "Alcance",
+  included_title: "Qu&eacute; Incluye",
+  included_intro: "Un servicio de contabilidad integral, dise&ntilde;ado seg&uacute;n la complejidad de su negocio.",
+  included_item1: "Categorizaci&oacute;n mensual de transacciones y conciliaciones bancarias y de tarjetas de cr&eacute;dito",
+  included_item2: "Seguimiento de cuentas por pagar y por cobrar",
+  included_item3: "Estados financieros mensuales (P&amp;L, balance general, flujo de caja)",
+  included_item4: "Asientos contables de n&oacute;mina y coordinaci&oacute;n con su proveedor de n&oacute;mina",
+  included_item5: "Libros limpios y listos para impuestos entregados a su contador cada a&ntilde;o",
+  included_item6: "Configuraci&oacute;n, limpieza y gesti&oacute;n continua de QuickBooks Online o Xero",
+  math_eyebrow: "Los N&uacute;meros",
+  math_title: "Una Fracci&oacute;n del Costo de una Contrataci&oacute;n a Tiempo Completo",
+  math_intro: "Un contador a tiempo completo tiene un costo real m&aacute;s all&aacute; del salario &mdash; beneficios, impuestos sobre n&oacute;mina y gastos generales. Mueva el control deslizante para ver el costo fraccional en distintas horas mensuales.",
+  cost_fulltime_label: "Contador a Tiempo Completo (costo anual total promedio)",
+  cost_fractional_prefix: "F&amp;M Management con",
+  cost_hrsmonth: "horas/mes",
+  slider_min: "10 h/mes",
+  slider_max: "60 h/mes",
+  cost_note: "Las cifras reflejan datos generales del mercado, no una cotizaci&oacute;n. La cifra de tiempo completo refleja el salario promedio de un contador m&aacute;s impuestos sobre n&oacute;mina del empleador y beneficios (t&iacute;picamente 25&ndash;30% adicional sobre el salario base). Cada proyecto de F&amp;M Management se define y cotiza seg&uacute;n su negocio &mdash; <a href=\"https://calendar.app.google/KzfoRGyoooD6pQbv8\" style=\"color: var(--accent); font-weight: 600;\">reserve una llamada</a> para una propuesta.",
+  engagement_eyebrow: "Dise&ntilde;ado con Flexibilidad",
+  engagement_title: "Opciones de Colaboraci&oacute;n",
+  engagement_intro: "Cada proyecto se construye seg&uacute;n d&oacute;nde se encuentra hoy, no como un paquete &uacute;nico para todos.",
+  eng1_title: "Por Proyecto",
+  eng1_desc: "Un alcance y precio definidos para trabajo puntual &mdash; una limpieza de estados financieros, una implementaci&oacute;n de sistema o un paquete de suscripci&oacute;n.",
+  eng2_title: "Tarifa por Hora",
+  eng2_desc: "Pague solo por el tiempo que necesita &mdash; ideal para soporte puntual, preguntas de asesor&iacute;a o cargas de trabajo m&aacute;s ligeras.",
+  eng3_title: "Tarifa Mensual Fija",
+  eng3_desc: "Un retainer mensual predecible para soporte continuo, seg&uacute;n el tama&ntilde;o de su empresa.",
+  faq_eyebrow: "Preguntas Frecuentes",
+  faq_title: "Servicios de Contabilidad &mdash; Preguntas Frecuentes",
+  faq_q1: "&iquest;Con qu&eacute; software de contabilidad trabajan?",
+  faq_a1: "Trabajamos principalmente con QuickBooks Online y Xero. Si usted usa una plataforma distinta, generalmente podemos trabajar dentro de ella o recomendar una migraci&oacute;n si le ahorrar&aacute; tiempo y dinero a largo plazo.",
+  faq_q2: "&iquest;Qu&eacute; tan atrasados pueden estar mis libros antes de que sea demasiado tarde para arreglarlos?",
+  faq_a2: "Rara vez es demasiado tarde &mdash; regularmente asumimos proyectos de limpieza para empresas con 6, 12 o incluso m&aacute;s de 24 meses de atraso. Evaluaremos el atraso y le daremos un plan claro y un cronograma para ponerse al d&iacute;a.",
+  faq_q3: "&iquest;Tambi&eacute;n manejan la n&oacute;mina y la declaraci&oacute;n de impuestos?",
+  faq_a3: "Coordinamos estrechamente con su proveedor de n&oacute;mina y su contador, y podemos gestionar esas relaciones en su nombre, pero el procesamiento de n&oacute;mina y la declaraci&oacute;n de impuestos generalmente los manejan especialistas dedicados con quienes colaboramos.",
+  faq_q4: "&iquest;Cu&aacute;nto cuesta la contabilidad?",
+  faq_a4: "El costo depende del volumen de transacciones y la complejidad. La mayor&iacute;a de los proyectos se cotizan con una tarifa mensual fija una vez que entendemos su alcance &mdash; reserve una llamada para una propuesta espec&iacute;fica para su negocio.",
+  faq_q5: "&iquest;Trabajan con empresas fuera de la Florida?",
+  faq_a5: "S&iacute;. Trabajamos con clientes en todo Estados Unidos. La contabilidad es un servicio en gran parte apto para trabajo remoto, y la mayor&iacute;a de nuestras relaciones con clientes se gestionan de forma virtual.",
+  contact_eyebrow: "Comencemos",
+  contact_title: "Hablemos de su Funci&oacute;n Financiera",
+  contact_intro: "Ya sea que necesite un CFO fraccional, un controller que se encargue del cierre, o una limpieza contable, F&amp;M Management puede comenzar exactamente con lo que necesita."
+},
+it: {
+  nav_home: "Home",
+  nav_services: "Servizi",
+  nav_how: "Come Lavoriamo",
+  nav_industries: "Competenze",
+  nav_track: "Track Record",
+  nav_about: "Chi Siamo",
+  nav_cta: "Contattaci",
+  svc_fractional_cfo: "Servizi di CFO Frazionale",
+  svc_startup_cfo: "Servizi di CFO per Startup",
+  svc_outsourced_controller: "Servizi di Controller Esternalizzato",
+  svc_bookkeeping: "Servizi di Contabilit&agrave;",
+  svc_fpa: "FP&amp;A e Modellazione Finanziaria",
+  svc_re_underwriting: "Underwriting Immobiliare",
+  svc_re_consulting: "Consulenza Finanziaria Immobiliare",
+  svc_hospitality: "Consulenza Finanziaria per l'Ospitalit&agrave;",
+  btn_email: "Email",
+  footer_copy: "&copy; 2026 F&amp;M Management LLC. Tutti i diritti riservati.",
+  pageTitle: "Servizi di Contabilit&agrave; | F&amp;M Management",
+  breadcrumb_current: "Servizi di Contabilit&agrave;",
+  hero_eyebrow: "Contabilit&agrave; &middot; Al Servizio di Aziende in Tutto il Paese",
+  hero_h1: "Servizi di Contabilit&agrave;",
+  hero_lede: "F&amp;M Management mantiene la vostra contabilit&agrave; accurata, aggiornata e pronta per la stagione fiscale, un finanziamento o una decisione manageriale &mdash; per aziende in tutto il paese.",
+  hero_cta1: "Prenota una Chiamata Gratuita di 30 Minuti",
+  hero_cta2: "Scopri Cosa &Egrave; Incluso",
+  signs_eyebrow: "Segnali che &Egrave; il Momento",
+  signs_title: "&Egrave; il Momento di Esternalizzare la Vostra Contabilit&agrave;?",
+  signs_intro: "Se una di queste situazioni vi suona familiare, un partner di contabilit&agrave; dedicato vi far&agrave; risparmiare tempo e ridurr&agrave; il rischio.",
+  signs_item1: "La vostra contabilit&agrave; &egrave; indietro di settimane o mesi, e non vi fidate dei numeri che avete.",
+  signs_item2: "State ancora facendo la contabilit&agrave; da soli la sera tardi invece di gestire l'azienda.",
+  signs_item3: "I conti bancari e delle carte di credito non vengono riconciliati da un po'.",
+  signs_item4: "La stagione fiscale si trasforma in una corsa per ricostruire un anno di transazioni.",
+  signs_item5: "Avete bisogno di bilanci puliti e aggiornati per richiedere un prestito o una linea di credito.",
+  included_eyebrow: "Ambito",
+  included_title: "Cosa &Egrave; Incluso",
+  included_intro: "Un servizio di contabilit&agrave; completo, calibrato sulla complessit&agrave; della vostra azienda.",
+  included_item1: "Categorizzazione mensile delle transazioni e riconciliazioni bancarie e delle carte di credito",
+  included_item2: "Monitoraggio di crediti e debiti",
+  included_item3: "Bilanci mensili (conto economico, stato patrimoniale, flusso di cassa)",
+  included_item4: "Scritture contabili delle buste paga e coordinamento con il vostro fornitore di payroll",
+  included_item5: "Contabilit&agrave; pulita e pronta per le tasse, consegnata al vostro commercialista ogni anno",
+  included_item6: "Configurazione, pulizia e gestione continuativa di QuickBooks Online o Xero",
+  math_eyebrow: "I Numeri",
+  math_title: "Una Frazione del Costo di un'Assunzione a Tempo Pieno",
+  math_intro: "Un contabile a tempo pieno comporta un costo reale oltre lo stipendio &mdash; benefit, imposte sul lavoro e spese generali. Spostate il cursore per vedere il costo frazionale a diverse ore mensili.",
+  cost_fulltime_label: "Contabile a Tempo Pieno (costo annuo totale medio)",
+  cost_fractional_prefix: "F&amp;M Management con",
+  cost_hrsmonth: "ore/mese",
+  slider_min: "10 ore/mese",
+  slider_max: "60 ore/mese",
+  cost_note: "Le cifre riflettono dati generali di mercato, non un preventivo. La cifra a tempo pieno riflette lo stipendio medio di un contabile pi&ugrave; imposte sul lavoro a carico del datore e benefit (in genere il 25&ndash;30% in pi&ugrave; rispetto alla retribuzione base). Ogni incarico F&amp;M Management &egrave; definito e quotato in base alla vostra azienda &mdash; <a href=\"https://calendar.app.google/KzfoRGyoooD6pQbv8\" style=\"color: var(--accent); font-weight: 600;\">prenotate una chiamata</a> per un preventivo.",
+  engagement_eyebrow: "Progettato per la Flessibilit&agrave;",
+  engagement_title: "Opzioni di Collaborazione",
+  engagement_intro: "Ogni incarico &egrave; costruito in base a dove vi trovate oggi, non come un pacchetto unico per tutti.",
+  eng1_title: "A Progetto",
+  eng1_desc: "Un ambito e un prezzo definiti per un lavoro una tantum &mdash; una pulizia dei bilanci, un'implementazione di sistema o un pacchetto di underwriting.",
+  eng2_title: "Tariffa Oraria",
+  eng2_desc: "Pagate solo per il tempo di cui avete bisogno &mdash; ideale per supporto occasionale, domande di consulenza o carichi di lavoro pi&ugrave; leggeri.",
+  eng3_title: "Tariffa Mensile Fissa",
+  eng3_desc: "Un retainer mensile prevedibile per un supporto continuativo, in base alle dimensioni della vostra azienda.",
+  faq_eyebrow: "Domande Frequenti",
+  faq_title: "Servizi di Contabilit&agrave; &mdash; Domande Frequenti",
+  faq_q1: "Con quali software di contabilit&agrave; lavorate?",
+  faq_a1: "Lavoriamo principalmente con QuickBooks Online e Xero. Se utilizzate una piattaforma diversa, in genere possiamo lavorarci oppure consigliare una migrazione se vi far&agrave; risparmiare tempo e denaro nel lungo periodo.",
+  faq_q2: "Quanto pu&ograve; essere indietro la mia contabilit&agrave; prima che sia troppo tardi per sistemarla?",
+  faq_a2: "Raramente &egrave; troppo tardi &mdash; ci occupiamo regolarmente di progetti di pulizia per aziende indietro di 6, 12 o anche oltre 24 mesi. Valuteremo l'arretrato e vi daremo un piano chiaro e una tempistica per mettervi in pari.",
+  faq_q3: "Gestite anche le buste paga e la dichiarazione dei redditi?",
+  faq_a3: "Ci coordiniamo strettamente con il vostro fornitore di payroll e il vostro commercialista, e possiamo gestire quelle relazioni per vostro conto, ma l'elaborazione delle buste paga e la dichiarazione dei redditi sono generalmente gestite da specialisti dedicati con cui collaboriamo.",
+  faq_q4: "Quanto costa la contabilit&agrave;?",
+  faq_a4: "Il costo dipende dal volume delle transazioni e dalla complessit&agrave;. La maggior parte degli incarichi viene quotata con una tariffa mensile fissa una volta compreso il vostro ambito &mdash; prenotate una chiamata per un preventivo specifico per la vostra azienda.",
+  faq_q5: "Lavorate con aziende al di fuori della Florida?",
+  faq_a5: "S&igrave;. Lavoriamo con clienti in tutti gli Stati Uniti. La contabilit&agrave; &egrave; un servizio in gran parte adatto al lavoro da remoto, e la maggior parte delle nostre relazioni con i clienti viene gestita virtualmente.",
+  contact_eyebrow: "Iniziamo",
+  contact_title: "Parliamo della Vostra Funzione Finanziaria",
+  contact_intro: "Che abbiate bisogno di un CFO frazionale, di un controller che gestisca la chiusura, o di una pulizia contabile, F&amp;M Management pu&ograve; iniziare esattamente da ci&ograve; di cui avete bisogno."
+}
+};
+function applyLang(lang) {
+  var dict = translations[lang] || translations.en;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) { el.innerHTML = dict[key]; }
+  });
+  if (dict.pageTitle) { document.getElementById('pageTitle').innerHTML = dict.pageTitle; }
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  try { localStorage.setItem('fm_lang', lang); } catch (e) {}
+}
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); });
+});
+var savedLang = 'en';
+try { savedLang = localStorage.getItem('fm_lang') || 'en'; } catch (e) {}
+applyLang(savedLang);
+</script>
 
 <script>
   (function() {

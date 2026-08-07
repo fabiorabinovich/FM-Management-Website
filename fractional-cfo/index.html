@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fractional CFO Services | F&amp;M Management</title>
+<title id="pageTitle">Fractional CFO Services | F&amp;M Management</title>
 <meta name="description" content="F&amp;M Management provides strategic finance leadership, board reporting, and capital planning as a fractional CFO for growing businesses nationwide.">
 <link rel="canonical" href="https://www.fandm-mgmt.com/fractional-cfo/">
 <meta property="og:type" content="website">
@@ -35,6 +35,10 @@
   .services-dropdown a:hover { background: var(--bg-light); color: var(--navy); }
   .services-dropdown a.current { color: var(--gold); font-weight: 700; }
   .mobile-toggle { display: none; font-size: 24px; line-height: 1; background: none; border: none; cursor: pointer; color: var(--navy); padding: 4px 8px; }
+  .lang-toggle { display: flex; gap: 4px; border: 1px solid var(--border); border-radius: 4px; padding: 3px; }
+  .lang-btn { font-size: 12px; font-weight: 700; padding: 5px 9px; border: none; border-radius: 3px; background: transparent; color: var(--text-muted); cursor: pointer; letter-spacing: 0.5px; }
+  .lang-btn.active { background: var(--navy); color: #fff; }
+  .lang-btn:hover:not(.active) { color: var(--navy); }
 
   @media (max-width: 860px) {
     .nav-wrap { flex-wrap: wrap; row-gap: 0; padding: 14px 16px; position: relative; }
@@ -171,41 +175,46 @@
     <div class="logo">F | M <span>MANAGEMENT</span></div>
     <button type="button" class="mobile-toggle" id="mobileNavToggle" aria-label="Menu">&#9776;</button>
     <nav><ul>
-      <li><a href="/">Home</a></li>
+      <li><a href="/" data-i18n="nav_home">Home</a></li>
       <li class="services-item">
-        <a href="/#services">Services</a>
+        <a href="/#services" data-i18n="nav_services">Services</a>
         <div class="services-dropdown">
-      <a href="/fractional-cfo/" class="current">Fractional CFO Services</a>
-      <a href="/startup-cfo-services/">Startup CFO Services</a>
-      <a href="/outsourced-controller-services/">Outsourced Controller Services</a>
-      <a href="/bookkeeping-services/">Bookkeeping Services</a>
-      <a href="/fpa-financial-modeling/">FP&A & Financial Modeling</a>
-      <a href="/real-estate-underwriting/">Real Estate Underwriting</a>
-      <a href="/real-estate-financial-consulting/">Real Estate Financial Consulting</a>
-      <a href="/hospitality-financial-consulting/">Hospitality Financial Consulting</a>
+      <a href="/fractional-cfo/" class="current" data-i18n="svc_fractional_cfo">Fractional CFO Services</a>
+      <a href="/startup-cfo-services/" data-i18n="svc_startup_cfo">Startup CFO Services</a>
+      <a href="/outsourced-controller-services/" data-i18n="svc_outsourced_controller">Outsourced Controller Services</a>
+      <a href="/bookkeeping-services/" data-i18n="svc_bookkeeping">Bookkeeping Services</a>
+      <a href="/fpa-financial-modeling/" data-i18n="svc_fpa">FP&A & Financial Modeling</a>
+      <a href="/real-estate-underwriting/" data-i18n="svc_re_underwriting">Real Estate Underwriting</a>
+      <a href="/real-estate-financial-consulting/" data-i18n="svc_re_consulting">Real Estate Financial Consulting</a>
+      <a href="/hospitality-financial-consulting/" data-i18n="svc_hospitality">Hospitality Financial Consulting</a>
         </div>
       </li>
-      <li><a href="/#how-we-work">How We Work</a></li>
-      <li><a href="/#industries">Expertise</a></li>
-      <li><a href="/#track-record">Track Record</a></li>
-      <li><a href="/#about">About</a></li>
+      <li><a href="/#how-we-work" data-i18n="nav_how">How We Work</a></li>
+      <li><a href="/#industries" data-i18n="nav_industries">Expertise</a></li>
+      <li><a href="/#track-record" data-i18n="nav_track">Track Record</a></li>
+      <li><a href="/#about" data-i18n="nav_about">About</a></li>
     </ul></nav>
     <div class="nav-right">
-      <a class="nav-cta" href="/#contact">Get In Touch</a>
+      <div class="lang-toggle" role="group" aria-label="Language selector">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+        <button type="button" class="lang-btn" data-lang="it">IT</button>
+      </div>
+      <a class="nav-cta" href="/#contact" data-i18n="nav_cta">Get In Touch</a>
     </div>
   </div>
 </header>
 
-<div class="breadcrumb"><a href="/">Home</a> &rsaquo; Fractional CFO Services</div>
+<div class="breadcrumb"><a href="/" data-i18n="nav_home">Home</a> &rsaquo; <span data-i18n="breadcrumb_current">Fractional CFO Services</span></div>
 
 <section class="hero-section">
   <div>
-    <div class="eyebrow">Fractional CFO &middot; Serving Businesses Nationwide</div>
-    <h1>Fractional CFO Services</h1>
-    <p class="lede">A fractional CFO gives your business the strategic financial leadership of a full-time CFO &mdash; forecasting, capital planning, board and investor reporting &mdash; on a part-time or retainer basis, without the cost of a full-time executive hire. F&amp;M Management brings practitioner-level experience in real estate, hospitality, retail, and professional services to every engagement.</p>
+    <div class="eyebrow" data-i18n="hero_eyebrow">Fractional CFO &middot; Serving Businesses Nationwide</div>
+    <h1 data-i18n="hero_h1">Fractional CFO Services</h1>
+    <p class="lede" data-i18n="hero_lede">A fractional CFO gives your business the strategic financial leadership of a full-time CFO &mdash; forecasting, capital planning, board and investor reporting &mdash; on a part-time or retainer basis, without the cost of a full-time executive hire. F&amp;M Management brings practitioner-level experience in real estate, hospitality, retail, and professional services to every engagement.</p>
     <div class="hero-ctas">
-      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8">Book a Free 30-Minute Call</a>
-      <a class="btn-secondary" href="#included">See What's Included</a>
+      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8" data-i18n="hero_cta1">Book a Free 30-Minute Call</a>
+      <a class="btn-secondary" href="#included" data-i18n="hero_cta2">See What's Included</a>
     </div>
   </div>
   <div class="hero-image">
@@ -215,52 +224,52 @@
 
 <section class="alt">
   <div class="container-narrow">
-    <div class="eyebrow">Signs It's Time</div>
-    <h2 class="section-title">When Should You Hire a Fractional CFO?</h2>
-    <p class="section-intro">Most businesses bring on a fractional CFO once they've outgrown what a bookkeeper or part-time accountant can provide. Common signs it's time:</p>
+    <div class="eyebrow" data-i18n="signs_eyebrow">Signs It's Time</div>
+    <h2 class="section-title" data-i18n="signs_title">When Should You Hire a Fractional CFO?</h2>
+    <p class="section-intro" data-i18n="signs_intro">Most businesses bring on a fractional CFO once they've outgrown what a bookkeeper or part-time accountant can provide. Common signs it's time:</p>
     <ul class="check-list">
-      <li><span class="check-badge">&#10003;</span> You're raising capital or taking on debt and need a defensible financial model behind you</li>
-      <li><span class="check-badge">&#10003;</span> You don't have real visibility into cash flow, or where margin is being lost</li>
-      <li><span class="check-badge">&#10003;</span> You're making pricing, expansion, or acquisition decisions without financial modeling to support them</li>
-      <li><span class="check-badge">&#10003;</span> Your board, investors, or lenders expect professional-grade reporting you can't currently produce</li>
-      <li><span class="check-badge">&#10003;</span> You've outgrown your bookkeeper, but a full-time CFO isn't the right cost for your stage yet</li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item1">You're raising capital or taking on debt and need a defensible financial model behind you</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item2">You don't have real visibility into cash flow, or where margin is being lost</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item3">You're making pricing, expansion, or acquisition decisions without financial modeling to support them</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item4">Your board, investors, or lenders expect professional-grade reporting you can't currently produce</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item5">You've outgrown your bookkeeper, but a full-time CFO isn't the right cost for your stage yet</span></li>
     </ul>
   </div>
 </section>
 
 <section id="included">
   <div class="container-narrow">
-    <div class="eyebrow">Scope</div>
-    <h2 class="section-title">What's Included</h2>
-    <p class="section-intro">A fractional CFO engagement with F&amp;M Management is built around where your business is today, not a fixed package. Typical scope includes:</p>
+    <div class="eyebrow" data-i18n="included_eyebrow">Scope</div>
+    <h2 class="section-title" data-i18n="included_title">What's Included</h2>
+    <p class="section-intro" data-i18n="included_intro">A fractional CFO engagement with F&amp;M Management is built around where your business is today, not a fixed package. Typical scope includes:</p>
     <ul class="check-list">
-      <li><span class="check-badge">&#10003;</span> Strategic financial leadership and direct partnership with ownership on growth, pricing, and long-range planning</li>
-      <li><span class="check-badge">&#10003;</span> Board and investor reporting</li>
-      <li><span class="check-badge">&#10003;</span> Capital planning and financing strategy</li>
-      <li><span class="check-badge">&#10003;</span> Financial modeling, budgeting, and variance analysis</li>
-      <li><span class="check-badge">&#10003;</span> Cash flow forecasting and liquidity planning</li>
-      <li><span class="check-badge">&#10003;</span> Oversight of your accounting and bookkeeping function, whether in-house or outsourced</li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item1">Strategic financial leadership and direct partnership with ownership on growth, pricing, and long-range planning</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item2">Board and investor reporting</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item3">Capital planning and financing strategy</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item4">Financial modeling, budgeting, and variance analysis</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item5">Cash flow forecasting and liquidity planning</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item6">Oversight of your accounting and bookkeeping function, whether in-house or outsourced</span></li>
     </ul>
   </div>
 </section>
 
 <section class="alt">
   <div class="container-narrow">
-    <div class="eyebrow">The Math</div>
-    <h2 class="section-title">A Fraction of the Cost of a Full-Time Hire</h2>
-    <p class="section-intro">Small business CFOs typically command $190K&ndash;$260K in cash compensation alone &mdash; before benefits, payroll taxes, and overhead push the real annual cost higher. Drag the slider to see fractional cost at different monthly hours.</p>
+    <div class="eyebrow" data-i18n="math_eyebrow">The Math</div>
+    <h2 class="section-title" data-i18n="math_title">A Fraction of the Cost of a Full-Time Hire</h2>
+    <p class="section-intro" data-i18n="math_intro">Small business CFOs typically command $190K&ndash;$260K in cash compensation alone &mdash; before benefits, payroll taxes, and overhead push the real annual cost higher. Drag the slider to see fractional cost at different monthly hours.</p>
     <div class="cost-chart">
       <div class="cost-row">
-        <div class="cost-row-label"><span>Full-Time CFO (avg. total annual cost)</span><span class="amt">$290K+</span></div>
+        <div class="cost-row-label"><span data-i18n="cost_fulltime_label">Full-Time CFO (avg. total annual cost)</span><span class="amt">$290K+</span></div>
         <div class="cost-bar-track"><div class="cost-bar-fill full"></div></div>
       </div>
       <div class="cost-row">
-        <div class="cost-row-label"><span>Fractional CFO at <span id="hoursLabel">30</span> hrs/month</span><span class="amt" id="costLabel">$90K</span>/yr</div>
+        <div class="cost-row-label"><span><span data-i18n="cost_fractional_prefix">Fractional CFO at</span> <span id="hoursLabel">30</span> <span data-i18n="cost_hrsmonth">hrs/month</span></span><span class="amt" id="costLabel">$90K</span>/yr</div>
         <div class="cost-bar-track"><div class="cost-bar-fill fractional" id="costBar" style="width: 41%;"></div></div>
       </div>
       <input type="range" id="hoursSlider" min="10" max="60" step="5" value="30">
-      <div class="slider-labels"><span>10 hrs/mo</span><span>60 hrs/mo</span></div>
-      <p class="cost-note">Figures reflect general market data, not a quote. Full-time figure reflects average small-business CFO total cost, including base cash compensation ($190K&ndash;$260K) plus employer payroll taxes, benefits, and bonus. Fractional estimate uses $250/hr, scaled to hours selected. Every F&amp;M Management engagement is scoped and priced to your business &mdash; <a href="https://calendar.app.google/KzfoRGyoooD6pQbv8" style="color: var(--accent); font-weight: 600;">book a call</a> for a proposal.</p>
+      <div class="slider-labels"><span data-i18n="slider_min">10 hrs/mo</span><span data-i18n="slider_max">60 hrs/mo</span></div>
+      <p class="cost-note" data-i18n="cost_note">Figures reflect general market data, not a quote. Full-time figure reflects average small-business CFO total cost, including base cash compensation ($190K&ndash;$260K) plus employer payroll taxes, benefits, and bonus. Fractional estimate uses $250/hr, scaled to hours selected. Every F&amp;M Management engagement is scoped and priced to your business &mdash; <a href="https://calendar.app.google/KzfoRGyoooD6pQbv8" style="color: var(--accent); font-weight: 600;">book a call</a> for a proposal.</p>
     </div>
   </div>
 </section>
@@ -268,24 +277,24 @@
 
 <section class="alt">
   <div class="container-narrow">
-    <div class="eyebrow">Flexible By Design</div>
-    <h2 class="section-title">Engagement Options</h2>
-    <p class="section-intro">Every engagement is built around where you are today, not a one-size-fits-all package.</p>
+    <div class="eyebrow" data-i18n="engagement_eyebrow">Flexible By Design</div>
+    <h2 class="section-title" data-i18n="engagement_title">Engagement Options</h2>
+    <p class="section-intro" data-i18n="engagement_intro">Every engagement is built around where you are today, not a one-size-fits-all package.</p>
     <div class="engagement-grid">
       <div class="engagement-card">
         <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg></div>
-        <h3>Project-Based</h3>
-        <p>A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.</p>
+        <h3 data-i18n="eng1_title">Project-Based</h3>
+        <p data-i18n="eng1_desc">A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.</p>
       </div>
       <div class="engagement-card">
         <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg></div>
-        <h3>Hourly Rate</h3>
-        <p>Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.</p>
+        <h3 data-i18n="eng2_title">Hourly Rate</h3>
+        <p data-i18n="eng2_desc">Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.</p>
       </div>
       <div class="engagement-card">
         <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"></path><path d="M3 12.6v-1a4 4 0 0 1 4-4h14"></path><path d="M7 21.9l-4-4 4-4"></path><path d="M21 11.4v1a4 4 0 0 1-4 4H3"></path></svg></div>
-        <h3>Fixed Monthly Rate</h3>
-        <p>A predictable monthly retainer for ongoing CFO-level support, scaled to your business.</p>
+        <h3 data-i18n="eng3_title">Fixed Monthly Rate</h3>
+        <p data-i18n="eng3_desc">A predictable monthly retainer for ongoing CFO-level support, scaled to your business.</p>
       </div>
     </div>
   </div>
@@ -293,28 +302,28 @@
 
 <section>
   <div class="container-narrow">
-    <div class="eyebrow">Common Questions</div>
-    <h2 class="section-title">Fractional CFO: FAQ</h2>
+    <div class="eyebrow" data-i18n="faq_eyebrow">Common Questions</div>
+    <h2 class="section-title" data-i18n="faq_title">Fractional CFO: FAQ</h2>
     <div class="faq-list">
       <div class="faq-item open">
-        <div class="faq-question"><div class="faq-q">What is a fractional CFO?</div><span class="faq-sign">&minus;</span></div>
-        <div class="faq-answer"><div class="faq-a">A fractional CFO is an experienced finance executive who works with your business part-time or on retainer, providing the strategic financial leadership of a full-time CFO &mdash; board reporting, capital planning, forecasting &mdash; without the cost of a full-time hire.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q1">What is a fractional CFO?</div><span class="faq-sign">&minus;</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a1">A fractional CFO is an experienced finance executive who works with your business part-time or on retainer, providing the strategic financial leadership of a full-time CFO &mdash; board reporting, capital planning, forecasting &mdash; without the cost of a full-time hire.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">When should I hire a fractional CFO?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">Most businesses bring on a fractional CFO when they've outgrown what a bookkeeper can provide: when they need real forecasting and cash flow visibility, are raising capital or taking on debt, or are making decisions that need financial modeling behind them.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q2">When should I hire a fractional CFO?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a2">Most businesses bring on a fractional CFO when they've outgrown what a bookkeeper can provide: when they need real forecasting and cash flow visibility, are raising capital or taking on debt, or are making decisions that need financial modeling behind them.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">How much does a fractional CFO cost?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">Nationally, fractional CFO engagements typically run $3,000&ndash;$15,000 per month depending on scope and hours, or $175&ndash;$450 per hour for project-based work &mdash; a fraction of a full-time CFO's salary and benefits. F&amp;M Management scopes and prices each engagement to the specific business, so book a call for a proposal tailored to you.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q3">How much does a fractional CFO cost?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a3">Nationally, fractional CFO engagements typically run $3,000&ndash;$15,000 per month depending on scope and hours, or $175&ndash;$450 per hour for project-based work &mdash; a fraction of a full-time CFO's salary and benefits. F&amp;M Management scopes and prices each engagement to the specific business, so book a call for a proposal tailored to you.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">Do I need a CFO or a Controller?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">A Controller owns accurate, timely accounting &mdash; the monthly close, reconciliations, and financial reporting. A CFO owns strategy &mdash; forecasting, capital planning, and using that reporting to guide decisions. Many growing businesses need both, which is why fractional engagements often combine the two.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q4">Do I need a CFO or a Controller?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a4">A Controller owns accurate, timely accounting &mdash; the monthly close, reconciliations, and financial reporting. A CFO owns strategy &mdash; forecasting, capital planning, and using that reporting to guide decisions. Many growing businesses need both, which is why fractional engagements often combine the two.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">Do you work with businesses outside of Florida?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">Yes. We work with growing businesses across the United States. Most engagements are run remotely, with in-person availability when it&rsquo;s useful.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q5">Do you work with businesses outside of Florida?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a5">Yes. We work with growing businesses across the United States. Most engagements are run remotely, with in-person availability when it&rsquo;s useful.</div></div>
       </div>
     </div>
   </div>
@@ -322,18 +331,18 @@
 
 <section class="contact">
   <div class="container-narrow">
-    <div class="eyebrow" style="color: var(--gold);">Get Started</div>
-    <h2 class="section-title">Let's Talk About Your Finance Function</h2>
-    <p class="contact-intro">Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need.</p>
+    <div class="eyebrow" style="color: var(--gold);" data-i18n="contact_eyebrow">Get Started</div>
+    <h2 class="section-title" data-i18n="contact_title">Let's Talk About Your Finance Function</h2>
+    <p class="contact-intro" data-i18n="contact_intro">Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need.</p>
     <div class="hero-ctas" style="justify-content: center;">
-      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8">Book a Free 30-Minute Call</a>
-      <a class="btn-secondary" style="color:#fff; border-color: rgba(255,255,255,0.5);" href="mailto:fabio@fandm-mgmt.com?subject=Fractional%20CFO%20Inquiry">Email</a>
+      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8" data-i18n="hero_cta1">Book a Free 30-Minute Call</a>
+      <a class="btn-secondary" style="color:#fff; border-color: rgba(255,255,255,0.5);" href="mailto:fabio@fandm-mgmt.com?subject=Fractional%20CFO%20Inquiry" data-i18n="btn_email">Email</a>
     </div>
   </div>
 </section>
 
 <footer>
-  &copy; 2026 F&amp;M Management LLC. All rights reserved.
+  <span data-i18n="footer_copy">&copy; 2026 F&amp;M Management LLC. All rights reserved.</span>
 </footer>
 
 <script type="application/ld+json">
@@ -405,6 +414,258 @@
   });
 </script>
 
+
+<script>
+var translations = {
+en: {
+  nav_home: "Home",
+  nav_services: "Services",
+  nav_how: "How We Work",
+  nav_industries: "Expertise",
+  nav_track: "Track Record",
+  nav_about: "About",
+  nav_cta: "Get In Touch",
+  svc_fractional_cfo: "Fractional CFO Services",
+  svc_startup_cfo: "Startup CFO Services",
+  svc_outsourced_controller: "Outsourced Controller Services",
+  svc_bookkeeping: "Bookkeeping Services",
+  svc_fpa: "FP&amp;A &amp; Financial Modeling",
+  svc_re_underwriting: "Real Estate Underwriting",
+  svc_re_consulting: "Real Estate Financial Consulting",
+  svc_hospitality: "Hospitality Financial Consulting",
+  btn_email: "Email",
+  footer_copy: "&copy; 2026 F&amp;M Management LLC. All rights reserved.",
+  pageTitle: "Fractional CFO Services | F&amp;M Management",
+  breadcrumb_current: "Fractional CFO Services",
+  hero_eyebrow: "Fractional CFO &middot; Serving Businesses Nationwide",
+  hero_h1: "Fractional CFO Services",
+  hero_lede: "A fractional CFO gives your business the strategic financial leadership of a full-time CFO &mdash; forecasting, capital planning, board and investor reporting &mdash; on a part-time or retainer basis, without the cost of a full-time executive hire. F&amp;M Management brings practitioner-level experience in real estate, hospitality, retail, and professional services to every engagement.",
+  hero_cta1: "Book a Free 30-Minute Call",
+  hero_cta2: "See What's Included",
+  signs_eyebrow: "Signs It's Time",
+  signs_title: "When Should You Hire a Fractional CFO?",
+  signs_intro: "Most businesses bring on a fractional CFO once they've outgrown what a bookkeeper or part-time accountant can provide. Common signs it's time:",
+  signs_item1: "You're raising capital or taking on debt and need a defensible financial model behind you",
+  signs_item2: "You don't have real visibility into cash flow, or where margin is being lost",
+  signs_item3: "You're making pricing, expansion, or acquisition decisions without financial modeling to support them",
+  signs_item4: "Your board, investors, or lenders expect professional-grade reporting you can't currently produce",
+  signs_item5: "You've outgrown your bookkeeper, but a full-time CFO isn't the right cost for your stage yet",
+  included_eyebrow: "Scope",
+  included_title: "What's Included",
+  included_intro: "A fractional CFO engagement with F&amp;M Management is built around where your business is today, not a fixed package. Typical scope includes:",
+  included_item1: "Strategic financial leadership and direct partnership with ownership on growth, pricing, and long-range planning",
+  included_item2: "Board and investor reporting",
+  included_item3: "Capital planning and financing strategy",
+  included_item4: "Financial modeling, budgeting, and variance analysis",
+  included_item5: "Cash flow forecasting and liquidity planning",
+  included_item6: "Oversight of your accounting and bookkeeping function, whether in-house or outsourced",
+  math_eyebrow: "The Math",
+  math_title: "A Fraction of the Cost of a Full-Time Hire",
+  math_intro: "Small business CFOs typically command $190K&ndash;$260K in cash compensation alone &mdash; before benefits, payroll taxes, and overhead push the real annual cost higher. Drag the slider to see fractional cost at different monthly hours.",
+  cost_fulltime_label: "Full-Time CFO (avg. total annual cost)",
+  cost_fractional_prefix: "Fractional CFO at",
+  cost_hrsmonth: "hrs/month",
+  slider_min: "10 hrs/mo",
+  slider_max: "60 hrs/mo",
+  cost_note: "Figures reflect general market data, not a quote. Full-time figure reflects average small-business CFO total cost, including base cash compensation ($190K&ndash;$260K) plus employer payroll taxes, benefits, and bonus. Fractional estimate uses $250/hr, scaled to hours selected. Every F&amp;M Management engagement is scoped and priced to your business &mdash; <a href=\"https://calendar.app.google/KzfoRGyoooD6pQbv8\" style=\"color: var(--accent); font-weight: 600;\">book a call</a> for a proposal.",
+  engagement_eyebrow: "Flexible By Design",
+  engagement_title: "Engagement Options",
+  engagement_intro: "Every engagement is built around where you are today, not a one-size-fits-all package.",
+  eng1_title: "Project-Based",
+  eng1_desc: "A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.",
+  eng2_title: "Hourly Rate",
+  eng2_desc: "Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.",
+  eng3_title: "Fixed Monthly Rate",
+  eng3_desc: "A predictable monthly retainer for ongoing CFO-level support, scaled to your business.",
+  faq_eyebrow: "Common Questions",
+  faq_title: "Fractional CFO: FAQ",
+  faq_q1: "What is a fractional CFO?",
+  faq_a1: "A fractional CFO is an experienced finance executive who works with your business part-time or on retainer, providing the strategic financial leadership of a full-time CFO &mdash; board reporting, capital planning, forecasting &mdash; without the cost of a full-time hire.",
+  faq_q2: "When should I hire a fractional CFO?",
+  faq_a2: "Most businesses bring on a fractional CFO when they've outgrown what a bookkeeper can provide: when they need real forecasting and cash flow visibility, are raising capital or taking on debt, or are making decisions that need financial modeling behind them.",
+  faq_q3: "How much does a fractional CFO cost?",
+  faq_a3: "Nationally, fractional CFO engagements typically run $3,000&ndash;$15,000 per month depending on scope and hours, or $175&ndash;$450 per hour for project-based work &mdash; a fraction of a full-time CFO's salary and benefits. F&amp;M Management scopes and prices each engagement to the specific business, so book a call for a proposal tailored to you.",
+  faq_q4: "Do I need a CFO or a Controller?",
+  faq_a4: "A Controller owns accurate, timely accounting &mdash; the monthly close, reconciliations, and financial reporting. A CFO owns strategy &mdash; forecasting, capital planning, and using that reporting to guide decisions. Many growing businesses need both, which is why fractional engagements often combine the two.",
+  faq_q5: "Do you work with businesses outside of Florida?",
+  faq_a5: "Yes. We work with growing businesses across the United States. Most engagements are run remotely, with in-person availability when it&rsquo;s useful.",
+  contact_eyebrow: "Get Started",
+  contact_title: "Let's Talk About Your Finance Function",
+  contact_intro: "Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need."
+},
+es: {
+  nav_home: "Inicio",
+  nav_services: "Servicios",
+  nav_how: "C&oacute;mo Trabajamos",
+  nav_industries: "Experiencia",
+  nav_track: "Trayectoria",
+  nav_about: "Nosotros",
+  nav_cta: "Cont&aacute;ctenos",
+  svc_fractional_cfo: "Servicios de CFO Fraccional",
+  svc_startup_cfo: "Servicios de CFO para Startups",
+  svc_outsourced_controller: "Servicios de Controller Externalizado",
+  svc_bookkeeping: "Servicios de Contabilidad",
+  svc_fpa: "FP&amp;A y Modelado Financiero",
+  svc_re_underwriting: "Suscripci&oacute;n Inmobiliaria",
+  svc_re_consulting: "Consultor&iacute;a Financiera Inmobiliaria",
+  svc_hospitality: "Consultor&iacute;a Financiera de Hoteler&iacute;a",
+  btn_email: "Correo",
+  footer_copy: "&copy; 2026 F&amp;M Management LLC. Todos los derechos reservados.",
+  pageTitle: "Servicios de CFO Fraccional | F&amp;M Management",
+  breadcrumb_current: "Servicios de CFO Fraccional",
+  hero_eyebrow: "CFO Fraccional &middot; Al Servicio de Empresas en Todo el Pa&iacute;s",
+  hero_h1: "Servicios de CFO Fraccional",
+  hero_lede: "Un CFO fraccional le da a su empresa el liderazgo financiero estrat&eacute;gico de un CFO a tiempo completo &mdash; pron&oacute;sticos, planificaci&oacute;n de capital, informes para la junta e inversionistas &mdash; en un r&eacute;gimen de tiempo parcial o retainer, sin el costo de contratar un ejecutivo a tiempo completo. F&amp;M Management aporta experiencia a nivel de practicante en bienes ra&iacute;ces, hoteler&iacute;a, retail y servicios profesionales en cada proyecto.",
+  hero_cta1: "Reserve una Llamada Gratuita de 30 Minutos",
+  hero_cta2: "Ver Qu&eacute; Incluye",
+  signs_eyebrow: "Se&ntilde;ales de que es el Momento",
+  signs_title: "&iquest;Cu&aacute;ndo Deber&iacute;a Contratar un CFO Fraccional?",
+  signs_intro: "La mayor&iacute;a de las empresas contratan un CFO fraccional una vez que superan lo que un contador o auxiliar contable a tiempo parcial puede ofrecer. Se&ntilde;ales comunes de que es el momento:",
+  signs_item1: "Est&aacute; recaudando capital o asumiendo deuda y necesita un modelo financiero s&oacute;lido que lo respalde",
+  signs_item2: "No tiene visibilidad real del flujo de caja, ni sabe d&oacute;nde se est&aacute; perdiendo margen",
+  signs_item3: "Est&aacute; tomando decisiones de precios, expansi&oacute;n o adquisici&oacute;n sin un modelo financiero que las respalde",
+  signs_item4: "Su junta directiva, inversionistas o prestamistas esperan informes de nivel profesional que actualmente no puede producir",
+  signs_item5: "Ha superado la capacidad de su contador, pero un CFO a tiempo completo a&uacute;n no es el costo adecuado para su etapa",
+  included_eyebrow: "Alcance",
+  included_title: "Qu&eacute; Incluye",
+  included_intro: "Un proyecto de CFO fraccional con F&amp;M Management se construye seg&uacute;n d&oacute;nde se encuentra su empresa hoy, no como un paquete fijo. El alcance t&iacute;pico incluye:",
+  included_item1: "Liderazgo financiero estrat&eacute;gico y asociaci&oacute;n directa con la direcci&oacute;n en crecimiento, precios y planificaci&oacute;n a largo plazo",
+  included_item2: "Informes para la junta directiva e inversionistas",
+  included_item3: "Planificaci&oacute;n de capital y estrategia de financiamiento",
+  included_item4: "Modelado financiero, presupuestaci&oacute;n y an&aacute;lisis de variaciones",
+  included_item5: "Pron&oacute;stico de flujo de caja y planificaci&oacute;n de liquidez",
+  included_item6: "Supervisi&oacute;n de su funci&oacute;n contable, ya sea interna o externalizada",
+  math_eyebrow: "Los N&uacute;meros",
+  math_title: "Una Fracci&oacute;n del Costo de una Contrataci&oacute;n a Tiempo Completo",
+  math_intro: "Los CFOs de peque&ntilde;as empresas suelen exigir entre $190K y $260K solo en compensaci&oacute;n en efectivo &mdash; antes de que los beneficios, impuestos sobre n&oacute;mina y gastos generales eleven el costo anual real. Mueva el control deslizante para ver el costo fraccional en distintas horas mensuales.",
+  cost_fulltime_label: "CFO a Tiempo Completo (costo anual total promedio)",
+  cost_fractional_prefix: "CFO Fraccional con",
+  cost_hrsmonth: "horas/mes",
+  slider_min: "10 h/mes",
+  slider_max: "60 h/mes",
+  cost_note: "Las cifras reflejan datos generales del mercado, no una cotizaci&oacute;n. La cifra de tiempo completo refleja el costo total promedio de un CFO de peque&ntilde;a empresa, incluyendo compensaci&oacute;n en efectivo base ($190K&ndash;$260K) m&aacute;s impuestos sobre n&oacute;mina del empleador, beneficios y bono. La estimaci&oacute;n fraccional usa $250/hora, seg&uacute;n las horas seleccionadas. Cada proyecto de F&amp;M Management se define y cotiza seg&uacute;n su negocio &mdash; <a href=\"https://calendar.app.google/KzfoRGyoooD6pQbv8\" style=\"color: var(--accent); font-weight: 600;\">reserve una llamada</a> para una propuesta.",
+  engagement_eyebrow: "Dise&ntilde;ado con Flexibilidad",
+  engagement_title: "Opciones de Colaboraci&oacute;n",
+  engagement_intro: "Cada proyecto se construye seg&uacute;n d&oacute;nde se encuentra hoy, no como un paquete &uacute;nico para todos.",
+  eng1_title: "Por Proyecto",
+  eng1_desc: "Un alcance y precio definidos para trabajo puntual &mdash; una limpieza de estados financieros, una implementaci&oacute;n de sistema o un paquete de suscripci&oacute;n.",
+  eng2_title: "Tarifa por Hora",
+  eng2_desc: "Pague solo por el tiempo que necesita &mdash; ideal para soporte puntual, preguntas de asesor&iacute;a o cargas de trabajo m&aacute;s ligeras.",
+  eng3_title: "Tarifa Mensual Fija",
+  eng3_desc: "Un retainer mensual predecible para soporte continuo a nivel de CFO, seg&uacute;n el tama&ntilde;o de su empresa.",
+  faq_eyebrow: "Preguntas Frecuentes",
+  faq_title: "CFO Fraccional: Preguntas Frecuentes",
+  faq_q1: "&iquest;Qu&eacute; es un CFO fraccional?",
+  faq_a1: "Un CFO fraccional es un ejecutivo financiero experimentado que trabaja con su empresa a tiempo parcial o por retainer, brindando el liderazgo financiero estrat&eacute;gico de un CFO a tiempo completo &mdash; informes para la junta, planificaci&oacute;n de capital, pron&oacute;sticos &mdash; sin el costo de una contrataci&oacute;n a tiempo completo.",
+  faq_q2: "&iquest;Cu&aacute;ndo deber&iacute;a contratar un CFO fraccional?",
+  faq_a2: "La mayor&iacute;a de las empresas contratan un CFO fraccional cuando superan lo que un contador puede ofrecer: cuando necesitan pron&oacute;sticos reales y visibilidad del flujo de caja, est&aacute;n recaudando capital o asumiendo deuda, o est&aacute;n tomando decisiones que requieren un modelo financiero que las respalde.",
+  faq_q3: "&iquest;Cu&aacute;nto cuesta un CFO fraccional?",
+  faq_a3: "A nivel nacional, los proyectos de CFO fraccional suelen costar entre $3,000 y $15,000 por mes seg&uacute;n el alcance y las horas, o entre $175 y $450 por hora para trabajo por proyecto &mdash; una fracci&oacute;n del salario y beneficios de un CFO a tiempo completo. F&amp;M Management define y cotiza cada proyecto seg&uacute;n el negocio espec&iacute;fico, as&iacute; que reserve una llamada para una propuesta a su medida.",
+  faq_q4: "&iquest;Necesito un CFO o un Controller?",
+  faq_a4: "Un Controller se encarga de la contabilidad precisa y oportuna &mdash; el cierre mensual, las conciliaciones y los informes financieros. Un CFO se encarga de la estrategia &mdash; pron&oacute;sticos, planificaci&oacute;n de capital y el uso de esos informes para guiar decisiones. Muchas empresas en crecimiento necesitan ambos, por lo que los proyectos fraccionales a menudo combinan los dos roles.",
+  faq_q5: "&iquest;Trabajan con empresas fuera de la Florida?",
+  faq_a5: "S&iacute;. Trabajamos con empresas en crecimiento en todo Estados Unidos. La mayor&iacute;a de los proyectos se realizan de forma remota, con disponibilidad presencial cuando resulta &uacute;til.",
+  contact_eyebrow: "Comencemos",
+  contact_title: "Hablemos de su Funci&oacute;n Financiera",
+  contact_intro: "Ya sea que necesite un CFO fraccional, un controller que se encargue del cierre, o una limpieza contable, F&amp;M Management puede comenzar exactamente con lo que necesita."
+},
+it: {
+  nav_home: "Home",
+  nav_services: "Servizi",
+  nav_how: "Come Lavoriamo",
+  nav_industries: "Competenze",
+  nav_track: "Track Record",
+  nav_about: "Chi Siamo",
+  nav_cta: "Contattaci",
+  svc_fractional_cfo: "Servizi di CFO Frazionale",
+  svc_startup_cfo: "Servizi di CFO per Startup",
+  svc_outsourced_controller: "Servizi di Controller Esternalizzato",
+  svc_bookkeeping: "Servizi di Contabilit&agrave;",
+  svc_fpa: "FP&amp;A e Modellazione Finanziaria",
+  svc_re_underwriting: "Underwriting Immobiliare",
+  svc_re_consulting: "Consulenza Finanziaria Immobiliare",
+  svc_hospitality: "Consulenza Finanziaria per l'Ospitalit&agrave;",
+  btn_email: "Email",
+  footer_copy: "&copy; 2026 F&amp;M Management LLC. Tutti i diritti riservati.",
+  pageTitle: "Servizi di CFO Frazionale | F&amp;M Management",
+  breadcrumb_current: "Servizi di CFO Frazionale",
+  hero_eyebrow: "CFO Frazionale &middot; Al Servizio di Aziende in Tutto il Paese",
+  hero_h1: "Servizi di CFO Frazionale",
+  hero_lede: "Un CFO frazionale offre alla vostra azienda la leadership finanziaria strategica di un CFO a tempo pieno &mdash; previsioni, pianificazione del capitale, reportistica per il board e gli investitori &mdash; con un impegno part-time o su base di retainer, senza il costo di un'assunzione dirigenziale a tempo pieno. F&amp;M Management porta esperienza a livello pratico nel settore immobiliare, dell'ospitalit&agrave;, del retail e dei servizi professionali in ogni incarico.",
+  hero_cta1: "Prenota una Chiamata Gratuita di 30 Minuti",
+  hero_cta2: "Scopri Cosa &Egrave; Incluso",
+  signs_eyebrow: "Segnali che &Egrave; il Momento",
+  signs_title: "Quando Conviene Assumere un CFO Frazionale?",
+  signs_intro: "La maggior parte delle aziende assume un CFO frazionale quando ha superato ci&ograve; che un contabile o un addetto contabile part-time pu&ograve; offrire. Segnali comuni che &egrave; il momento:",
+  signs_item1: "State raccogliendo capitale o contraendo debito e avete bisogno di un modello finanziario solido a supporto",
+  signs_item2: "Non avete una reale visibilit&agrave; sul flusso di cassa, o su dove si sta perdendo margine",
+  signs_item3: "State prendendo decisioni su prezzi, espansione o acquisizioni senza un modello finanziario a supporto",
+  signs_item4: "Il vostro board, investitori o finanziatori si aspettano report di livello professionale che al momento non potete produrre",
+  signs_item5: "Avete superato le capacit&agrave; del vostro contabile, ma un CFO a tempo pieno non &egrave; ancora il costo giusto per la vostra fase",
+  included_eyebrow: "Ambito",
+  included_title: "Cosa &Egrave; Incluso",
+  included_intro: "Un incarico di CFO frazionale con F&amp;M Management &egrave; costruito in base a dove si trova oggi la vostra azienda, non come un pacchetto fisso. L'ambito tipico include:",
+  included_item1: "Leadership finanziaria strategica e collaborazione diretta con la propriet&agrave; su crescita, prezzi e pianificazione a lungo termine",
+  included_item2: "Reportistica per il board e gli investitori",
+  included_item3: "Pianificazione del capitale e strategia di finanziamento",
+  included_item4: "Modellazione finanziaria, budgeting e analisi degli scostamenti",
+  included_item5: "Previsione del flusso di cassa e pianificazione della liquidit&agrave;",
+  included_item6: "Supervisione della vostra funzione contabile, interna o esternalizzata",
+  math_eyebrow: "I Numeri",
+  math_title: "Una Frazione del Costo di un'Assunzione a Tempo Pieno",
+  math_intro: "I CFO delle piccole imprese richiedono in genere tra $190K e $260K solo in compenso in contanti &mdash; prima che benefit, imposte sul lavoro e spese generali aumentino il costo annuo reale. Spostate il cursore per vedere il costo frazionale a diverse ore mensili.",
+  cost_fulltime_label: "CFO a Tempo Pieno (costo annuo totale medio)",
+  cost_fractional_prefix: "CFO Frazionale con",
+  cost_hrsmonth: "ore/mese",
+  slider_min: "10 ore/mese",
+  slider_max: "60 ore/mese",
+  cost_note: "Le cifre riflettono dati generali di mercato, non un preventivo. La cifra a tempo pieno riflette il costo totale medio di un CFO per piccole imprese, incluso il compenso base in contanti ($190K&ndash;$260K) pi&ugrave; imposte sul lavoro a carico del datore, benefit e bonus. La stima frazionale utilizza $250/ora, in base alle ore selezionate. Ogni incarico F&amp;M Management &egrave; definito e quotato in base alla vostra azienda &mdash; <a href=\"https://calendar.app.google/KzfoRGyoooD6pQbv8\" style=\"color: var(--accent); font-weight: 600;\">prenotate una chiamata</a> per un preventivo.",
+  engagement_eyebrow: "Progettato per la Flessibilit&agrave;",
+  engagement_title: "Opzioni di Collaborazione",
+  engagement_intro: "Ogni incarico &egrave; costruito in base a dove vi trovate oggi, non come un pacchetto unico per tutti.",
+  eng1_title: "A Progetto",
+  eng1_desc: "Un ambito e un prezzo definiti per un lavoro una tantum &mdash; una pulizia dei bilanci, un'implementazione di sistema o un pacchetto di underwriting.",
+  eng2_title: "Tariffa Oraria",
+  eng2_desc: "Pagate solo per il tempo di cui avete bisogno &mdash; ideale per supporto occasionale, domande di consulenza o carichi di lavoro pi&ugrave; leggeri.",
+  eng3_title: "Tariffa Mensile Fissa",
+  eng3_desc: "Un retainer mensile prevedibile per un supporto continuativo a livello di CFO, in base alle dimensioni della vostra azienda.",
+  faq_eyebrow: "Domande Frequenti",
+  faq_title: "CFO Frazionale: Domande Frequenti",
+  faq_q1: "Cos'&egrave; un CFO frazionale?",
+  faq_a1: "Un CFO frazionale &egrave; un dirigente finanziario esperto che collabora con la vostra azienda part-time o su base di retainer, offrendo la leadership finanziaria strategica di un CFO a tempo pieno &mdash; reportistica per il board, pianificazione del capitale, previsioni &mdash; senza il costo di un'assunzione a tempo pieno.",
+  faq_q2: "Quando conviene assumere un CFO frazionale?",
+  faq_a2: "La maggior parte delle aziende assume un CFO frazionale quando ha superato ci&ograve; che un contabile pu&ograve; offrire: quando ha bisogno di previsioni reali e visibilit&agrave; sul flusso di cassa, sta raccogliendo capitale o contraendo debito, oppure sta prendendo decisioni che richiedono un modello finanziario a supporto.",
+  faq_q3: "Quanto costa un CFO frazionale?",
+  faq_a3: "A livello nazionale, gli incarichi di CFO frazionale costano in genere tra $3.000 e $15.000 al mese a seconda dell'ambito e delle ore, oppure tra $175 e $450 all'ora per lavoro a progetto &mdash; una frazione dello stipendio e dei benefit di un CFO a tempo pieno. F&amp;M Management definisce e quota ogni incarico in base all'azienda specifica, quindi prenotate una chiamata per un preventivo su misura.",
+  faq_q4: "Ho bisogno di un CFO o di un Controller?",
+  faq_a4: "Un Controller si occupa della contabilit&agrave; accurata e tempestiva &mdash; la chiusura mensile, le riconciliazioni e la reportistica finanziaria. Un CFO si occupa della strategia &mdash; previsioni, pianificazione del capitale e utilizzo di quella reportistica per guidare le decisioni. Molte aziende in crescita hanno bisogno di entrambi, motivo per cui gli incarichi frazionali spesso combinano i due ruoli.",
+  faq_q5: "Lavorate con aziende al di fuori della Florida?",
+  faq_a5: "S&igrave;. Lavoriamo con aziende in crescita in tutti gli Stati Uniti. La maggior parte degli incarichi viene svolta da remoto, con disponibilit&agrave; in presenza quando risulta utile.",
+  contact_eyebrow: "Iniziamo",
+  contact_title: "Parliamo della Vostra Funzione Finanziaria",
+  contact_intro: "Che abbiate bisogno di un CFO frazionale, di un controller che gestisca la chiusura, o di una pulizia contabile, F&amp;M Management pu&ograve; iniziare esattamente da ci&ograve; di cui avete bisogno."
+}
+};
+function applyLang(lang) {
+  var dict = translations[lang] || translations.en;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) { el.innerHTML = dict[key]; }
+  });
+  if (dict.pageTitle) { document.getElementById('pageTitle').innerHTML = dict.pageTitle; }
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  try { localStorage.setItem('fm_lang', lang); } catch (e) {}
+}
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); });
+});
+var savedLang = 'en';
+try { savedLang = localStorage.getItem('fm_lang') || 'en'; } catch (e) {}
+applyLang(savedLang);
+</script>
 
 <script>
   (function() {

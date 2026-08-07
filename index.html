@@ -65,6 +65,10 @@
   .services-dropdown a:hover { background: var(--bg-light); color: var(--navy); }
   .services-dropdown a.current { color: var(--gold); font-weight: 700; }
   .mobile-toggle { display: none; font-size: 24px; line-height: 1; background: none; border: none; cursor: pointer; color: var(--navy); padding: 4px 8px; }
+  .lang-toggle { display: flex; gap: 4px; border: 1px solid var(--border); border-radius: 4px; padding: 3px; }
+  .lang-btn { font-size: 12px; font-weight: 700; padding: 5px 9px; border: none; border-radius: 3px; background: transparent; color: var(--text-muted); cursor: pointer; letter-spacing: 0.5px; }
+  .lang-btn.active { background: var(--navy); color: #fff; }
+  .lang-btn:hover:not(.active) { color: var(--navy); }
 
   @media (max-width: 860px) {
     .nav-wrap { flex-wrap: wrap; row-gap: 0; padding: 14px 16px; position: relative; }
@@ -460,14 +464,14 @@
       <li class="services-item">
         <a href="/#services" data-i18n="nav_services">Services</a>
         <div class="services-dropdown">
-      <a href="/fractional-cfo/">Fractional CFO Services</a>
-      <a href="/startup-cfo-services/">Startup CFO Services</a>
-      <a href="/outsourced-controller-services/">Outsourced Controller Services</a>
-      <a href="/bookkeeping-services/">Bookkeeping Services</a>
-      <a href="/fpa-financial-modeling/">FP&A & Financial Modeling</a>
-      <a href="/real-estate-underwriting/">Real Estate Underwriting</a>
-      <a href="/real-estate-financial-consulting/">Real Estate Financial Consulting</a>
-      <a href="/hospitality-financial-consulting/">Hospitality Financial Consulting</a>
+      <a href="/fractional-cfo/" data-i18n="svc_fractional_cfo">Fractional CFO Services</a>
+      <a href="/startup-cfo-services/" data-i18n="svc_startup_cfo">Startup CFO Services</a>
+      <a href="/outsourced-controller-services/" data-i18n="svc_outsourced_controller">Outsourced Controller Services</a>
+      <a href="/bookkeeping-services/" data-i18n="svc_bookkeeping">Bookkeeping Services</a>
+      <a href="/fpa-financial-modeling/" data-i18n="svc_fpa">FP&A & Financial Modeling</a>
+      <a href="/real-estate-underwriting/" data-i18n="svc_re_underwriting">Real Estate Underwriting</a>
+      <a href="/real-estate-financial-consulting/" data-i18n="svc_re_consulting">Real Estate Financial Consulting</a>
+      <a href="/hospitality-financial-consulting/" data-i18n="svc_hospitality">Hospitality Financial Consulting</a>
         </div>
       </li>
       <li><a href="/#how-we-work" data-i18n="nav_how">How We Work</a></li>
@@ -831,7 +835,8 @@
 var translations = {
   en: {
     pageTitle: "F&amp;M Management | Fractional CFO, Controller &amp; Accounting Services Nationwide",
-    nav_services: "Services", nav_how: "How We Work", nav_industries: "Expertise", nav_track: "Track Record", nav_about: "About", nav_cta: "Get In Touch",
+    nav_home: "Home", nav_services: "Services", nav_how: "How We Work", nav_industries: "Expertise", nav_track: "Track Record", nav_about: "About", nav_cta: "Get In Touch",
+    svc_fractional_cfo: "Fractional CFO Services", svc_startup_cfo: "Startup CFO Services", svc_outsourced_controller: "Outsourced Controller Services", svc_bookkeeping: "Bookkeeping Services", svc_fpa: "FP&amp;A &amp; Financial Modeling", svc_re_underwriting: "Real Estate Underwriting", svc_re_consulting: "Real Estate Financial Consulting", svc_hospitality: "Hospitality Financial Consulting",
     hero_eyebrow: "Fractional CFO &middot; Controller &middot; Bookkeeping",
     hero_h1: "Finance leadership, without the full-time hire.",
     hero_sub: "F&amp;M Management provides hands-on CFO, controller, and accounting support for growing companies in real estate, hospitality &amp; F&amp;B, and retail &amp; consumer goods &mdash; without the cost of a full-time hire.",
@@ -892,7 +897,8 @@ var translations = {
   },
   es: {
     pageTitle: "F&amp;M Management | CFO Fraccional, Controller y Servicios Contables a Nivel Nacional",
-    nav_services: "Servicios", nav_how: "C&oacute;mo Trabajamos", nav_industries: "Experiencia", nav_track: "Trayectoria", nav_about: "Nosotros", nav_cta: "Cont&aacute;ctenos",
+    nav_home: "Inicio", nav_services: "Servicios", nav_how: "C&oacute;mo Trabajamos", nav_industries: "Experiencia", nav_track: "Trayectoria", nav_about: "Nosotros", nav_cta: "Cont&aacute;ctenos",
+    svc_fractional_cfo: "Servicios de CFO Fraccional", svc_startup_cfo: "Servicios de CFO para Startups", svc_outsourced_controller: "Servicios de Controller Externalizado", svc_bookkeeping: "Servicios de Contabilidad", svc_fpa: "FP&amp;A y Modelado Financiero", svc_re_underwriting: "Suscripci&oacute;n Inmobiliaria", svc_re_consulting: "Consultor&iacute;a Financiera Inmobiliaria", svc_hospitality: "Consultor&iacute;a Financiera de Hoteler&iacute;a",
     hero_eyebrow: "CFO Fraccional &middot; Controller &middot; Contabilidad",
     hero_h1: "Liderazgo financiero, sin la contrataci&oacute;n a tiempo completo.",
     hero_sub: "F&amp;M Management ofrece servicios pr&aacute;cticos de CFO, controller y contabilidad para empresas en crecimiento en los sectores de bienes ra&iacute;ces, hospitalidad y alimentos y bebidas, y retail y bienes de consumo &mdash; sin el costo de una contrataci&oacute;n a tiempo completo.",
@@ -953,7 +959,8 @@ var translations = {
   },
   it: {
     pageTitle: "F&amp;M Management | CFO Frazionale, Controller e Servizi Contabili a Livello Nazionale",
-    nav_services: "Servizi", nav_how: "Come Lavoriamo", nav_industries: "Competenze", nav_track: "Track Record", nav_about: "Chi Siamo", nav_cta: "Contattaci",
+    nav_home: "Home", nav_services: "Servizi", nav_how: "Come Lavoriamo", nav_industries: "Competenze", nav_track: "Track Record", nav_about: "Chi Siamo", nav_cta: "Contattaci",
+    svc_fractional_cfo: "Servizi di CFO Frazionale", svc_startup_cfo: "Servizi di CFO per Startup", svc_outsourced_controller: "Servizi di Controller Esternalizzato", svc_bookkeeping: "Servizi di Contabilit&agrave;", svc_fpa: "FP&amp;A e Modellazione Finanziaria", svc_re_underwriting: "Underwriting Immobiliare", svc_re_consulting: "Consulenza Finanziaria Immobiliare", svc_hospitality: "Consulenza Finanziaria per l'Ospitalit&agrave;",
     hero_eyebrow: "CFO Frazionale &middot; Controller &middot; Contabilit&agrave;",
     hero_h1: "Leadership finanziaria, senza l'assunzione a tempo pieno.",
     hero_sub: "F&amp;M Management offre servizi pratici di CFO, controller e contabilit&agrave; per aziende in crescita nei settori immobiliare, ospitalit&agrave; e F&amp;B, e retail e beni di consumo &mdash; senza il costo di un'assunzione a tempo pieno.",

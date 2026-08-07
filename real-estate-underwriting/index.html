@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Real Estate Underwriting Services | F&amp;M Management</title>
+<title id="pageTitle">Real Estate Underwriting Services | F&amp;M Management</title>
 <meta name="description" content="F&amp;M Management provides real estate acquisition underwriting and pro forma modeling for investors and developers across the United States.">
 <link rel="canonical" href="https://www.fandm-mgmt.com/real-estate-underwriting/">
 <meta property="og:type" content="website">
@@ -35,6 +35,10 @@
   .services-dropdown a:hover { background: var(--bg-light); color: var(--navy); }
   .services-dropdown a.current { color: var(--gold); font-weight: 700; }
   .mobile-toggle { display: none; font-size: 24px; line-height: 1; background: none; border: none; cursor: pointer; color: var(--navy); padding: 4px 8px; }
+  .lang-toggle { display: flex; gap: 4px; border: 1px solid var(--border); border-radius: 4px; padding: 3px; }
+  .lang-btn { font-size: 12px; font-weight: 700; padding: 5px 9px; border: none; border-radius: 3px; background: transparent; color: var(--text-muted); cursor: pointer; letter-spacing: 0.5px; }
+  .lang-btn.active { background: var(--navy); color: #fff; }
+  .lang-btn:hover:not(.active) { color: var(--navy); }
 
   @media (max-width: 860px) {
     .nav-wrap { flex-wrap: wrap; row-gap: 0; padding: 14px 16px; position: relative; }
@@ -178,41 +182,46 @@
     <div class="logo">F | M <span>MANAGEMENT</span></div>
     <button type="button" class="mobile-toggle" id="mobileNavToggle" aria-label="Menu">&#9776;</button>
     <nav><ul>
-      <li><a href="/">Home</a></li>
+      <li><a href="/" data-i18n="nav_home">Home</a></li>
       <li class="services-item">
-        <a href="/#services">Services</a>
+        <a href="/#services" data-i18n="nav_services">Services</a>
         <div class="services-dropdown">
-      <a href="/fractional-cfo/">Fractional CFO Services</a>
-      <a href="/startup-cfo-services/">Startup CFO Services</a>
-      <a href="/outsourced-controller-services/">Outsourced Controller Services</a>
-      <a href="/bookkeeping-services/">Bookkeeping Services</a>
-      <a href="/fpa-financial-modeling/">FP&A & Financial Modeling</a>
-      <a href="/real-estate-underwriting/" class="current">Real Estate Underwriting</a>
-      <a href="/real-estate-financial-consulting/">Real Estate Financial Consulting</a>
-      <a href="/hospitality-financial-consulting/">Hospitality Financial Consulting</a>
+      <a href="/fractional-cfo/" data-i18n="svc_fractional_cfo">Fractional CFO Services</a>
+      <a href="/startup-cfo-services/" data-i18n="svc_startup_cfo">Startup CFO Services</a>
+      <a href="/outsourced-controller-services/" data-i18n="svc_outsourced_controller">Outsourced Controller Services</a>
+      <a href="/bookkeeping-services/" data-i18n="svc_bookkeeping">Bookkeeping Services</a>
+      <a href="/fpa-financial-modeling/" data-i18n="svc_fpa">FP&A & Financial Modeling</a>
+      <a href="/real-estate-underwriting/" class="current" data-i18n="svc_re_underwriting">Real Estate Underwriting</a>
+      <a href="/real-estate-financial-consulting/" data-i18n="svc_re_consulting">Real Estate Financial Consulting</a>
+      <a href="/hospitality-financial-consulting/" data-i18n="svc_hospitality">Hospitality Financial Consulting</a>
         </div>
       </li>
-      <li><a href="/#how-we-work">How We Work</a></li>
-      <li><a href="/#industries">Expertise</a></li>
-      <li><a href="/#track-record">Track Record</a></li>
-      <li><a href="/#about">About</a></li>
+      <li><a href="/#how-we-work" data-i18n="nav_how">How We Work</a></li>
+      <li><a href="/#industries" data-i18n="nav_industries">Expertise</a></li>
+      <li><a href="/#track-record" data-i18n="nav_track">Track Record</a></li>
+      <li><a href="/#about" data-i18n="nav_about">About</a></li>
     </ul></nav>
     <div class="nav-right">
-      <a class="nav-cta" href="/#contact">Get In Touch</a>
+      <div class="lang-toggle" role="group" aria-label="Language selector">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+        <button type="button" class="lang-btn" data-lang="it">IT</button>
+      </div>
+      <a class="nav-cta" href="/#contact" data-i18n="nav_cta">Get In Touch</a>
     </div>
   </div>
 </header>
 
-<div class="breadcrumb"><a href="/">Home</a> &rsaquo; Real Estate Underwriting</div>
+<div class="breadcrumb"><a href="/" data-i18n="nav_home">Home</a> &rsaquo; <span data-i18n="breadcrumb_current">Real Estate Underwriting</span></div>
 
 <section class="hero-section">
   <div>
-    <div class="eyebrow">Real Estate Underwriting &middot; Serving Investors Nationwide</div>
-    <h1>Real Estate Underwriting</h1>
-    <p class="lede">F&amp;M Management builds acquisition models and pro formas that hold up to lender, investor, and partner scrutiny &mdash; for deals across the country.</p>
+    <div class="eyebrow" data-i18n="hero_eyebrow">Real Estate Underwriting &middot; Serving Investors Nationwide</div>
+    <h1 data-i18n="hero_h1">Real Estate Underwriting</h1>
+    <p class="lede" data-i18n="hero_lede">F&amp;M Management builds acquisition models and pro formas that hold up to lender, investor, and partner scrutiny &mdash; for deals across the country.</p>
     <div class="hero-ctas">
-      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8">Book a Free 30-Minute Call</a>
-      <a class="btn-secondary" href="#included">See What's Included</a>
+      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8" data-i18n="hero_cta1">Book a Free 30-Minute Call</a>
+      <a class="btn-secondary" href="#included" data-i18n="hero_cta2">See What's Included</a>
     </div>
   </div>
   <div class="hero-image">
@@ -222,31 +231,31 @@
 
 <section class="alt">
   <div class="container-narrow">
-    <div class="eyebrow">Signs It's Time</div>
-    <h2 class="section-title">Is It Time for Dedicated Underwriting Support?</h2>
-    <p class="section-intro">Deal flow moves fast. If underwriting is the bottleneck, opportunities slip through.</p>
+    <div class="eyebrow" data-i18n="signs_eyebrow">Signs It's Time</div>
+    <h2 class="section-title" data-i18n="signs_title">Is It Time for Dedicated Underwriting Support?</h2>
+    <p class="section-intro" data-i18n="signs_intro">Deal flow moves fast. If underwriting is the bottleneck, opportunities slip through.</p>
     <ul class="check-list">
-      <li><span class="check-badge">&#10003;</span> You’re evaluating deals on a rough back-of-envelope basis instead of a full pro forma.</li>
-      <li><span class="check-badge">&#10003;</span> Lenders or JV partners have pushed back on assumptions in your underwriting.</li>
-      <li><span class="check-badge">&#10003;</span> You don’t have capacity to underwrite every deal that comes across your desk.</li>
-      <li><span class="check-badge">&#10003;</span> You need a second, objective set of eyes on a deal before committing capital.</li>
-      <li><span class="check-badge">&#10003;</span> Post-acquisition, actuals aren’t being tracked against your original underwriting.</li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item1">You’re evaluating deals on a rough back-of-envelope basis instead of a full pro forma.</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item2">Lenders or JV partners have pushed back on assumptions in your underwriting.</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item3">You don’t have capacity to underwrite every deal that comes across your desk.</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item4">You need a second, objective set of eyes on a deal before committing capital.</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="signs_item5">Post-acquisition, actuals aren’t being tracked against your original underwriting.</span></li>
     </ul>
   </div>
 </section>
 
 <section id="included">
   <div class="container-narrow">
-    <div class="eyebrow">Scope</div>
-    <h2 class="section-title">What's Included</h2>
-    <p class="section-intro">Underwriting support across the deal lifecycle, from initial screen to closing.</p>
+    <div class="eyebrow" data-i18n="included_eyebrow">Scope</div>
+    <h2 class="section-title" data-i18n="included_title">What's Included</h2>
+    <p class="section-intro" data-i18n="included_intro">Underwriting support across the deal lifecycle, from initial screen to closing.</p>
     <ul class="check-list">
-      <li><span class="check-badge">&#10003;</span> Acquisition underwriting and pro forma modeling (development and value-add)</li>
-      <li><span class="check-badge">&#10003;</span> Sensitivity analysis on rent growth, exit cap rate, and construction cost assumptions</li>
-      <li><span class="check-badge">&#10003;</span> Debt sizing and capital stack analysis</li>
-      <li><span class="check-badge">&#10003;</span> Lender and investor-ready reporting packages</li>
-      <li><span class="check-badge">&#10003;</span> Post-closing actual-vs-pro forma performance tracking</li>
-      <li><span class="check-badge">&#10003;</span> Market and comparable transaction research to support assumptions</li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item1">Acquisition underwriting and pro forma modeling (development and value-add)</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item2">Sensitivity analysis on rent growth, exit cap rate, and construction cost assumptions</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item3">Debt sizing and capital stack analysis</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item4">Lender and investor-ready reporting packages</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item5">Post-closing actual-vs-pro forma performance tracking</span></li>
+      <li><span class="check-badge">&#10003;</span> <span data-i18n="included_item6">Market and comparable transaction research to support assumptions</span></li>
     </ul>
   </div>
 </section>
@@ -254,24 +263,24 @@
 
 <section class="alt">
   <div class="container-narrow">
-    <div class="eyebrow">Flexible By Design</div>
-    <h2 class="section-title">Engagement Options</h2>
-    <p class="section-intro">Every engagement is built around where you are today, not a one-size-fits-all package.</p>
+    <div class="eyebrow" data-i18n="engagement_eyebrow">Flexible By Design</div>
+    <h2 class="section-title" data-i18n="engagement_title">Engagement Options</h2>
+    <p class="section-intro" data-i18n="engagement_intro">Every engagement is built around where you are today, not a one-size-fits-all package.</p>
     <div class="engagement-grid">
       <div class="engagement-card">
         <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg></div>
-        <h3>Project-Based</h3>
-        <p>A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.</p>
+        <h3 data-i18n="eng1_title">Project-Based</h3>
+        <p data-i18n="eng1_desc">A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.</p>
       </div>
       <div class="engagement-card">
         <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg></div>
-        <h3>Hourly Rate</h3>
-        <p>Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.</p>
+        <h3 data-i18n="eng2_title">Hourly Rate</h3>
+        <p data-i18n="eng2_desc">Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.</p>
       </div>
       <div class="engagement-card">
         <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"></path><path d="M3 12.6v-1a4 4 0 0 1 4-4h14"></path><path d="M7 21.9l-4-4 4-4"></path><path d="M21 11.4v1a4 4 0 0 1-4 4H3"></path></svg></div>
-        <h3>Fixed Monthly Rate</h3>
-        <p>A predictable monthly retainer for ongoing support, scaled to your business.</p>
+        <h3 data-i18n="eng3_title">Fixed Monthly Rate</h3>
+        <p data-i18n="eng3_desc">A predictable monthly retainer for ongoing support, scaled to your business.</p>
       </div>
     </div>
   </div>
@@ -279,28 +288,28 @@
 
 <section>
   <div class="container-narrow">
-    <div class="eyebrow">Common Questions</div>
-    <h2 class="section-title">Real Estate Underwriting &mdash; Frequently Asked Questions</h2>
+    <div class="eyebrow" data-i18n="faq_eyebrow">Common Questions</div>
+    <h2 class="section-title" data-i18n="faq_title">Real Estate Underwriting &mdash; Frequently Asked Questions</h2>
     <div class="faq-list">
       <div class="faq-item open">
-        <div class="faq-question"><div class="faq-q">What types of deals do you underwrite?</div><span class="faq-sign">&minus;</span></div>
-        <div class="faq-answer"><div class="faq-a">We’ve underwritten acquisition, development, and value-add deals across real estate, hospitality, and mixed-use properties, including lender and investor reporting for active projects.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q1">What types of deals do you underwrite?</div><span class="faq-sign">&minus;</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a1">We’ve underwritten acquisition, development, and value-add deals across real estate, hospitality, and mixed-use properties, including lender and investor reporting for active projects.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">Can you turn around underwriting quickly for a deal under LOI?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">Yes &mdash; deal timelines are often tight, and we scope underwriting engagements around your actual timeline, including expedited turnarounds when needed.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q2">Can you turn around underwriting quickly for a deal under LOI?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a2">Yes &mdash; deal timelines are often tight, and we scope underwriting engagements around your actual timeline, including expedited turnarounds when needed.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">Do you build the model, or just review one we already have?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">Both. We build pro formas from scratch, or review and stress-test a model your team or broker has already prepared before you commit capital.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q3">Do you build the model, or just review one we already have?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a3">Both. We build pro formas from scratch, or review and stress-test a model your team or broker has already prepared before you commit capital.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">Can you support ongoing lender or investor reporting after closing?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">Yes &mdash; many engagements continue post-closing with recurring reporting packages that track performance against the original underwriting.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q4">Can you support ongoing lender or investor reporting after closing?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a4">Yes &mdash; many engagements continue post-closing with recurring reporting packages that track performance against the original underwriting.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-question"><div class="faq-q">Do you work with investors outside of Florida?</div><span class="faq-sign">+</span></div>
-        <div class="faq-answer"><div class="faq-a">Yes. We underwrite deals across the United States. Underwriting work is well suited to remote collaboration, with site visits arranged as needed.</div></div>
+        <div class="faq-question"><div class="faq-q" data-i18n="faq_q5">Do you work with investors outside of Florida?</div><span class="faq-sign">+</span></div>
+        <div class="faq-answer"><div class="faq-a" data-i18n="faq_a5">Yes. We underwrite deals across the United States. Underwriting work is well suited to remote collaboration, with site visits arranged as needed.</div></div>
       </div>
     </div>
   </div>
@@ -308,18 +317,18 @@
 
 <section class="contact">
   <div class="container-narrow">
-    <div class="eyebrow" style="color: var(--gold);">Get Started</div>
-    <h2 class="section-title">Let's Talk About Your Finance Function</h2>
-    <p class="contact-intro">Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need.</p>
+    <div class="eyebrow" style="color: var(--gold);" data-i18n="contact_eyebrow">Get Started</div>
+    <h2 class="section-title" data-i18n="contact_title">Let's Talk About Your Finance Function</h2>
+    <p class="contact-intro" data-i18n="contact_intro">Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need.</p>
     <div class="hero-ctas" style="justify-content: center;">
-      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8">Book a Free 30-Minute Call</a>
-      <a class="btn-secondary" style="color:#fff; border-color: rgba(255,255,255,0.5);" href="mailto:fabio@fandm-mgmt.com?subject=Inquiry">Email</a>
+      <a class="btn-primary" href="https://calendar.app.google/KzfoRGyoooD6pQbv8" data-i18n="hero_cta1">Book a Free 30-Minute Call</a>
+      <a class="btn-secondary" style="color:#fff; border-color: rgba(255,255,255,0.5);" href="mailto:fabio@fandm-mgmt.com?subject=Inquiry" data-i18n="btn_email">Email</a>
     </div>
   </div>
 </section>
 
 <footer>
-  &copy; 2026 F&amp;M Management LLC. All rights reserved.
+  <span data-i18n="footer_copy">&copy; 2026 F&amp;M Management LLC. All rights reserved.</span>
 </footer>
 
 <script type="application/ld+json">
@@ -395,6 +404,231 @@
   });
 </script>
 
+
+<script>
+var translations = {
+en: {
+  nav_home: "Home",
+  nav_services: "Services",
+  nav_how: "How We Work",
+  nav_industries: "Expertise",
+  nav_track: "Track Record",
+  nav_about: "About",
+  nav_cta: "Get In Touch",
+  svc_fractional_cfo: "Fractional CFO Services",
+  svc_startup_cfo: "Startup CFO Services",
+  svc_outsourced_controller: "Outsourced Controller Services",
+  svc_bookkeeping: "Bookkeeping Services",
+  svc_fpa: "FP&amp;A &amp; Financial Modeling",
+  svc_re_underwriting: "Real Estate Underwriting",
+  svc_re_consulting: "Real Estate Financial Consulting",
+  svc_hospitality: "Hospitality Financial Consulting",
+  btn_email: "Email",
+  footer_copy: "&copy; 2026 F&amp;M Management LLC. All rights reserved.",
+  pageTitle: "Real Estate Underwriting | F&amp;M Management",
+  breadcrumb_current: "Real Estate Underwriting",
+  hero_eyebrow: "Real Estate Underwriting &middot; Serving Investors Nationwide",
+  hero_h1: "Real Estate Underwriting",
+  hero_lede: "F&amp;M Management builds acquisition models and pro formas that hold up to lender, investor, and partner scrutiny &mdash; for deals across the country.",
+  hero_cta1: "Book a Free 30-Minute Call",
+  hero_cta2: "See What's Included",
+  signs_eyebrow: "Signs It's Time",
+  signs_title: "Is It Time for Dedicated Underwriting Support?",
+  signs_intro: "Deal flow moves fast. If underwriting is the bottleneck, opportunities slip through.",
+  signs_item1: "You\u2019re evaluating deals on a rough back-of-envelope basis instead of a full pro forma.",
+  signs_item2: "Lenders or JV partners have pushed back on assumptions in your underwriting.",
+  signs_item3: "You don\u2019t have capacity to underwrite every deal that comes across your desk.",
+  signs_item4: "You need a second, objective set of eyes on a deal before committing capital.",
+  signs_item5: "Post-acquisition, actuals aren\u2019t being tracked against your original underwriting.",
+  included_eyebrow: "Scope",
+  included_title: "What's Included",
+  included_intro: "Underwriting support across the deal lifecycle, from initial screen to closing.",
+  included_item1: "Acquisition underwriting and pro forma modeling (development and value-add)",
+  included_item2: "Sensitivity analysis on rent growth, exit cap rate, and construction cost assumptions",
+  included_item3: "Debt sizing and capital stack analysis",
+  included_item4: "Lender and investor-ready reporting packages",
+  included_item5: "Post-closing actual-vs-pro forma performance tracking",
+  included_item6: "Market and comparable transaction research to support assumptions",
+  engagement_eyebrow: "Flexible By Design",
+  engagement_title: "Engagement Options",
+  engagement_intro: "Every engagement is built around where you are today, not a one-size-fits-all package.",
+  eng1_title: "Project-Based",
+  eng1_desc: "A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.",
+  eng2_title: "Hourly Rate",
+  eng2_desc: "Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.",
+  eng3_title: "Fixed Monthly Rate",
+  eng3_desc: "A predictable monthly retainer for ongoing support, scaled to your business.",
+  faq_eyebrow: "Common Questions",
+  faq_title: "Real Estate Underwriting &mdash; Frequently Asked Questions",
+  faq_q1: "What types of deals do you underwrite?",
+  faq_a1: "We\u2019ve underwritten acquisition, development, and value-add deals across real estate, hospitality, and mixed-use properties, including lender and investor reporting for active projects.",
+  faq_q2: "Can you turn around underwriting quickly for a deal under LOI?",
+  faq_a2: "Yes &mdash; deal timelines are often tight, and we scope underwriting engagements around your actual timeline, including expedited turnarounds when needed.",
+  faq_q3: "Do you build the model, or just review one we already have?",
+  faq_a3: "Both. We build pro formas from scratch, or review and stress-test a model your team or broker has already prepared before you commit capital.",
+  faq_q4: "Can you support ongoing lender or investor reporting after closing?",
+  faq_a4: "Yes &mdash; many engagements continue post-closing with recurring reporting packages that track performance against the original underwriting.",
+  faq_q5: "Do you work with investors outside of Florida?",
+  faq_a5: "Yes. We underwrite deals across the United States. Underwriting work is well suited to remote collaboration, with site visits arranged as needed.",
+  contact_eyebrow: "Get Started",
+  contact_title: "Let's Talk About Your Finance Function",
+  contact_intro: "Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need."
+},
+es: {
+  nav_home: "Inicio",
+  nav_services: "Servicios",
+  nav_how: "C&oacute;mo Trabajamos",
+  nav_industries: "Experiencia",
+  nav_track: "Trayectoria",
+  nav_about: "Nosotros",
+  nav_cta: "Cont&aacute;ctenos",
+  svc_fractional_cfo: "Servicios de CFO Fraccional",
+  svc_startup_cfo: "Servicios de CFO para Startups",
+  svc_outsourced_controller: "Servicios de Controller Externalizado",
+  svc_bookkeeping: "Servicios de Contabilidad",
+  svc_fpa: "FP&amp;A y Modelado Financiero",
+  svc_re_underwriting: "Suscripci&oacute;n Inmobiliaria",
+  svc_re_consulting: "Consultor&iacute;a Financiera Inmobiliaria",
+  svc_hospitality: "Consultor&iacute;a Financiera de Hoteler&iacute;a",
+  btn_email: "Correo",
+  footer_copy: "&copy; 2026 F&amp;M Management LLC. Todos los derechos reservados.",
+  pageTitle: "Suscripci&oacute;n Inmobiliaria | F&amp;M Management",
+  breadcrumb_current: "Suscripci&oacute;n Inmobiliaria",
+  hero_eyebrow: "Suscripci&oacute;n Inmobiliaria &middot; Al Servicio de Inversionistas en Todo el Pa&iacute;s",
+  hero_h1: "Suscripci&oacute;n Inmobiliaria",
+  hero_lede: "F&amp;M Management construye modelos de adquisici&oacute;n y pro formas que resisten el escrutinio de prestamistas, inversionistas y socios &mdash; para operaciones en todo el pa&iacute;s.",
+  hero_cta1: "Reserve una Llamada Gratuita de 30 Minutos",
+  hero_cta2: "Ver Qu&eacute; Incluye",
+  signs_eyebrow: "Se&ntilde;ales de que es el Momento",
+  signs_title: "&iquest;Es el Momento de un Soporte Dedicado de Suscripci&oacute;n?",
+  signs_intro: "El flujo de operaciones se mueve r&aacute;pido. Si la suscripci&oacute;n es el cuello de botella, las oportunidades se escapan.",
+  signs_item1: "Est&aacute; evaluando operaciones de forma aproximada en lugar de con una pro forma completa.",
+  signs_item2: "Prestamistas o socios de joint venture han cuestionado los supuestos de su suscripci&oacute;n.",
+  signs_item3: "No tiene capacidad para suscribir cada operaci&oacute;n que llega a su escritorio.",
+  signs_item4: "Necesita una segunda mirada objetiva sobre una operaci&oacute;n antes de comprometer capital.",
+  signs_item5: "Despu&eacute;s de la adquisici&oacute;n, los datos reales no se est&aacute;n comparando contra su suscripci&oacute;n original.",
+  included_eyebrow: "Alcance",
+  included_title: "Qu&eacute; Incluye",
+  included_intro: "Soporte de suscripci&oacute;n a lo largo del ciclo de vida de la operaci&oacute;n, desde la evaluaci&oacute;n inicial hasta el cierre.",
+  included_item1: "Suscripci&oacute;n de adquisici&oacute;n y modelado de pro forma (desarrollo y value-add)",
+  included_item2: "An&aacute;lisis de sensibilidad sobre crecimiento de renta, cap rate de salida y supuestos de costo de construcci&oacute;n",
+  included_item3: "Dimensionamiento de deuda y an&aacute;lisis de estructura de capital",
+  included_item4: "Paquetes de informes listos para prestamistas e inversionistas",
+  included_item5: "Seguimiento de desempe&ntilde;o real vs. pro forma despu&eacute;s del cierre",
+  included_item6: "Investigaci&oacute;n de mercado y transacciones comparables para respaldar los supuestos",
+  engagement_eyebrow: "Dise&ntilde;ado con Flexibilidad",
+  engagement_title: "Opciones de Colaboraci&oacute;n",
+  engagement_intro: "Cada proyecto se construye seg&uacute;n d&oacute;nde se encuentra hoy, no como un paquete &uacute;nico para todos.",
+  eng1_title: "Por Proyecto",
+  eng1_desc: "Un alcance y precio definidos para trabajo puntual &mdash; una limpieza de estados financieros, una implementaci&oacute;n de sistema o un paquete de suscripci&oacute;n.",
+  eng2_title: "Tarifa por Hora",
+  eng2_desc: "Pague solo por el tiempo que necesita &mdash; ideal para soporte puntual, preguntas de asesor&iacute;a o cargas de trabajo m&aacute;s ligeras.",
+  eng3_title: "Tarifa Mensual Fija",
+  eng3_desc: "Un retainer mensual predecible para soporte continuo, seg&uacute;n el tama&ntilde;o de su empresa.",
+  faq_eyebrow: "Preguntas Frecuentes",
+  faq_title: "Suscripci&oacute;n Inmobiliaria &mdash; Preguntas Frecuentes",
+  faq_q1: "&iquest;Qu&eacute; tipos de operaciones suscriben?",
+  faq_a1: "Hemos suscrito operaciones de adquisici&oacute;n, desarrollo y value-add en bienes ra&iacute;ces, hoteler&iacute;a y propiedades de uso mixto, incluyendo informes para prestamistas e inversionistas en proyectos activos.",
+  faq_q2: "&iquest;Pueden entregar la suscripci&oacute;n r&aacute;pidamente para una operaci&oacute;n bajo carta de intenci&oacute;n (LOI)?",
+  faq_a2: "S&iacute; &mdash; los plazos de las operaciones suelen ser ajustados, y definimos los proyectos de suscripci&oacute;n seg&uacute;n su cronograma real, incluyendo entregas aceleradas cuando es necesario.",
+  faq_q3: "&iquest;Construyen el modelo, o solo revisan uno que ya tenemos?",
+  faq_a3: "Ambas opciones. Construimos pro formas desde cero, o revisamos y sometemos a prueba de estr&eacute;s un modelo que su equipo o corredor ya haya preparado antes de que comprometa capital.",
+  faq_q4: "&iquest;Pueden apoyar informes continuos para prestamistas o inversionistas despu&eacute;s del cierre?",
+  faq_a4: "S&iacute; &mdash; muchos proyectos contin&uacute;an despu&eacute;s del cierre con paquetes de informes recurrentes que hacen seguimiento del desempe&ntilde;o frente a la suscripci&oacute;n original.",
+  faq_q5: "&iquest;Trabajan con inversionistas fuera de la Florida?",
+  faq_a5: "S&iacute;. Suscribimos operaciones en todo Estados Unidos. El trabajo de suscripci&oacute;n se adapta bien a la colaboraci&oacute;n remota, con visitas al sitio organizadas seg&uacute;n sea necesario.",
+  contact_eyebrow: "Comencemos",
+  contact_title: "Hablemos de su Funci&oacute;n Financiera",
+  contact_intro: "Ya sea que necesite un CFO fraccional, un controller que se encargue del cierre, o una limpieza contable, F&amp;M Management puede comenzar exactamente con lo que necesita."
+},
+it: {
+  nav_home: "Home",
+  nav_services: "Servizi",
+  nav_how: "Come Lavoriamo",
+  nav_industries: "Competenze",
+  nav_track: "Track Record",
+  nav_about: "Chi Siamo",
+  nav_cta: "Contattaci",
+  svc_fractional_cfo: "Servizi di CFO Frazionale",
+  svc_startup_cfo: "Servizi di CFO per Startup",
+  svc_outsourced_controller: "Servizi di Controller Esternalizzato",
+  svc_bookkeeping: "Servizi di Contabilit&agrave;",
+  svc_fpa: "FP&amp;A e Modellazione Finanziaria",
+  svc_re_underwriting: "Underwriting Immobiliare",
+  svc_re_consulting: "Consulenza Finanziaria Immobiliare",
+  svc_hospitality: "Consulenza Finanziaria per l'Ospitalit&agrave;",
+  btn_email: "Email",
+  footer_copy: "&copy; 2026 F&amp;M Management LLC. Tutti i diritti riservati.",
+  pageTitle: "Underwriting Immobiliare | F&amp;M Management",
+  breadcrumb_current: "Underwriting Immobiliare",
+  hero_eyebrow: "Underwriting Immobiliare &middot; Al Servizio di Investitori in Tutto il Paese",
+  hero_h1: "Underwriting Immobiliare",
+  hero_lede: "F&amp;M Management costruisce modelli di acquisizione e pro forma che reggono al vaglio di finanziatori, investitori e partner &mdash; per operazioni in tutto il paese.",
+  hero_cta1: "Prenota una Chiamata Gratuita di 30 Minuti",
+  hero_cta2: "Scopri Cosa &Egrave; Incluso",
+  signs_eyebrow: "Segnali che &Egrave; il Momento",
+  signs_title: "&Egrave; il Momento per un Supporto Dedicato di Underwriting?",
+  signs_intro: "Il flusso delle operazioni si muove velocemente. Se l'underwriting &egrave; il collo di bottiglia, le opportunit&agrave; sfuggono.",
+  signs_item1: "State valutando le operazioni in modo approssimativo invece che con una pro forma completa.",
+  signs_item2: "Finanziatori o partner di joint venture hanno contestato le ipotesi del vostro underwriting.",
+  signs_item3: "Non avete la capacit&agrave; di sottoporre a underwriting ogni operazione che arriva sulla vostra scrivania.",
+  signs_item4: "Avete bisogno di un secondo sguardo obiettivo su un'operazione prima di impegnare capitale.",
+  signs_item5: "Dopo l'acquisizione, i dati reali non vengono confrontati con il vostro underwriting originale.",
+  included_eyebrow: "Ambito",
+  included_title: "Cosa &Egrave; Incluso",
+  included_intro: "Supporto di underwriting lungo tutto il ciclo di vita dell'operazione, dalla valutazione iniziale alla chiusura.",
+  included_item1: "Underwriting di acquisizione e modellazione pro forma (sviluppo e value-add)",
+  included_item2: "Analisi di sensitivit&agrave; su crescita degli affitti, cap rate di uscita e ipotesi sui costi di costruzione",
+  included_item3: "Dimensionamento del debito e analisi della capital stack",
+  included_item4: "Pacchetti di reportistica pronti per finanziatori e investitori",
+  included_item5: "Monitoraggio delle performance reali rispetto alla pro forma dopo la chiusura",
+  included_item6: "Ricerca di mercato e transazioni comparabili a supporto delle ipotesi",
+  engagement_eyebrow: "Progettato per la Flessibilit&agrave;",
+  engagement_title: "Opzioni di Collaborazione",
+  engagement_intro: "Ogni incarico &egrave; costruito in base a dove vi trovate oggi, non come un pacchetto unico per tutti.",
+  eng1_title: "A Progetto",
+  eng1_desc: "Un ambito e un prezzo definiti per un lavoro una tantum &mdash; una pulizia dei bilanci, un'implementazione di sistema o un pacchetto di underwriting.",
+  eng2_title: "Tariffa Oraria",
+  eng2_desc: "Pagate solo per il tempo di cui avete bisogno &mdash; ideale per supporto occasionale, domande di consulenza o carichi di lavoro pi&ugrave; leggeri.",
+  eng3_title: "Tariffa Mensile Fissa",
+  eng3_desc: "Un retainer mensile prevedibile per un supporto continuativo, in base alle dimensioni della vostra azienda.",
+  faq_eyebrow: "Domande Frequenti",
+  faq_title: "Underwriting Immobiliare &mdash; Domande Frequenti",
+  faq_q1: "Che tipo di operazioni sottoponete a underwriting?",
+  faq_a1: "Abbiamo sottoposto a underwriting operazioni di acquisizione, sviluppo e value-add nel settore immobiliare, dell'ospitalit&agrave; e delle propriet&agrave; a uso misto, inclusa la reportistica per finanziatori e investitori su progetti attivi.",
+  faq_q2: "Potete completare rapidamente l'underwriting per un'operazione sotto LOI?",
+  faq_a2: "S&igrave; &mdash; le tempistiche delle operazioni sono spesso strette, e definiamo gli incarichi di underwriting in base alla vostra tempistica reale, incluse consegne accelerate quando necessario.",
+  faq_q3: "Costruite il modello, o vi limitate a rivedere uno che gi&agrave; abbiamo?",
+  faq_a3: "Entrambe le cose. Costruiamo pro forma da zero, oppure rivediamo e sottoponiamo a stress test un modello che il vostro team o broker ha gi&agrave; preparato prima che impegniate capitale.",
+  faq_q4: "Potete supportare la reportistica continuativa verso finanziatori o investitori dopo la chiusura?",
+  faq_a4: "S&igrave; &mdash; molti incarichi continuano dopo la chiusura con pacchetti di reportistica ricorrenti che monitorano le performance rispetto all'underwriting originale.",
+  faq_q5: "Lavorate con investitori al di fuori della Florida?",
+  faq_a5: "S&igrave;. Sottoponiamo a underwriting operazioni in tutti gli Stati Uniti. Il lavoro di underwriting si adatta bene alla collaborazione da remoto, con sopralluoghi organizzati secondo necessit&agrave;.",
+  contact_eyebrow: "Iniziamo",
+  contact_title: "Parliamo della Vostra Funzione Finanziaria",
+  contact_intro: "Che abbiate bisogno di un CFO frazionale, di un controller che gestisca la chiusura, o di una pulizia contabile, F&amp;M Management pu&ograve; iniziare esattamente da ci&ograve; di cui avete bisogno."
+}
+};
+function applyLang(lang) {
+  var dict = translations[lang] || translations.en;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) { el.innerHTML = dict[key]; }
+  });
+  if (dict.pageTitle) { document.getElementById('pageTitle').innerHTML = dict.pageTitle; }
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  try { localStorage.setItem('fm_lang', lang); } catch (e) {}
+}
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); });
+});
+var savedLang = 'en';
+try { savedLang = localStorage.getItem('fm_lang') || 'en'; } catch (e) {}
+applyLang(savedLang);
+</script>
 
 <script>
   (function() {
