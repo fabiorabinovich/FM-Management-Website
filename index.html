@@ -56,6 +56,33 @@
     --text-muted: #5A6272;
     --border: #E3E7EF;
   }
+  .services-item { position: relative; }
+  .services-dropdown { display: none; position: absolute; top: 100%; left: -14px; margin-top: 0; background: #fff; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 12px 28px rgba(31,56,100,0.14); min-width: 260px; padding: 14px 8px 8px; z-index: 1100; }
+  .services-item:hover .services-dropdown { display: block; }
+  .services-dropdown a { display: block; padding: 9px 12px; border-radius: 4px; font-size: 13.5px; font-weight: 500; color: var(--text-dark); }
+  .services-dropdown a:hover { background: var(--bg-light); color: var(--navy); }
+  .services-dropdown a.current { color: var(--gold); font-weight: 700; }
+  .mobile-toggle { display: none; font-size: 24px; line-height: 1; background: none; border: none; cursor: pointer; color: var(--navy); padding: 4px 8px; }
+
+  @media (max-width: 860px) {
+    .nav-wrap { flex-wrap: wrap; row-gap: 0; padding: 14px 16px; position: relative; }
+    .logo { font-size: 18px; order: 1; }
+    .mobile-toggle { display: block; order: 2; margin-left: auto; }
+    nav { order: 3; width: 100%; }
+    nav ul { display: none; flex-direction: column; gap: 0; width: 100%; margin-top: 10px; }
+    nav ul.mobile-open { display: flex; }
+    nav ul li { width: 100%; border-top: 1px solid var(--border); }
+    nav ul li > a { display: block; padding: 13px 4px; }
+    .services-item .services-dropdown { display: none; position: static; box-shadow: none; border: none; border-radius: 0; margin: 0; padding: 0 0 8px 16px; min-width: 0; }
+    .services-item.mobile-expanded .services-dropdown { display: block; }
+    .services-item:hover .services-dropdown { display: none; }
+    .services-item.mobile-expanded:hover .services-dropdown { display: block; }
+    .services-dropdown a { padding: 10px 4px; }
+    .nav-right { order: 4; width: 100%; flex-wrap: wrap; justify-content: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+    .nav-cta { padding: 8px 16px; font-size: 13px; }
+    .lang-btn { padding: 4px 8px; font-size: 11px; }
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { max-width: 100%; overflow-x: hidden; }
   body {
@@ -291,6 +318,8 @@
     border: 1px solid var(--border);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
+  .engagement-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--bg-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; color: var(--navy); }
+  .engagement-icon svg { width: 22px; height: 22px; }
   .engagement-card:hover { box-shadow: 0 12px 28px rgba(31,56,100,0.08); transform: translateY(-3px); }
   .engagement-card h3 { font-size: 18px; margin-bottom: 10px; }
   .engagement-card p { color: var(--text-muted); font-size: 14.5px; }
@@ -298,11 +327,14 @@
   /* Industries */
   .industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .industry-card {
-    background: #fff; border-radius: 8px; padding: 30px 24px; text-align: center;
+    background: #fff; border-radius: 8px; text-align: center; overflow: hidden;
     border: 1px solid var(--border);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
   .industry-card:hover { box-shadow: 0 12px 28px rgba(31,56,100,0.08); transform: translateY(-3px); }
+  .industry-photo { width: 100%; height: 130px; background: var(--bg-light); }
+  .industry-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .industry-card-body { padding: 22px 22px 26px; }
   .industry-card h3 { font-size: 18px; margin-bottom: 10px; }
   .industry-card p { color: var(--text-muted); font-size: 14px; }
 
@@ -399,9 +431,16 @@
   .faq-section { background: var(--bg-light); }
   .faq-list { max-width: 780px; margin: 0 auto; }
   .faq-item { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 26px 30px; margin-bottom: 16px; }
-  .faq-q { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; font-family: Georgia, "Times New Roman", serif; }
-  .faq-a { color: var(--text-muted); font-size: 15.5px; }
+  .faq-q { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 0; font-family: Georgia, "Times New Roman", serif; cursor: pointer; position: relative; padding-right: 34px; }
+  .faq-q::after { content: '+'; position: absolute; right: 0; top: -2px; font-size: 22px; font-weight: 400; color: var(--gold); }
+  .faq-item.open .faq-q { margin-bottom: 10px; }
+  .faq-item.open .faq-q::after { content: '\2212'; }
+  .faq-a { color: var(--text-muted); font-size: 15.5px; max-height: 0; overflow: hidden; transition: max-height 0.28s ease, margin 0.28s ease; margin: 0; }
+  .faq-item.open .faq-a { max-height: 400px; }
 
+
+  .service-detail-link { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 700; color: var(--gold, #B8924A); }
+  .service-detail-link:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -414,12 +453,25 @@
 <header class="site-header">
   <div class="nav-wrap">
     <div class="logo">F | M <span>MANAGEMENT</span></div>
+    <button type="button" class="mobile-toggle" id="mobileNavToggle" aria-label="Menu">&#9776;</button>
     <nav><ul>
-      <li><a href="#services" data-i18n="nav_services">Services</a></li>
-      <li><a href="#how-we-work" data-i18n="nav_how">How We Work</a></li>
-      <li><a href="#industries" data-i18n="nav_industries">Expertise</a></li>
-      <li><a href="#track-record" data-i18n="nav_track">Track Record</a></li>
-      <li><a href="#about" data-i18n="nav_about">About</a></li>
+      <li class="services-item">
+        <a href="/#services" data-i18n="nav_services">Services</a>
+        <div class="services-dropdown">
+      <a href="/fractional-cfo-miami/">Fractional CFO Services</a>
+      <a href="/startup-cfo-services-miami/">Startup CFO Services</a>
+      <a href="/outsourced-controller-services-miami/">Outsourced Controller Services</a>
+      <a href="/bookkeeping-services-miami/">Bookkeeping Services</a>
+      <a href="/fpa-financial-modeling-miami/">FP&A & Financial Modeling</a>
+      <a href="/real-estate-underwriting-miami/">Real Estate Underwriting</a>
+      <a href="/real-estate-financial-consulting-miami/">Real Estate Financial Consulting</a>
+      <a href="/hospitality-financial-consulting-miami/">Hospitality Financial Consulting</a>
+        </div>
+      </li>
+      <li><a href="/#how-we-work" data-i18n="nav_how">How We Work</a></li>
+      <li><a href="/#industries" data-i18n="nav_industries">Expertise</a></li>
+      <li><a href="/#track-record" data-i18n="nav_track">Track Record</a></li>
+      <li><a href="/#about" data-i18n="nav_about">About</a></li>
     </ul></nav>
     <div class="nav-right">
       <div class="lang-toggle" role="group" aria-label="Language selector">
@@ -427,7 +479,7 @@
         <button type="button" class="lang-btn" data-lang="es">ES</button>
         <button type="button" class="lang-btn" data-lang="it">IT</button>
       </div>
-      <a class="nav-cta" href="#contact" data-i18n="nav_cta">Get In Touch</a>
+      <a class="nav-cta" href="/#contact" data-i18n="nav_cta">Get In Touch</a>
     </div>
   </div>
 </header>
@@ -489,26 +541,31 @@
         <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"></polyline><polyline points="15 6 21 6 21 12"></polyline></svg></div>
         <h3 data-i18n="service1_title">Fractional CFO</h3>
         <p data-i18n="service1_desc">Strategic financial leadership, board and investor reporting, capital planning, and direct partnership with ownership on pricing, growth, and long-range strategy.</p>
+        <a class="service-detail-link" href="/fractional-cfo-miami/">Learn more about Fractional CFO &rarr;</a>
       </div>
       <div class="services-detail-panel" data-panel="2">
         <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"></path><polyline points="8.5 13 11 15.5 15.5 10"></polyline></svg></div>
         <h3 data-i18n="service2_title">Outsourced Controller</h3>
         <p data-i18n="service2_desc">Full-cycle accounting oversight &mdash; monthly close, reconciliations, internal controls, and audit-ready financial reporting, managed hands-on.</p>
+        <a class="service-detail-link" href="/outsourced-controller-services-miami/">Learn more about Outsourced Controller &rarr;</a>
       </div>
       <div class="services-detail-panel" data-panel="3">
         <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"></path><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"></path></svg></div>
         <h3 data-i18n="service3_title">Bookkeeping &amp; Systems</h3>
         <p data-i18n="service3_desc">Clean, reliable books and modern accounting infrastructure, including AP/AR process design.</p>
+        <a class="service-detail-link" href="/bookkeeping-services-miami/">Learn more about Bookkeeping & Systems &rarr;</a>
       </div>
       <div class="services-detail-panel" data-panel="4">
         <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="12"></line><line x1="12" y1="20" x2="12" y2="6"></line><line x1="18" y1="20" x2="18" y2="14"></line></svg></div>
         <h3 data-i18n="service4_title">FP&amp;A &amp; Financial Modeling</h3>
         <p data-i18n="service4_desc">Budgeting, variance analysis, three-statement modeling, and KPI dashboards that turn financial data into decisions.</p>
+        <a class="service-detail-link" href="/fpa-financial-modeling-miami/">Learn more about FP&A & Financial Modeling &rarr;</a>
       </div>
       <div class="services-detail-panel" data-panel="5">
         <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"></rect><line x1="8" y1="8" x2="8.01" y2="8"></line><line x1="12" y1="8" x2="12.01" y2="8"></line><line x1="16" y1="8" x2="16.01" y2="8"></line><line x1="8" y1="13" x2="8.01" y2="13"></line><line x1="12" y1="13" x2="12.01" y2="13"></line><line x1="16" y1="13" x2="16.01" y2="13"></line><line x1="10" y1="21" x2="10" y2="17"></line><line x1="14" y1="21" x2="14" y2="17"></line></svg></div>
         <h3 data-i18n="service5_title">Investment Underwriting</h3>
         <p data-i18n="service5_desc">Acquisition and development underwriting, pro forma modeling, sensitivity analysis, and due diligence support for real estate and operating deals.</p>
+        <a class="service-detail-link" href="/real-estate-underwriting-miami/">Learn more about Investment Underwriting &rarr;</a>
       </div>
       <div class="services-detail-panel" data-panel="6">
         <div class="services-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
@@ -581,14 +638,17 @@
     <h3 class="engagement-title" data-i18n="engagement_title">Engagement Options</h3>
     <div class="engagement-grid reveal-group">
       <div class="engagement-card reveal">
+        <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg></div>
         <h3 data-i18n="eng1_title">Project-Based</h3>
         <p data-i18n="eng1_desc">A defined scope and price for one-time work &mdash; a financials cleanup, a system implementation, or an underwriting package.</p>
       </div>
       <div class="engagement-card reveal">
+        <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg></div>
         <h3 data-i18n="eng2_title">Hourly Rate</h3>
         <p data-i18n="eng2_desc">Pay only for the time you need &mdash; well suited to ad hoc support, advisory questions, or lighter workloads.</p>
       </div>
       <div class="engagement-card reveal">
+        <div class="engagement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"></path><path d="M3 12.6v-1a4 4 0 0 1 4-4h14"></path><path d="M7 21.9l-4-4 4-4"></path><path d="M21 11.4v1a4 4 0 0 1-4 4H3"></path></svg></div>
         <h3 data-i18n="eng3_title">Fixed Monthly Rate</h3>
         <p data-i18n="eng3_desc">A predictable monthly retainer for ongoing bookkeeping, controller, or CFO-level support, scaled to your business.</p>
       </div>
@@ -602,24 +662,32 @@
     <h2 class="section-title" data-i18n="industries_title">Deep experience across four core industries</h2>
     <div class="industries-grid reveal-group">
       <div class="industry-card reveal">
-        <div class="industry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"></path></svg></div>
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Real estate development site" loading="lazy"></div>
+        <div class="industry-card-body">
         <h3 data-i18n="ind1_title">Real Estate Management &amp; Development</h3>
         <p data-i18n="ind1_desc">Acquisition underwriting, pro forma modeling with defendable assumptions, and lender/investor financial reporting for development and value-add projects.</p>
+        </div>
       </div>
       <div class="industry-card reveal">
-        <div class="industry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7a2 2 0 0 0 4 0V3"></path><path d="M8 10v11"></path><path d="M17 3c-1.5 0-3 1.5-3 4s1.5 4 3 4v10"></path></svg></div>
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1621293954908-907159247fc8?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Boutique hotel lobby" loading="lazy"></div>
+        <div class="industry-card-body">
         <h3 data-i18n="ind2_title">Hospitality &amp; Food &amp; Beverage</h3>
         <p data-i18n="ind2_desc">Multi-property portfolio reporting, hotel USALI-compliant financial reporting, budgeting, and feasibility analysis for hotels, restaurants, and hospitality operators.</p>
+        </div>
       </div>
       <div class="industry-card reveal">
-        <div class="industry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg></div>
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Retail store interior" loading="lazy"></div>
+        <div class="industry-card-body">
         <h3 data-i18n="ind3_title">Retail &amp; Consumer Goods</h3>
         <p data-i18n="ind3_desc">Store-level profitability analysis, inventory-aware reporting, and finance operations across retail, wholesale, and e-commerce channels.</p>
+        </div>
       </div>
       <div class="industry-card reveal">
-        <div class="industry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7z"></path><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 12h18"></path></svg></div>
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Professional office setting" loading="lazy"></div>
+        <div class="industry-card-body">
         <h3 data-i18n="ind4_title">Professional Services</h3>
         <p data-i18n="ind4_desc">Project-based revenue recognition, partner and practice-level profitability, and billable-hour and realization reporting for law firms, agencies, and consulting practices.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -689,9 +757,9 @@
   <div class="container">
     <div class="section-label" data-i18n="faq_label">Common Questions</div>
     <h2 class="section-title" data-i18n="faq_title">Fractional CFO &amp; Outsourced Finance, Explained</h2>
-    <p class="section-intro" data-i18n="faq_intro">Straight answers to the questions we hear most from growing businesses in Miami and South Florida.</p>
+    <p class="section-intro" data-i18n="faq_intro">Straight answers to the questions we hear most from growing businesses.</p>
     <div class="faq-list">
-      <div class="faq-item">
+      <div class="faq-item open">
         <div class="faq-q" data-i18n="faq_q1">What is a fractional CFO?</div>
         <div class="faq-a" data-i18n="faq_a1">A fractional CFO is an experienced finance executive who works with your business part-time or on retainer, providing the strategic financial leadership of a full-time CFO &mdash; board reporting, capital planning, forecasting &mdash; without the cost of a full-time hire.</div>
       </div>
@@ -811,7 +879,7 @@ var translations = {
     contact_label: "Get Started", contact_title: "Let's talk about your finance function",
     contact_intro: "Whether you need a fractional CFO, a controller to own the close, or a bookkeeping cleanup, F&amp;M Management can start with exactly what you need.",
     contact_email_label: "Email", contact_phone_label: "Phone", contact_location_label: "Location", contact_cta: "Book a Free 30-Minute Call", contact_cta_email: "Email", contact_note: "Free 30 minutes. No sales pitch, no obligation.",
-    faq_label: "Common Questions", faq_title: "Fractional CFO &amp; Outsourced Finance, Explained", faq_intro: "Straight answers to the questions we hear most from growing businesses in Miami and South Florida.",
+    faq_label: "Common Questions", faq_title: "Fractional CFO &amp; Outsourced Finance, Explained", faq_intro: "Straight answers to the questions we hear most from growing businesses.",
     faq_q1: "What is a fractional CFO?", faq_a1: "A fractional CFO is an experienced finance executive who works with your business part-time or on retainer, providing the strategic financial leadership of a full-time CFO &mdash; board reporting, capital planning, forecasting &mdash; without the cost of a full-time hire.",
     faq_q2: "When should I hire a fractional CFO?", faq_a2: "Most businesses bring on a fractional CFO when they've outgrown what a bookkeeper can provide: when they need real forecasting and cash flow visibility, are raising capital or taking on debt, or are making decisions that need financial modeling behind them.",
     faq_q3: "How much does a fractional CFO cost?", faq_a3: "Fractional CFO engagements typically run $3,000&ndash;$15,000 per month depending on scope and hours, or $175&ndash;$450 per hour for project-based work &mdash; a fraction of a full-time CFO's salary and benefits.",
@@ -872,7 +940,7 @@ var translations = {
     contact_label: "Comencemos", contact_title: "Hablemos sobre su funci&oacute;n financiera",
     contact_intro: "Ya sea que necesite un CFO fraccional, un controller que se encargue del cierre, o una depuraci&oacute;n contable, F&amp;M Management puede comenzar exactamente con lo que usted necesita.",
     contact_email_label: "Correo Electr&oacute;nico", contact_phone_label: "Tel&eacute;fono", contact_location_label: "Ubicaci&oacute;n", contact_cta: "Reserve una Llamada Gratuita de 30 Minutos", contact_cta_email: "Correo", contact_note: "30 minutos gratis. Sin discurso de ventas, sin compromiso.",
-    faq_label: "Preguntas Frecuentes", faq_title: "CFO Fraccional y Finanzas Externalizadas, Explicado", faq_intro: "Respuestas claras a las preguntas que m&aacute;s escuchamos de empresas en crecimiento en Miami y el Sur de Florida.",
+    faq_label: "Preguntas Frecuentes", faq_title: "CFO Fraccional y Finanzas Externalizadas, Explicado", faq_intro: "Respuestas claras a las preguntas que m&aacute;s escuchamos de empresas en crecimiento.",
     faq_q1: "&iquest;Qu&eacute; es un CFO fraccional?", faq_a1: "Un CFO fraccional es un ejecutivo financiero con experiencia que trabaja con su empresa a tiempo parcial o por contrato, brindando el liderazgo financiero estrat&eacute;gico de un CFO de tiempo completo &mdash; informes a la junta directiva, planificaci&oacute;n de capital, proyecciones &mdash; sin el costo de una contrataci&oacute;n de tiempo completo.",
     faq_q2: "&iquest;Cu&aacute;ndo debo contratar un CFO fraccional?", faq_a2: "La mayor&iacute;a de las empresas contratan un CFO fraccional cuando han superado lo que un contador puede ofrecer: cuando necesitan proyecciones reales y visibilidad del flujo de caja, est&aacute;n levantando capital o asumiendo deuda, o est&aacute;n tomando decisiones que requieren modelos financieros.",
     faq_q3: "&iquest;Cu&aacute;nto cuesta un CFO fraccional?", faq_a3: "Los servicios de CFO fraccional generalmente cuestan entre $3,000 y $15,000 al mes seg&uacute;n el alcance y las horas, o entre $175 y $450 por hora para proyectos puntuales &mdash; una fracci&oacute;n del salario y beneficios de un CFO de tiempo completo.",
@@ -933,7 +1001,7 @@ var translations = {
     contact_label: "Iniziamo", contact_title: "Parliamo della tua funzione finanziaria",
     contact_intro: "Che tu abbia bisogno di un CFO frazionale, di un controller che gestisca la chiusura, o di un riordino contabile, F&amp;M Management pu&ograve; iniziare esattamente da ci&ograve; di cui hai bisogno.",
     contact_email_label: "Email", contact_phone_label: "Telefono", contact_location_label: "Sede", contact_cta: "Prenota una Chiamata Gratuita di 30 Minuti", contact_cta_email: "Email", contact_note: "30 minuti gratuiti. Nessun discorso commerciale, nessun impegno.",
-    faq_label: "Domande Frequenti", faq_title: "CFO Frazionale e Finanza Esternalizzata, Spiegati", faq_intro: "Risposte chiare alle domande che sentiamo pi&ugrave; spesso dalle aziende in crescita a Miami e nel Sud della Florida.",
+    faq_label: "Domande Frequenti", faq_title: "CFO Frazionale e Finanza Esternalizzata, Spiegati", faq_intro: "Risposte chiare alle domande che sentiamo pi&ugrave; spesso dalle aziende in crescita.",
     faq_q1: "Che cos'&egrave; un CFO frazionale?", faq_a1: "Un CFO frazionale &egrave; un dirigente finanziario esperto che lavora con la tua azienda part-time o su base contrattuale, offrendo la leadership finanziaria strategica di un CFO a tempo pieno &mdash; reportistica al consiglio, pianificazione del capitale, previsioni &mdash; senza il costo di un'assunzione a tempo pieno.",
     faq_q2: "Quando dovrei assumere un CFO frazionale?", faq_a2: "La maggior parte delle aziende si affida a un CFO frazionale quando ha superato ci&ograve; che un contabile pu&ograve; offrire: quando serve una vera visibilit&agrave; su previsioni e flusso di cassa, si sta raccogliendo capitale o assumendo debito, oppure si stanno prendendo decisioni che richiedono modelli finanziari.",
     faq_q3: "Quanto costa un CFO frazionale?", faq_a3: "Gli incarichi di CFO frazionale costano in genere tra $3.000 e $15.000 al mese a seconda dell'ambito e delle ore, oppure tra $175 e $450 all'ora per lavori a progetto &mdash; una frazione dello stipendio e dei benefit di un CFO a tempo pieno.",
@@ -1119,5 +1187,39 @@ applyLang(savedLang);
 })();
 </script>
 
+
+<script>
+  document.querySelectorAll('.faq-list .faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var item = q.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      item.parentElement.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+<script>
+  (function() {
+    var mobileToggleBtn = document.getElementById('mobileNavToggle');
+    var navUlEl = document.querySelector('.site-header nav ul');
+    if (mobileToggleBtn && navUlEl) {
+      mobileToggleBtn.addEventListener('click', function() {
+        navUlEl.classList.toggle('mobile-open');
+      });
+    }
+    document.querySelectorAll('.services-item > a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth <= 860) {
+          e.preventDefault();
+          var item = link.closest('.services-item');
+          var wasOpen = item.classList.contains('mobile-expanded');
+          document.querySelectorAll('.services-item').forEach(function(i) { i.classList.remove('mobile-expanded'); });
+          if (!wasOpen) { item.classList.add('mobile-expanded'); }
+        }
+      });
+    });
+  })();
+</script>
 </body>
 </html>
